@@ -2,7 +2,7 @@
   /* max-width: 1178px; */
   position: top;
 
-  width: 1178px;
+  max-width: 1178px;
   gap: 10px;
 
   margin: 0 auto;

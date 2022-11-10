@@ -6,11 +6,12 @@ import CrossIcon from './icons/Cross/CossIcon'
 import HeartIcon from './icons/Heart/HeartIcon'
 import LogoIcon from './icons/Logo/LogoIcon'
 import TrianglesIcon from './icons/Triangles/TrianglesIcon'
+import { Main } from './pages/Main/Main'
 
 export const App = () => {
   return (
     <div className="App">
-      <header className="App-header" style={{ gap: 16 }}>
+      {/* <header className="App-header" style={{ gap: 16 }}>
         <Header />
         <p>Starting Diploma</p>
         <LogoIcon />
@@ -24,7 +25,8 @@ export const App = () => {
         </div>
         <CrossIcon />
         <TrianglesIcon />
-      </header>
+      </header> */}
+      <Main />
     </div>
   )
 }
