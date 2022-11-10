@@ -11,6 +11,8 @@ export type ButtonProps = {
   btnType?: 'button' | 'submit' | 'reset'
   onClick?: VoidFunction
   disabled?: boolean
+  width?: number
+  height?: number
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -20,6 +22,8 @@ export const Button: FC<ButtonProps> = ({
   btnType,
   onClick,
   disabled = false,
+  width,
+  height,
 }) => {
   const buttonClassName = cn(
     styles.button,
@@ -34,6 +38,7 @@ export const Button: FC<ButtonProps> = ({
       onClick={onClick}
       type={btnType}
       disabled={disabled}
+      style={{ width, height }}
     >
       {children ? children : ''}
     </button>

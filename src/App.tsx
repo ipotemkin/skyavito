@@ -7,7 +7,7 @@ export const App = () => {
     <div className="App">
       <header className="App-header">
         <p>Starting Diploma</p>
-        <Button>Сохранить</Button>
+        <Button >Сохранить</Button>
         <Button disabled>Disabled</Button>
         <Button type="outlined">Outlined</Button>
         <Button type="secondary" size="m">Сохранить</Button>
