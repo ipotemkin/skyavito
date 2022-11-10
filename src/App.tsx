@@ -3,6 +3,7 @@ import './App.css'
 import { Button } from './components/Button/Button'
 import CrossIcon from './icons/Cross/CossIcon'
 import HeartIcon from './icons/Heart/HeartIcon'
+import TrianglesIcon from './icons/Triangles/TrianglesIcon'
 
 export const App = () => {
   return (
@@ -12,12 +13,13 @@ export const App = () => {
         <Button >Сохранить</Button>
         <Button disabled>Disabled</Button>
         <Button type="outlined">Outlined</Button>
-        <Button type="secondary" size="m">Сохранить</Button>
         <HeartIcon />
-        <div style={{ width: 200, height: 100, backgroundColor: "#009EE4" }}>
+        <div style={{ width: 160, height: 80, padding: 12, gap: 16, backgroundColor: "#009EE4" }}>
           <HeartIcon type="secondary"/>
+          <Button type="secondary" size="m">Сохранить</Button>
         </div>
         <CrossIcon />
+        <TrianglesIcon />
       </header>
     </div>
   )
