@@ -3,6 +3,7 @@ import './App.css'
 import { Button } from './components/Button/Button'
 import CrossIcon from './icons/Cross/CossIcon'
 import HeartIcon from './icons/Heart/HeartIcon'
+import LogoIcon from './icons/Logo/LogoIcon'
 import TrianglesIcon from './icons/Triangles/TrianglesIcon'
 
 export const App = () => {
@@ -10,6 +11,7 @@ export const App = () => {
     <div className="App">
       <header className="App-header" style={{ gap: 16 }}>
         <p>Starting Diploma</p>
+        <LogoIcon />
         <Button >Сохранить</Button>
         <Button disabled>Disabled</Button>
         <Button type="outlined">Outlined</Button>
