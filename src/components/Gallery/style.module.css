@@ -1,0 +1,29 @@
+.gallery {
+  max-width: 1158px;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  /* -ms-grid-columns: (270px)[4]; */
+  grid-template-columns: repeat(4, 270px);
+  
+  grid-auto-rows: 441px;
+  grid-gap: 40px 26px;
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+      justify-content: center;
+  overflow-y: auto;
+  scrollbar-color: #FFFFFF #2E2E2E;
+  scrollbar-width: thin;
+  scrollbar-width: 0px;
+  height: 922px;
+}
+
+.gallery::-webkit-scrollbar {
+  width: 0px;
+  background-color: #009EE4;
+}
+
+.gallery::-webkit-scrollbar-thumb {
+  background-color: #0080C1;
+  border-radius: 3px;
+}

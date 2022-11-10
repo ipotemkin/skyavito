@@ -10,16 +10,13 @@
     -ms-flex-pack: justify;
       justify-content: space-between;
   padding: 11px 0;
-  max-width: 1178px;
-  /* max-width: 1200px; */
+  max-width: 1158px;
   margin: 0 auto;
-  padding: 31px 10px 0px;
-  /* background-color: green; */
+  padding: 122px 0px 0px;
 }
 
 .form {
   margin-left: 60px;
-  /* max-width: 1044px; */
   max-width: 1080px;
   width: 100%;
   display: -webkit-box;

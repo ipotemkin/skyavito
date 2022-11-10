@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { CardType } from '../../types'
 
 import styles from './style.module.css'
 
-export const Card = () => {
+type Props = {
+  card: CardType
+}
+
+
+export const Card: FC<Props> = ({ card }) => {
   return (
     <div className={styles.card}>
       <div className={styles.image}>
@@ -12,10 +18,10 @@ export const Card = () => {
       </div>
       <div>
         <a href="" target="_blank">
-          <h3 className={styles.title}>Ракетка для большого тенниса Triumph Pro ST</h3>
+          <h3 className={styles.title}>{ card.title }</h3>
         </a>
-        <p className={styles.price}>2&nbsp;200&nbsp;₽</p>
-        <p className={styles.place}>Санкт Петербург</p>
+        <p className={styles.price}>{ card.price }&nbsp;₽</p>
+        <p className={styles.place}>{card.place }</p>
         <p className={styles.date}>Сегодня в&nbsp;10:45</p>
       </div>
     </div>
