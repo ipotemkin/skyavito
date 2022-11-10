@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Button } from './components/Button/Button'
+import { Header } from './components/Header/Header'
 import CrossIcon from './icons/Cross/CossIcon'
 import HeartIcon from './icons/Heart/HeartIcon'
 import LogoIcon from './icons/Logo/LogoIcon'
@@ -10,6 +11,7 @@ export const App = () => {
   return (
     <div className="App">
       <header className="App-header" style={{ gap: 16 }}>
+        <Header />
         <p>Starting Diploma</p>
         <LogoIcon />
         <Button >Сохранить</Button>
