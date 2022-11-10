@@ -5,6 +5,7 @@ import { store } from './app/store'
 import { App}  from './App'
 import reportWebVitals from './reportWebVitals'
 import './index.css'
+import { SuspenseRouter } from './components/SuspenseRouter/SuspenseRouter'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container = document.getElementById('root')!
@@ -13,7 +14,9 @@ const root = createRoot(container)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <SuspenseRouter>
+        <App />
+      </SuspenseRouter>
     </Provider>
   </React.StrictMode>
 )

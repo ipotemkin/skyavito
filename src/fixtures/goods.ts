@@ -1,7 +1,7 @@
 export const goods = [
   {
     image: '',
-    title: 'Item 1',
+    title: 'gijfdigj e vifjiogjgeij bifjbij bjjb jkjb j bjikj bkjk jkjdkjkldbj fljsd bjkjfbijijbgjb ojdb ji bjbgj',
     price: 100,
     place: 'Moscow',
     date: '2022'
