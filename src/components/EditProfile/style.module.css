@@ -1,0 +1,89 @@
+.profile__settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: top;
+    -ms-flex-align: top;
+      align-items: top;
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+      justify-content: center;
+}
+  
+.settings__right {
+    width: 630px;
+  }  
+
+.settings__div {
+    display: inline-block;
+    margin: 0 7px 20px;
+  }
+
+.settings__form {
+    width: 630px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  
+  .input {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 13px 19px;
+  }
+  
+  .input::-webkit-input-placeholder {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.3);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .input:-ms-input-placeholder {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.3);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .input::-ms-input-placeholder {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.3);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .input::placeholder {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.3);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .label {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #C4C4C4;
+    margin-bottom: 4px;
+    display: block;
+  }
+  
+  .firstname, .lastname, .city {
+    width: 260px;
+  }
+  
+  .phone {
+    width: 574px;
+  }

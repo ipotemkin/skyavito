@@ -9,16 +9,16 @@
   -webkit-box-pack: justify;
     -ms-flex-pack: justify;
       justify-content: space-between;
-  padding: 11px 0;
+  /* padding: 11px 0; */
   max-width: 1158px;
   margin: 0 auto;
   padding: 122px 0px 0px;
 }
 
 .form {
-  margin-left: 60px;
-  max-width: 1080px;
-  width: 100%;
+  margin-left: 40px;
+  max-width: 1070px;
+  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
