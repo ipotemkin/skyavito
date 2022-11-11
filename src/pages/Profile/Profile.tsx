@@ -2,9 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../../components/Button/Button'
 import { EditProfile } from '../../components/EditProfile/EditProfile'
-import { Gallery } from '../../components/Gallery/Gallery'
 import { Header } from '../../components/Header/Header'
-import { goods } from '../../fixtures/goods'
+import { MyGoods } from '../../components/MyGoods/MyGoods'
 import TrianglesIcon from '../../icons/Triangles/TrianglesIcon'
 import { ROUTES } from '../../routes'
 
@@ -24,8 +23,7 @@ export const Profile = () => {
       <div className={styles.container}>
         <h2 className={styles.h2}>Здравствуйте, !</h2>
         <EditProfile />
-        <h3>Мои товары</h3>
-        <Gallery items={goods} />
+        <MyGoods />
       </div>
     </div>
   )
