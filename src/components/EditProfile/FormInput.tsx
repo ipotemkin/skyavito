@@ -13,10 +13,10 @@ type Props = {
 const noop = () => void {}
 
 export const FormInput: FC<Props> = ({
-  value = '',
+  // value = '',
   width = 260,
   label = '',
-  placeholder = '',
+  // placeholder = '',
   onChange = noop,
   ...props
 }) => {
@@ -27,7 +27,7 @@ export const FormInput: FC<Props> = ({
       <input className={styles.input} name="name"
         type="text"
         // value="Ан"
-        placeholder={placeholder}
+        // placeholder={placeholder}
         onChange={onChange}
         style={{ width }}
         { ...props }
