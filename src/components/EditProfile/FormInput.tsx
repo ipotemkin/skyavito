@@ -7,7 +7,7 @@ type Props = {
   label?: string
   placeholder?: string
   width?: number
-  onChange?: VoidFunction
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const noop = () => void {}
@@ -18,6 +18,7 @@ export const FormInput: FC<Props> = ({
   label = '',
   placeholder = '',
   onChange = noop,
+  ...props
 }) => {
 
   return (
@@ -29,6 +30,7 @@ export const FormInput: FC<Props> = ({
         placeholder={placeholder}
         onChange={onChange}
         style={{ width }}
+        { ...props }
       />
     </div>
   )

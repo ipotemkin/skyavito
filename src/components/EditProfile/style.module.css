@@ -19,6 +19,14 @@
     margin: 0 7px 20px;
   }
 
+.settings__div:focus-within label {
+  color: #009EE4;
+}
+
+.settings__div:focus-within input {
+  border-color: #009EE4;
+}
+
 .settings__form {
     width: 630px;
     display: -webkit-box;
@@ -33,6 +41,18 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     padding: 13px 19px;
+
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .input:focus {
+    outline: none !important;
+    border-color: #009EE4;
+  }
+ 
+  .input:hover {
+    border-color: #009EE4;
   }
   
   .input::-webkit-input-placeholder {
