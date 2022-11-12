@@ -4,6 +4,7 @@ import React, {
 import { Route, Routes,
   // Outlet, Navigate
 } from 'react-router-dom'
+import { SignupModal } from './components/AuthForm/SignupModal'
 
 
 import { Main } from './pages/Main/Main'
@@ -68,6 +69,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path={ROUTES.home} element={<Main />} />
       <Route path={ROUTES.profile} element={<Profile />} />
+      <Route path={ROUTES.signup} element={<SignupModal />} />
     </Routes>
   )
 }

@@ -13,6 +13,7 @@ export type ButtonProps = {
   disabled?: boolean
   width?: number
   height?: number
+  style?: any
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ export const Button: FC<ButtonProps> = ({
   disabled = false,
   width,
   height,
+  ...props
 }) => {
   const buttonClassName = cn(
     styles.button,
@@ -39,6 +41,7 @@ export const Button: FC<ButtonProps> = ({
       type={btnType}
       disabled={disabled}
       style={{ width, height }}
+      { ...props }
     >
       {children ? children : ''}
     </button>
