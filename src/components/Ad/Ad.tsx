@@ -1,10 +1,10 @@
 import React, { FC, ReactElement, useEffect, useRef, useState } from 'react'
-import { LoginModal } from '../../components/AuthForm/LoginModal'
-import { SignupModal } from '../../components/AuthForm/SignupModal'
-import { Button } from '../../components/Button/Button'
-import { Gallery } from '../../components/Gallery/Gallery'
-import { Header } from '../../components/Header/Header'
-import { Search } from '../../components/Search/Search'
+import { LoginModal } from '../AuthForm/LoginModal'
+import { SignupModal } from '../AuthForm/SignupModal'
+import { Button } from '../Button/Button'
+import { Gallery } from '../Gallery/Gallery'
+import { Header } from '../Header/Header'
+import { Search } from '../Search/Search'
 import { goods } from '../../fixtures/goods'
 
 import styles from './style.module.css'
@@ -13,7 +13,7 @@ type Props = {
   mode?: 'seller' | null
 }
 
-export const AdvPage: FC<Props> = ({ mode = 'seller' }) => {
+export const Ad: FC<Props> = ({ mode = null }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showSignupModal, setShowSignupModal] = useState(false)

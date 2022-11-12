@@ -4,7 +4,8 @@ import React, {
 import { Route, Routes,
   // Outlet, Navigate
 } from 'react-router-dom'
-import { AdvPage } from './pages/AdvPage/AdvPage'
+import { AdMyPage } from './pages/AdMyPage/AdMyPage'
+import { AdPage } from './pages/AdPage/AdPage'
 
 
 import { Main } from './pages/Main/Main'
@@ -15,7 +16,8 @@ export const ROUTES = {
   home: '/',
   profile: '/profile',
   sellerProfile: '/seller-profile',
-  advPage: '/adv-page',
+  adPage: '/ad-page',
+  adMyPage: '/ad-my-page',
 
   login: '/login',
   signup: '/signup',
@@ -74,7 +76,8 @@ export const AppRoutes = () => {
       <Route path={ROUTES.home} element={<Main />} />
       <Route path={ROUTES.profile} element={<Profile />} />
       <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
-      <Route path={ROUTES.advPage} element={<AdvPage />} />
+      <Route path={ROUTES.adPage} element={<AdPage />} />
+      <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
     </Routes>
   )
 }

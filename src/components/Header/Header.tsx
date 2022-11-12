@@ -23,8 +23,12 @@ export const Header = () => {
     navigate(ROUTES.sellerProfile)
   }
 
-  const handleGoToAdvPage = () => {
-    navigate(ROUTES.advPage)
+  const handleGoToAdPage = () => {
+    navigate(ROUTES.adPage)
+  }
+
+  const handleGoToAdMyPage = () => {
+    navigate(ROUTES.adMyPage)
   }
 
   return (
@@ -35,11 +39,18 @@ export const Header = () => {
           width={234}
           onClick={handleGoToSellerProfile}
         >Профиль продавца</Button>
-        
+
         <Button
           type="secondary"
           width={234}
-          onClick={handleGoToAdvPage}
+          onClick={handleGoToAdMyPage}
+        >Мое объявление</Button>
+
+
+        <Button
+          type="secondary"
+          width={234}
+          onClick={handleGoToAdPage}
         >Разместить объявление</Button>
         
         <Button
