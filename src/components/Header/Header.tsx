@@ -19,15 +19,30 @@ export const Header = () => {
     navigate(ROUTES.profile)
   }
 
+  const handleGoToSellerProfile = () => {
+    navigate(ROUTES.sellerProfile)
+  }
+
   return (
     <nav className={styles.header}>
       <div className={styles.container}>
-        <Button type="secondary" width={234}>Разместить объявление</Button>
+        <Button
+          type="secondary"
+          width={234}
+          onClick={handleGoToSellerProfile}
+        >Профиль продавца</Button>
+        
+        <Button
+          type="secondary"
+          width={234}
+        >Разместить объявление</Button>
+        
         <Button
           type="secondary"
           width={176}
           onClick={handleGoToProfile}
         >Личный кабинет</Button>
+        
         <Button
           type="secondary"
           width={226}

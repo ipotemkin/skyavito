@@ -4,19 +4,21 @@ import React, {
 import { Route, Routes,
   // Outlet, Navigate
 } from 'react-router-dom'
-import { SignupModal } from './components/AuthForm/SignupModal'
 
 
 import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
+import { SellerProfile } from './pages/SellerProfile/SellerProfile'
 
 export const ROUTES = {
   home: '/',
+  profile: '/profile',
+  sellerProfile: '/seller-profile',
+
   login: '/login',
   signup: '/signup',
   admin: '/admin',
   aboutCourse: '/aboutcourse',
-  profile: '/profile',
   workout: '/courses/{}/workouts/{}', // '/courses/:id/workouts/:day'
 }
 
@@ -69,7 +71,7 @@ export const AppRoutes = () => {
     <Routes>
       <Route path={ROUTES.home} element={<Main />} />
       <Route path={ROUTES.profile} element={<Profile />} />
-      <Route path={ROUTES.signup} element={<SignupModal />} />
+      <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
     </Routes>
   )
 }
