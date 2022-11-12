@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import cn from 'classnames'
 
 import styles from './style.module.css'
@@ -7,7 +7,7 @@ export type ButtonProps = {
   type?: 'action' | 'outlined' | 'secondary' | 'tertiary'
   size?: 's' | 'm' | 'l'
   buttonStatus?: 'normal' | 'disabled'
-  children?: string
+  children?: string | ReactNode
   btnType?: 'button' | 'submit' | 'reset'
   onClick?: VoidFunction
   disabled?: boolean

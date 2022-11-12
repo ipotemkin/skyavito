@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from './style.module.css'
 import { Button } from '../Button/Button'
 import { FormInput } from './FormInput'
+import { Avatar } from '../Avatar/Avatar'
 
 export const EditProfile = () => {
   const [name, setName] = useState('')
@@ -17,12 +18,7 @@ export const EditProfile = () => {
       <div className={styles.profile__settings}>
         
         <div className={styles.settings__left}>
-          <div className={styles.settings__img}>
-            <a href="" target="_self">
-              <img src="#" alt=""/>
-            </a>
-
-          </div>
+          <Avatar />
           <a className={styles['settings__change-photo']} href="" target="_self">
             Заменить
           </a>
