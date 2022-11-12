@@ -23,6 +23,10 @@ export const Header = () => {
     navigate(ROUTES.sellerProfile)
   }
 
+  const handleGoToAdvPage = () => {
+    navigate(ROUTES.advPage)
+  }
+
   return (
     <nav className={styles.header}>
       <div className={styles.container}>
@@ -35,6 +39,7 @@ export const Header = () => {
         <Button
           type="secondary"
           width={234}
+          onClick={handleGoToAdvPage}
         >Разместить объявление</Button>
         
         <Button

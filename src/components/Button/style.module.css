@@ -18,6 +18,9 @@
 
   cursor: pointer;
   transition: all 0.25s ease;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /*  ACTION */
