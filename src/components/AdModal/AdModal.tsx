@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 
 import CrossIcon from '../../icons/Cross/CossIcon'
 import PlusIcon from '../../icons/Plus/PlusIcon'
@@ -8,9 +8,20 @@ import styles from './style.module.css'
 
 const adImages = [1, 2, 3, 4, 5]
 
-export const NewAdModal = () => {
+type Props = {
+  type?: 'new' | 'edit'
+}
+
+export const AdModal: FC<Props> = ({ type = 'new' }) => {
   const [isModalOpen, setIsModalOpen] = useState(true)
 
+  let title = 'Редактировать объявление'
+  let btnName = 'Сохранить'
+  if (type === 'new') {
+    title = 'Новое объявление'
+    btnName = 'Опубликовать'
+  }
+  
   const handleClose = () => {
     console.log('close btn')
     setIsModalOpen(false)
@@ -19,7 +30,7 @@ export const NewAdModal = () => {
   return (
     <Modal isModalOpenArg={isModalOpen}>
       <div className={styles.modal__content}>
-        <h3 className={styles.title}>Новое объявление</h3>
+        <h3 className={styles.title}>{title}</h3>
         <div className={styles.btnClose} onClick={handleClose}>
           <CrossIcon width={30} height={30}/>
         </div>
@@ -58,7 +69,7 @@ export const NewAdModal = () => {
                 <input className={styles.price} type="text" name="price" placeholder=" ₽"/>
             </div>
            
-            <Button width={200} disabled>Опубликовать</Button>
+            <Button width={200} disabled>{btnName}</Button>
             
         </form>
     </div>

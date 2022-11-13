@@ -3,7 +3,7 @@ import { LoginModal } from '../../components/AuthForm/LoginModal'
 import { SignupModal } from '../../components/AuthForm/SignupModal'
 import { Gallery } from '../../components/Gallery/Gallery'
 import { Header } from '../../components/Header/Header'
-import { NewAdModal } from '../../components/NewAdModal/NewAdModal'
+import { AdModal } from '../../components/AdModal/AdModal'
 import { Search } from '../../components/Search/Search'
 import { goods } from '../../fixtures/goods'
 
@@ -32,7 +32,7 @@ export const Main = () => {
     <div>
       <Header />
       <Search />
-      <NewAdModal />
+      <AdModal type="edit" />
 
       {/* <div className={styles.container}>
         <h2 className={styles.h2}>Объявления</h2>
