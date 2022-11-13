@@ -14,11 +14,6 @@
   text-align: left;
 }
 
-/* .content {
-  width: 100%;
-  margin: 0 auto;
-} */
-
 .content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -189,21 +184,6 @@
       -ms-flex-align: start;
           align-items: flex-start;
 }
-
-/* .author__img {
-  width: 40px;
-  height: 40px;
-  background-color: #F0F0F0;
-  border-radius: 50%;
-}
-
-.author__img img {
-  width: 100%;
-  height: auto;
-  display: block;
-  -o-object-fit: cover;
-     object-fit: cover;
-} */
 
 .author__cont {
   margin-left: 12px;

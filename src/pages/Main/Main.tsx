@@ -8,6 +8,7 @@ import { Search } from '../../components/Search/Search'
 import { goods } from '../../fixtures/goods'
 
 import styles from './style.module.css'
+import { Review } from '../../components/Review/Review'
 
 export const Main = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -33,15 +34,17 @@ export const Main = () => {
       <Header />
       <Search />
       {/* <AdModal type="edit" /> */}
+      <Review />
 
-      <div className={styles.container}>
+      {/* <div className={styles.container}>
         <h2 className={styles.h2}>Объявления</h2>
         <div className={styles.content}>
           <Gallery items={goods} />
         </div>
       </div>
       <LoginModal />
-      <SignupModal />
+      <SignupModal /> */}
+
     </div>
   )
 }
