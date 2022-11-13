@@ -8,6 +8,7 @@ import { Search } from '../Search/Search'
 import { goods } from '../../fixtures/goods'
 
 import styles from './style.module.css'
+import { Avatar } from '../Avatar/Avatar'
 
 type Props = {
   mode?: 'seller' | null
@@ -82,9 +83,7 @@ export const Ad: FC<Props> = ({ mode = null }) => {
               </div>
               
               <div className={styles.article__author}>
-                <div className={styles.author__img}>
-                  <img src="" alt="" />
-                </div>
+                <Avatar size="s" />
                 <div className={styles.author__cont}>
                   <p className={styles.author__name}>Антон</p>
                   <p className={styles.author__about}>Продает товары с&nbsp;мая 2022</p>

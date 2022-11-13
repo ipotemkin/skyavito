@@ -32,16 +32,16 @@ export const Main = () => {
     <div>
       <Header />
       <Search />
-      <AdModal type="edit" />
+      {/* <AdModal type="edit" /> */}
 
-      {/* <div className={styles.container}>
+      <div className={styles.container}>
         <h2 className={styles.h2}>Объявления</h2>
         <div className={styles.content}>
           <Gallery items={goods} />
         </div>
       </div>
       <LoginModal />
-      <SignupModal /> */}
+      <SignupModal />
     </div>
   )
 }
