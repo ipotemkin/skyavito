@@ -1,20 +1,22 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 
 import CrossIcon from '../../icons/Cross/CossIcon'
-import PlusIcon from '../../icons/Plus/PlusIcon'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import { ReviewList } from '../ReviewList/ReviewList'
 import styles from './style.module.css'
 
-const adImages = [1, 2, 3, 4, 5]
-
 export const ReviewModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(true)
+  const [review, setReview] = useState('')
 
   const handleClose = () => {
     console.log('close btn')
     setIsModalOpen(false)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setReview(e.target.value)
   }
   
   return (
@@ -28,15 +30,15 @@ export const ReviewModal = () => {
             <div className={styles.formBlock}>
               <label htmlFor="text">Добавить отзыв</label>                            
               <textarea className={styles.area}
-                name="text"
-                id="formArea"
                 rows={10}
                 placeholder="Введите отзыв"
+                onChange={handleChange}
+                value={review}
               />
             </div>
             <div className={styles.formBlock}>
             </div>
-            <Button width={200} disabled>Опубликовать</Button>            
+            <Button width={200} disabled={review.length ? false : true}>Опубликовать</Button>            
         </form>
         <div className={styles.reviewsContainer}>
           <ReviewList />
