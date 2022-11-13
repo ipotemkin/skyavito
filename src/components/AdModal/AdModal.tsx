@@ -98,12 +98,14 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
           </div>
           <div className={styles.formBlock}>
               <label htmlFor="price">Цена</label>
-              <input className={styles.price}
-                type="text"
-                placeholder=" ₽"
-                value={form.price}
-                onChange={(e) => handleFieldChange(e, 'price')}
-              />
+              <div className={styles.priceBlock}>
+                <input className={styles.price}
+                  type="text"
+                  value={form.price}
+                  onChange={(e) => handleFieldChange(e, 'price')}
+                />
+                <div className={styles.rouble}>₽</div>
+              </div>
           </div>
           
           <Button width={200} disabled={checkFormValid() ? false : true}>{btnName}</Button>

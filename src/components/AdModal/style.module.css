@@ -105,7 +105,7 @@
 
 .input, .area, .price {
   width: 100%;
-  padding: 13px 19px;
+  padding: 13px 34px 13px 19px;
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -240,13 +240,6 @@
   justify-content: center;
 
   background-color: #F0F0F0;
-
-  /* font-size: 50px;
-  color: lightgray;
-  font-weight: 300;
-  line-height: 50%;
-  text-align: center; */
-
 }
 
 .img:hover, img:focus {
@@ -261,8 +254,18 @@
     object-fit: cover;
 }
 
+.priceBlock {
+  position: relative;
+}
+
 .price {
   width: 200px;
+}
+
+.rouble {
+  position: absolute;
+  left: 170px;
+  bottom: 14px;
 }
 
 .price::-webkit-input-placeholder {
