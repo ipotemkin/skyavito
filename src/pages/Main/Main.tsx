@@ -9,6 +9,7 @@ import { goods } from '../../fixtures/goods'
 
 import styles from './style.module.css'
 import { Review } from '../../components/Review/Review'
+import { ReviewList } from '../../components/ReviewList/ReviewList'
 
 export const Main = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -34,7 +35,7 @@ export const Main = () => {
       <Header />
       <Search />
       {/* <AdModal type="edit" /> */}
-      <Review />
+      <ReviewList />
 
       {/* <div className={styles.container}>
         <h2 className={styles.h2}>Объявления</h2>
