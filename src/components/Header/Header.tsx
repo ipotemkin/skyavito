@@ -27,6 +27,10 @@ export const Header = () => {
     navigate(ROUTES.adPage)
   }
 
+  const handleGoToNewAdPage = () => {
+    dispatch(showModal('newAd'))
+  }
+
   const handleGoToAdMyPage = () => {
     navigate(ROUTES.adMyPage)
   }
@@ -46,11 +50,16 @@ export const Header = () => {
           onClick={handleGoToAdMyPage}
         >Мое объявление</Button>
 
+        <Button
+          type="secondary"
+          width={180}
+          onClick={handleGoToAdPage}
+        >Объявление</Button>
 
         <Button
           type="secondary"
           width={234}
-          onClick={handleGoToAdPage}
+          onClick={handleGoToNewAdPage}
         >Разместить объявление</Button>
         
         <Button

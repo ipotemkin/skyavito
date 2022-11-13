@@ -8,9 +8,11 @@
 }
 
 .cross:hover, .cross:active {
+  fill: #009EE4;
   stroke: #009EE4;
 }
 
 .cross:active {
+  fill: #0080C1;
   stroke: #0080C1;
 }
