@@ -1,7 +1,8 @@
 .container {
   max-width: 1158px;
   margin: 0 auto;
-  padding: 52px 10px 37px;
+  /* padding: 52px 10px 37px; */
+  padding: 122px 10px 37px;
 }
 
 .h2 {
@@ -24,6 +25,7 @@
   -webkit-box-pack: center;
     -ms-flex-pack: center;
       justify-content: center;
+  padding-top: 52px;
 }
 
 

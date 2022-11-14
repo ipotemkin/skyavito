@@ -11,6 +11,9 @@ import styles from './style.module.css'
 import { Review } from '../../components/Review/Review'
 import { ReviewList } from '../../components/ReviewList/ReviewList'
 import { ReviewModal } from '../../components/ReviewModal/ReviewModal'
+import HomeIcon from '../../icons/Home/HomeIcon'
+import NewIcon from '../../icons/New/NewIcon'
+import ProfileIcon from '../../icons/Profile/ProfileIcon'
 
 export const Main = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -33,14 +36,19 @@ export const Main = () => {
   return (
     // <div ref={modalRef}>
     <div>
-      <Header />
-      <Search />
+      <header>
+        <Header />
+      </header>
       {/* <AdModal type="edit" /> */}
       {/* <ReviewModal /> */}
 
       <div className={styles.container}>
-        <h2 className={styles.h2}>Объявления</h2>
+        <HomeIcon />
+        <NewIcon />
+        <ProfileIcon />
+        <Search />
         <div className={styles.content}>
+          <h2 className={styles.h2}>Объявления</h2>
           <Gallery items={goods} />
         </div>
       </div>

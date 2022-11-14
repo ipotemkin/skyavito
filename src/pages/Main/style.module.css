@@ -1,7 +1,8 @@
 .container {
   max-width: 1158px;
   margin: 0 auto;
-  padding: 52px 10px 37px;
+  /* padding: 52px 10px 37px; */
+  padding: 122px 10px 37px;
 }
 
 .h2 {
@@ -17,5 +18,16 @@
 .content {
   width: 100%;
   margin: 0 auto;
+  padding-top: 52px;
 }
 
+@media screen and (max-width: 590px) {
+  .container {
+    width: 100%;
+    min-width: 320px;
+    /* background-color: #F1F1F1; */
+  }
+  header {
+    display: none;
+  }
+}

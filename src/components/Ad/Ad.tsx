@@ -36,8 +36,8 @@ export const Ad: FC<Props> = ({ mode = null }) => {
     // <div ref={modalRef}>
     <div>
       <Header />
-      <Search />
       <div className={styles.container}>
+        <Search />
         {/* <h2 className={styles.h2}>AdvPage</h2> */}
         <div className={styles.content}>                           
           <div className={styles.left}>
