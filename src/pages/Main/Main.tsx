@@ -39,15 +39,15 @@ export const Main = () => {
   return (
     // <div ref={modalRef}>
     <div>
-      <header><Header /></header>
       {/* <AdModal type="edit" /> */}
       {/* <ReviewModal /> */}
+      {/* <header><Header /></header>
       <div className={styles.desktop}>
         <Search />
       </div>
       <div className={styles.mobile}>
         <SearchMob />
-      </div>
+      </div> */}
       <div className={styles.container}>
         <div className={styles.content}>
           <h2 className={styles.h2}>Объявления</h2>
@@ -58,9 +58,9 @@ export const Main = () => {
       <SignupModal />
       <AdModal />
 
-      <footer>
+      {/* <footer>
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   )
 }

@@ -1,0 +1,32 @@
+import React, { FC, ReactNode } from 'react'
+import { Footer } from '../../components/Footer/Footer'
+import { Header } from '../../components/Header/Header'
+import { Search } from '../../components/Search/Search'
+import { SearchMob } from '../../components/SearchMob/SearchMob'
+
+import styles from './style.module.css'
+
+type Props = {
+  children?: ReactNode
+}
+
+export const Page: FC<Props> = ({ children }) => {
+  return (
+    <div>
+      <header><Header /></header>
+
+      {/* <div className={styles.container}> */}
+        <div className={styles.desktop}>
+          <Search />
+        </div>
+        <div className={styles.mobile}>
+          <SearchMob />
+        </div>
+
+        {children}
+
+        <footer><Footer /></footer>
+      {/* </div> */}
+    </div>
+  )
+}

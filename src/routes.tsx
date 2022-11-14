@@ -6,9 +6,10 @@ import { Route, Routes,
 } from 'react-router-dom'
 import { AdMyPage } from './pages/AdMyPage/AdMyPage'
 import { AdPage } from './pages/AdPage/AdPage'
+import { MainPage } from './pages/MainPage/MainPage'
 
 
-import { Main } from './pages/Main/Main'
+// import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
 import { SellerProfile } from './pages/SellerProfile/SellerProfile'
 
@@ -73,7 +74,8 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path={ROUTES.home} element={<Main />} />
+      <Route path={ROUTES.home} element={<MainPage />} />
+      {/* <Route path={ROUTES.home} element={<Main />} /> */}
       <Route path={ROUTES.profile} element={<Profile />} />
       <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
       <Route path={ROUTES.adPage} element={<AdPage />} />

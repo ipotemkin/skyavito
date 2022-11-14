@@ -9,6 +9,8 @@ import { goods } from '../../fixtures/goods'
 
 import styles from './style.module.css'
 import { Avatar } from '../Avatar/Avatar'
+import { SearchMob } from '../SearchMob/SearchMob'
+import { Footer } from '../../components/Footer/Footer'
 
 type Props = {
   mode?: 'seller' | null
@@ -35,9 +37,16 @@ export const Ad: FC<Props> = ({ mode = null }) => {
   return (
     // <div ref={modalRef}>
     <div>
-      <Header />
-      <div className={styles.container}>
+      <header><Header /></header>
+      <div className={styles.desktop}>
         <Search />
+      </div>
+      <div className={styles.mobile}>
+        <SearchMob />
+      </div>
+
+      <div className={styles.container}>
+        {/* <Search /> */}
         {/* <h2 className={styles.h2}>AdvPage</h2> */}
         <div className={styles.content}>                           
           <div className={styles.left}>
@@ -104,6 +113,9 @@ export const Ad: FC<Props> = ({ mode = null }) => {
         </div>
 
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }
