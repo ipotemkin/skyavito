@@ -16,6 +16,7 @@ import NewIcon from '../../icons/New/NewIcon'
 import ProfileIcon from '../../icons/Profile/ProfileIcon'
 import { Footer } from '../../components/Footer/Footer'
 import { LogoMob } from '../../components/LogoMob/LogoMob'
+import { SearchMob } from '../../components/SearchMob/SearchMob'
 
 export const Main = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,15 +39,16 @@ export const Main = () => {
   return (
     // <div ref={modalRef}>
     <div>
-      <header>
-        <Header />
-      </header>
+      <header><Header /></header>
       {/* <AdModal type="edit" /> */}
       {/* <ReviewModal /> */}
-
-      <div className={styles.container}>
-        <LogoMob />
+      <div className={styles.desktop}>
         <Search />
+      </div>
+      <div className={styles.mobile}>
+        <SearchMob />
+      </div>
+      <div className={styles.container}>
         <div className={styles.content}>
           <h2 className={styles.h2}>Объявления</h2>
           <Gallery items={goods} />

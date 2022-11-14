@@ -1,5 +1,21 @@
-.search {
+.container {
+  position: fixed;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+      justify-content: center;
+  background-color: #009EE4;
+}
+
+.search {
+  width: 320px;
+  height: 55px;
+  margin: 0 auto;
+  padding: 0 18px;
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,44 +25,40 @@
   -webkit-box-pack: justify;
     -ms-flex-pack: justify;
       justify-content: space-between;
-  /* padding: 11px 0; */
-  max-width: 1158px;
-  margin: 0 auto;
-  padding: 122px 0px 0px;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .form {
-  margin-left: 40px;
-  max-width: 1070px;
-  width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 10px;
+  width: 243px;
 }
 
 .text {
-  width: 82%;
-  height: 22px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  background-color: transparent;
+  width: 243px;
+  height: 32px;
   padding: 13px 19px;
+
+  border: none;
+  border-radius: 30px;
+  outline: none;
+    
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 150%;
   color: #000000;
+
+  -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .text::-webkit-input-placeholder {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.3);
   font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 150%;
   line-height: 24px;
 }
 
@@ -55,8 +67,8 @@
   color: rgba(0, 0, 0, 0.3);
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 150%;
 }
 
 .text::-ms-input-placeholder {
@@ -64,8 +76,8 @@
   color: rgba(0, 0, 0, 0.3);
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 150%;
 }
 
 .text::placeholder {
@@ -73,8 +85,8 @@
   color: rgba(0, 0, 0, 0.3);
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 150%;
 }
 
 .search__btn {
