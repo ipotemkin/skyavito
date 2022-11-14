@@ -68,6 +68,7 @@
   .card {
     width: 137px;
     height: 293px;
+
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -75,12 +76,18 @@
     -webkit-box-direction: normal;
       -ms-flex-direction: column;
         flex-direction: column;
+    background-color: #fff;
+    border-radius: 6px;
+
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;  
   }
 
   .image {
     width: 137px;
     height: 132px;
     background-color: #D9D9D9;
+    border-radius: 6px 6px 0 0;
   }
   
   .image img {
@@ -91,21 +98,35 @@
       object-fit: cover;
   }
 
+  .info {
+    padding: 0 10px 20px 10px;
+  }
+
   .title {
     height: 51px;
-    font-size: 14px;
-    line-height: 17px;
-    color: #009EE4;
     margin-bottom: 10px;
     margin-top: 10px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #009EE4;
+    
+    -webkit-line-clamp: 3;
   }
 
   .price {
+    margin-bottom: 10px;
+
+    font-weight: 500;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 150%;
   }
 
   .place, .date {
+    margin-bottom: 4px;
+    
     font-size: 12px;
     line-height: 16px;
     color: #5F5F5F;

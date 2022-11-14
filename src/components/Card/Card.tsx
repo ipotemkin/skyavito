@@ -16,7 +16,7 @@ export const Card: FC<Props> = ({ card }) => {
           <img src="#" alt="picture">
         </a> */}
       </div>
-      <div>
+      <div className={styles.info}>
         <a href="" target="_blank">
           <h3 className={styles.title}>{ card.title }</h3>
         </a>
