@@ -14,6 +14,7 @@ import { ReviewModal } from '../../components/ReviewModal/ReviewModal'
 import HomeIcon from '../../icons/Home/HomeIcon'
 import NewIcon from '../../icons/New/NewIcon'
 import ProfileIcon from '../../icons/Profile/ProfileIcon'
+import { Footer } from '../../components/Footer/Footer'
 
 export const Main = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -43,9 +44,6 @@ export const Main = () => {
       {/* <ReviewModal /> */}
 
       <div className={styles.container}>
-        <HomeIcon />
-        <NewIcon />
-        <ProfileIcon />
         <Search />
         <div className={styles.content}>
           <h2 className={styles.h2}>Объявления</h2>
@@ -55,6 +53,10 @@ export const Main = () => {
       <LoginModal />
       <SignupModal />
       <AdModal />
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
   )
 }
