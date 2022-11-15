@@ -9,6 +9,11 @@
 .content {
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .desktop {
@@ -25,6 +30,19 @@ header {
 
 footer {
   display: none;
+}
+
+@media screen and (max-width: 890px) {
+  .content {
+    max-width: 670px; 
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .content {
+    padding: 0 20px;
+  }
 }
 
 @media screen and (max-width: 590px) {

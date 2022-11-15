@@ -5,3 +5,9 @@
     font-weight: 500;
     color: #000000;
   }
+
+  @media screen and (max-width: 620px) {
+    .myGoods {
+      padding: 0 20px;
+    }
+}

@@ -44,7 +44,7 @@
 @media screen and (max-width: 590px) {
   .gallery {
     display: grid;
-    grid-template-columns: repeat(2, 137px);
+    grid-template-columns: repeat(2, 134px);
     grid-auto-rows: 293px;
     grid-gap: 10px 10px;
     -webkit-box-pack: center;
