@@ -1,18 +1,18 @@
 .search {
-  width: 100%;
+  max-width: 1158px;
+  margin: 0 auto;
+  padding: 122px 0px 0px;
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
   -webkit-box-align: center;
     -ms-flex-align: center;
       align-items: center;
   -webkit-box-pack: justify;
     -ms-flex-pack: justify;
       justify-content: space-between;
-  /* padding: 11px 0; */
-  max-width: 1158px;
-  margin: 0 auto;
-  padding: 122px 0px 0px;
 }
 
 .form {
