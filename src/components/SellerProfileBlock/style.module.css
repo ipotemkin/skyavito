@@ -72,25 +72,15 @@
   margin-bottom: 10px;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 590px) {
   .profileSellerBlock {
     width: 100%;
+    margin-bottom: 20px;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -webkit-box-pack: center;
       -ms-flex-pack: center;
         justify-content: center;  
-  }
-
-  .title {
-    font-size: 18px;
-    line-height: 100%;
-  }
-}
-
-@media screen and (max-width: 590px) {
-  .profileSellerBlock {
-    margin-bottom: 20px;
   }
 
   .left {
@@ -109,5 +99,10 @@
     width: 132px;
     display: block;
     margin: 30px auto;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 100%;
   }
 }
