@@ -10,7 +10,7 @@
   text-align: center;
 
   min-height: 50px;
-  width: 154px;
+  /* width: 154px; */
   padding: 13px 37px;
 
   border-radius: 6px;
@@ -143,3 +143,9 @@
     padding: 14px;
   }
 } */
+
+@media screen and (max-width: 590px) {
+  .button {
+    width: 100%;
+  }
+}

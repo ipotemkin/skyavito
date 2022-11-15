@@ -5,7 +5,7 @@ import styles from './style.module.css'
 
 export type ButtonProps = {
   type?: 'action' | 'outlined' | 'secondary' | 'tertiary'
-  size?: 's' | 'm' | 'l'
+  size?: 's' | 'm' | 'l' | 'nosize'
   buttonStatus?: 'normal' | 'disabled'
   children?: string | ReactNode
   btnType?: 'button' | 'submit' | 'reset'
@@ -18,8 +18,8 @@ export type ButtonProps = {
 
 export const Button: FC<ButtonProps> = ({
   type = 'action',
-  size = 'm',
-  children,
+  size = 'nozise',
+  children = '',
   btnType,
   onClick,
   disabled = false,
@@ -43,7 +43,7 @@ export const Button: FC<ButtonProps> = ({
       style={{ width, height }}
       { ...props }
     >
-      {children ? children : ''}
+      {children}
     </button>
   )
 }

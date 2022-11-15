@@ -12,21 +12,20 @@ type Props = {
 
 export const Page: FC<Props> = ({ children }) => {
   return (
-    <div>
+    <div className={styles.page}>
       <header><Header /></header>
-
-      {/* <div className={styles.container}> */}
-        <div className={styles.desktop}>
-          <Search />
+      <div className={styles.desktop}>
+        <Search />
+      </div>
+      <div className={styles.mobile}>
+        <SearchMob />
+      </div>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          {children}
         </div>
-        <div className={styles.mobile}>
-          <SearchMob />
-        </div>
-
-        {children}
-
-        <footer><Footer /></footer>
-      {/* </div> */}
+      </div>
+      <footer><Footer /></footer>
     </div>
   )
 }
