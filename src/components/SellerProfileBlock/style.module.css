@@ -26,6 +26,14 @@
   margin-right: 50px;
 }
 
+.desktop {
+  display: block;
+}
+
+.mob {
+  display: none;
+}
+
 .seller__img-mob-block {
   display: none;
 }
@@ -62,4 +70,44 @@
   line-height: 21px;
   color: #5F5F5F;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 620px) {
+  .profileSellerBlock {
+    width: 100%;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+      -ms-flex-pack: center;
+        justify-content: center;  
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 100%;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .profileSellerBlock {
+    margin-bottom: 20px;
+  }
+
+  .left {
+    margin: 0;
+  }  
+
+  .desktop {
+    display: none;
+  }
+
+  .right {
+    width: 280px;
+  }
+
+  .mob {
+    width: 132px;
+    display: block;
+    margin: 30px auto;
+  }
 }

@@ -9,7 +9,6 @@ export const MyGoods = () => {
   return (
     <div>
       <PageSubTitle>Мои товары</PageSubTitle>
-      {/* <h3 className={styles.title}>Мои товары</h3> */}
       <Gallery items={goods} />
     </div>
   )
