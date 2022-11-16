@@ -20,6 +20,10 @@
   -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+.horDiv {
+  margin-top: 30px;
+}
     
 .logo {
   width: 140px;
@@ -41,6 +45,9 @@
   line-height: 24px;
   /* identical to box height, or 133% */
   letter-spacing: -0.05px;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .input:focus {
@@ -104,4 +111,23 @@
 
   -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 590px) {
+  .form {
+    width: 280px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .input {
+    border: 1px solid #D0CECE;
+    border-radius: 30px;
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .horDiv {
+    margin-top: 0;
+  }  
 }
