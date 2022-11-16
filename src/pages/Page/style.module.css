@@ -1,3 +1,23 @@
+.outerPage {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.page {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .container {
   max-width: 1158px;
   margin: 0 auto;
@@ -50,18 +70,32 @@ footer {
     /* background-color: #F1F1F1; */
     background-color: #F5F5F5;
   }
+
+  /* .outerPage {
+    width: 320px;
+  } */
+  
+  /* .page {
+    max-width: 320px;
+  } */
+  
+  .none {
+    display: none;
+  }
   
   .container {
-    width: 100%;
+    /* width: 100%; */
+    width: 320px;
     min-height: 100vh;
-    min-width: 320px;
+    /* min-width: 320px; */
     /* padding-top: 85px; */
     padding-top: 55px;
     /* background-color: #F1F1F1; */
   }
   
   .content {
-    width: 320px;
+    min-width: 320px;
+    /* max-width: 320px; */
   }
 
   .desktop {

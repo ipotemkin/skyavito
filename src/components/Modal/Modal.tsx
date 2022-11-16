@@ -15,11 +15,16 @@ type ModalProps = {
   handleOpen?: VoidFunction
   handleClose?: VoidFunction
   isModalOpenArg?: boolean
+  mode?: 'desktopOnly' | undefined
 }
 
 const noop = () => void {}
 
-export const Modal: FC<ModalProps> = ({ isOpen = noop, isModalOpenArg = false, children }) => {
+export const Modal: FC<ModalProps> = ({
+  isOpen = noop,
+  isModalOpenArg = false,
+  mode = undefined,
+  children }) => {
   // useEscapeKey(() => setIsModalOpen(false))
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -28,9 +33,9 @@ export const Modal: FC<ModalProps> = ({ isOpen = noop, isModalOpenArg = false, c
   }, [isModalOpenArg])
 
   return (
-    <ReactModal
+    <ReactModal className={styles.content}
       isOpen={isModalOpen}
-      style={{ content: { top: '50%', left: '50%', right: 'auto', bottom: 'auto' } }}
+      // style={ mode === undefined ? { content: { top: '50%', left: '50%', right: 'auto', bottom: 'auto' } } : {}}
     >
       <div className={styles.modal} onClick={() => isOpen()}>
         {/* <div onClick={(e) => e.stopPropagation()}> */}

@@ -11,7 +11,8 @@
       align-items: flex-start;
   width: 600px;
   /* height: min(800px, 98vh, auto); */
-  padding: 32px 50px 42px;
+  /* padding: 32px 50px 42px; */
+  padding: 20px 50px 42px;
   background-color: #FFFFFF;
   border-radius: 12px;
   position: relative;
@@ -310,4 +311,64 @@
   color: #000000;
   
   font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 590px) {
+  .modal__content {
+    width: 280px;
+    padding: 0;
+  }
+
+  .title {
+    margin-top: 30px;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+  }
+  
+  .btnClose {
+    display: none;
+  }
+
+  /* .form {
+    min-width: 280px;
+  } */
+
+  .p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .p span {
+    margin: 0;
+  }
+
+  .imgBar {
+    width: 280px;
+    /* width: 100%; */
+  }
+
+  .img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .formBlock label {
+    margin-left: 20px;
+  }
+
+  .input, .area, .price {
+    border-radius: 30px;
+  }
+
+  .price {
+    width: 100%;
+  }
+
+  .rouble {
+    position: absolute;
+    left: 250px;
+    bottom: 14px;
+  }  
 }
