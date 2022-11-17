@@ -30,9 +30,6 @@ export const Main = () => {
     <Page>
       <PageTitle>Объявления</PageTitle>
       <Gallery items={goods} />
-      <LoginModal />
-      <SignupModal />
-      <AdModal />
     </Page>
   )
 }
