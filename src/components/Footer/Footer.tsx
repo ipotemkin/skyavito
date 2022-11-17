@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+
 import { useAppDispatch } from '../../app/hooks'
 import HomeIcon from '../../icons/Home/HomeIcon'
 import NewIcon from '../../icons/New/NewIcon'
