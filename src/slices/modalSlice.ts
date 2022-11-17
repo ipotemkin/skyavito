@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { RootState } from '../store'
 
-type ModalNames = 'login' | 'signup' | 'newAd' | null
+type ModalNames = 'login' | 'signup' | 'newAd' | 'reviews' | null
 
 type ModalsType = {
   visible: ModalNames

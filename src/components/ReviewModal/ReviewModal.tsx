@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import CrossIcon from '../../icons/Cross/CossIcon'
+import { Page } from '../../pages/Page/Page'
+import { hideModals, selectModal } from '../../slices/modalSlice'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import { ReviewList } from '../ReviewList/ReviewList'
+
 import styles from './style.module.css'
 
 export const ReviewModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true)
+  const dispatch = useAppDispatch()
+  const modalShownName = useAppSelector(selectModal)
   const [review, setReview] = useState('')
 
-  const handleClose = () => {
+  const handleClose = (e: React.MouseEvent) => {
+    e.preventDefault()
     console.log('close btn')
-    setIsModalOpen(false)
+    dispatch(hideModals())
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -20,13 +26,14 @@ export const ReviewModal = () => {
   }
   
   return (
-    <Modal isModalOpenArg={isModalOpen}>
-      <div className={styles.modal__content}>
-        <h3 className={styles.title}>Отзывы о товаре</h3>
-        <div className={styles.btnClose} onClick={handleClose}>
-          <CrossIcon width={30} height={30}/>
-        </div>
-        <form className={styles.form}>
+    <Modal isModalOpenArg={modalShownName === 'reviews'}>
+      <Page mode="mobOnly">
+        <div className={styles.modal__content}>
+          <h3 className={styles.title}>Отзывы о товаре</h3>
+          <div className={styles.btnClose} onClick={handleClose}>
+            <CrossIcon width={30} height={30}/>
+          </div>
+          <form className={styles.form}>
             <div className={styles.formBlock}>
               <label htmlFor="text">Добавить отзыв</label>                            
               <textarea className={styles.area}
@@ -36,14 +43,14 @@ export const ReviewModal = () => {
                 value={review}
               />
             </div>
-            <div className={styles.formBlock}>
-            </div>
-            <Button width={200} disabled={review.length ? false : true}>Опубликовать</Button>            
-        </form>
-        <div className={styles.reviewsContainer}>
-          <ReviewList />
+            <div className={styles.formBlock}></div>
+            <Button size="ml" disabled={review.length ? false : true}>Опубликовать</Button>            
+          </form>
+          <div className={styles.reviewsContainer}>
+            <ReviewList />
+          </div>
         </div>
-    </div>
+      </Page>
     </Modal>
   )
 }

@@ -337,3 +337,71 @@
   background-color: #D9D9D9;
   border-radius: 10px;
 }
+
+@media screen and (max-width: 890px) {
+  .modal__content {
+    max-width: 630px; 
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .modal__content {
+    max-width: 550px; 
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .modal__content {
+    width: 280px;
+    height: 90vh;
+    padding: 0;
+  }
+
+  .title {
+    margin-top: 30px;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+  }
+
+  .btnClose {
+    display: none;
+  }
+
+  .formBlock label {
+    display: none;
+  }
+
+  .area {
+    border-radius: 20px;
+  }
+  
+  .formBlock {
+    margin-bottom: 8px;
+  }
+
+  .input::-webkit-input-placeholder {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  
+  .input:-ms-input-placeholder {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  
+  .input::-ms-input-placeholder {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  
+  .input::placeholder {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  
+  /* .reviewsContainer {
+    margin-top: 0;
+  }   */
+}

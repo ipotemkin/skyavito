@@ -4,6 +4,8 @@ import { Button } from '../Button/Button'
 import styles from './style.module.css'
 import { Avatar } from '../Avatar/Avatar'
 import { Page } from '../../pages/Page/Page'
+import { useAppDispatch } from '../../app/hooks'
+import { showModal } from '../../slices/modalSlice'
 
 type Props = {
   mode?: 'seller' | null
@@ -12,7 +14,12 @@ type Props = {
 export const Ad: FC<Props> = ({ mode = null }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showLoginModal, setShowLoginModal] = useState(false)
-  const [showSignupModal, setShowSignupModal] = useState(false)
+  const dispatch = useAppDispatch()
+
+  const handleGoToReviews = (e: React.MouseEvent) => {
+    e.preventDefault()
+    dispatch(showModal('reviews'))
+  }
 
   // const modalRef = useRef(null)
 
@@ -60,7 +67,7 @@ export const Ad: FC<Props> = ({ mode = null }) => {
             <div className={styles.article__info}>
               <p className={styles.article__date}>Сегодня в 10:45</p>
               <p className={styles.article__city}>Санкт-Петербург</p>
-              <a className={styles.article__link} href="" target="_blank" rel="">4 отзыва</a>
+              <a className={styles.article__link} href="" onClick={handleGoToReviews}>4 отзыва</a>
             </div>
             <p className={styles.article__price}>2 200 ₽</p>
             <div className={styles.btnBlock}>

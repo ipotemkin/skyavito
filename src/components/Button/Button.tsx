@@ -5,7 +5,7 @@ import styles from './style.module.css'
 
 export type ButtonProps = {
   type?: 'action' | 'outlined' | 'secondary' | 'tertiary'
-  size?: 's' | 'm' | 'l' | 'nosize'
+  size?: 's' | 'm' | 'ml' | 'l' | 'nosize'
   buttonStatus?: 'normal' | 'disabled'
   children?: string | ReactNode
   btnType?: 'button' | 'submit' | 'reset'
