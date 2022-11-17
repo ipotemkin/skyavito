@@ -1,13 +1,11 @@
 import React, { FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import PlusIcon from '../../icons/Plus/PlusIcon'
 import { Page } from '../../pages/Page/Page'
-import { hideModals, selectModal } from '../../slices/modalSlice'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
-import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
 
 import styles from './style.module.css'
 
@@ -31,8 +29,7 @@ const initialValue: AdModalForm = {
 }
 
 export const AdModal: FC<Props> = ({ type = 'new' }) => {
-  const dispatch = useAppDispatch()
-  const modalShownName = useAppSelector(selectModal)
+  const navigate = useNavigate()
   const [form, setForm] = useState<AdModalForm>(initialValue)
 
   let title = 'Редактировать объявление'
@@ -44,7 +41,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
   
   const handleClose = () => {
     console.log('close btn')
-    dispatch(hideModals())
+    navigate(-1)    
   }
 
   const handleFieldChange = (
@@ -61,7 +58,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
   }
 
   return (
-    <Modal isModalOpenArg={modalShownName === 'newAd'}>
+    <Modal isModalOpenArg={true}>
       <Page mode="mobOnly">
         <div className={styles.modal__content}>
           <h3 className={styles.title}>{title}</h3>

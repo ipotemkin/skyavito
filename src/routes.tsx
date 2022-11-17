@@ -1,9 +1,10 @@
 import React, {
   // FC, lazy, useEffect, useState
 } from 'react'
-import { Route, Routes,
+import { Route, Routes, useLocation,
   // Outlet, Navigate
 } from 'react-router-dom'
+import { AdModal } from './components/AdModal/AdModal'
 import { AdMyPage } from './pages/AdMyPage/AdMyPage'
 import { AdPage } from './pages/AdPage/AdPage'
 
@@ -17,6 +18,7 @@ export const ROUTES = {
   sellerProfile: '/seller-profile',
   adPage: '/ad-page',
   adMyPage: '/ad-my-page',
+  newAd: '/new-ad',
 
   login: '/login',
   signup: '/signup',
@@ -42,6 +44,9 @@ export const ROUTES = {
 // }
 
 export const AppRoutes = () => {  
+  const location = useLocation()
+  const background = location.state && location.state.background
+
   // const user = useAppSelector(selectCurrentUser)
   // const message = useAppSelector(selectMessage)
   // const dispatch = useAppDispatch()
@@ -71,12 +76,21 @@ export const AppRoutes = () => {
   // }, [user.idToken, user.needRelogin, isTokenValid, dispatch, message])
 
   return (
-    <Routes>
-      <Route path={ROUTES.home} element={<Main />} />
-      <Route path={ROUTES.profile} element={<Profile />} />
-      <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
-      <Route path={ROUTES.adPage} element={<AdPage />} />
-      <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
-    </Routes>
+    <>
+      <Routes location={background || location}>
+        <Route path={ROUTES.home} element={<Main />} />
+        <Route path={ROUTES.profile} element={<Profile />} />
+        <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
+        <Route path={ROUTES.adPage} element={<AdPage />} />
+        <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
+        
+        <Route path={ROUTES.newAd} element={<AdModal />} />
+      </Routes>
+        {background && (
+          <Routes>
+            <Route path={ROUTES.newAd} element={<AdModal />} />
+          </Routes>
+        )}
+    </>
   )
 }

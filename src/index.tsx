@@ -9,7 +9,6 @@ import { SuspenseRouter } from './components/SuspenseRouter/SuspenseRouter'
 import { ReviewModal } from './components/ReviewModal/ReviewModal'
 import { LoginModal } from './components/AuthForm/LoginModal'
 import { SignupModal } from './components/AuthForm/SignupModal'
-import { AdModal } from './components/AdModal/AdModal'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container = document.getElementById('root')!
@@ -23,7 +22,6 @@ root.render(
         <ReviewModal />
         <LoginModal />
         <SignupModal />
-        <AdModal />
       </SuspenseRouter>
     </Provider>
   </React.StrictMode>
