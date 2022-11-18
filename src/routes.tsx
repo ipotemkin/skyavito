@@ -6,6 +6,7 @@ import { Route, Routes, useLocation,
 } from 'react-router-dom'
 import { AdModal } from './components/AdModal/AdModal'
 import { LoginModal } from './components/AuthForm/LoginModal'
+import { SignupModal } from './components/AuthForm/SignupModal'
 import { AdMyPage } from './pages/AdMyPage/AdMyPage'
 import { AdPage } from './pages/AdPage/AdPage'
 
@@ -86,11 +87,13 @@ export const AppRoutes = () => {
         <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
         
         <Route path={ROUTES.login} element={<LoginModal />} />
+        <Route path={ROUTES.signup} element={<SignupModal />} />
         <Route path={ROUTES.newAd} element={<AdModal />} />
       </Routes>
         {background && (
           <Routes>
             <Route path={ROUTES.login} element={<LoginModal />} />
+            <Route path={ROUTES.signup} element={<SignupModal />} />
             <Route path={ROUTES.newAd} element={<AdModal />} />
           </Routes>
         )}
