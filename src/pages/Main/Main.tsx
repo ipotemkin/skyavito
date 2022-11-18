@@ -27,7 +27,7 @@ export const Main = () => {
   // }, [])
 
   return (
-    <Page>
+    <Page search>
       <PageTitle>Объявления</PageTitle>
       <Gallery items={goods} />
     </Page>
