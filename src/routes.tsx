@@ -5,6 +5,7 @@ import { Route, Routes, useLocation,
   // Outlet, Navigate
 } from 'react-router-dom'
 import { AdModal } from './components/AdModal/AdModal'
+import { LoginModal } from './components/AuthForm/LoginModal'
 import { AdMyPage } from './pages/AdMyPage/AdMyPage'
 import { AdPage } from './pages/AdPage/AdPage'
 
@@ -19,9 +20,9 @@ export const ROUTES = {
   adPage: '/ad-page',
   adMyPage: '/ad-my-page',
   newAd: '/new-ad',
-
   login: '/login',
   signup: '/signup',
+
   admin: '/admin',
   aboutCourse: '/aboutcourse',
   workout: '/courses/{}/workouts/{}', // '/courses/:id/workouts/:day'
@@ -84,10 +85,12 @@ export const AppRoutes = () => {
         <Route path={ROUTES.adPage} element={<AdPage />} />
         <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
         
+        <Route path={ROUTES.login} element={<LoginModal />} />
         <Route path={ROUTES.newAd} element={<AdModal />} />
       </Routes>
         {background && (
           <Routes>
+            <Route path={ROUTES.login} element={<LoginModal />} />
             <Route path={ROUTES.newAd} element={<AdModal />} />
           </Routes>
         )}

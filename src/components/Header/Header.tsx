@@ -1,20 +1,14 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../app/hooks'
+
 import { ROUTES } from '../../routes'
-import { showModal } from '../../slices/modalSlice'
 import { Button } from '../Button/Button'
 
 import styles from './style.module.css'
 
 export const Header = () => {
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
   const location = useLocation()
-
-  const handleEnterProfile = () => {
-    dispatch(showModal('login'))
-  }
 
   const handleGoToProfile = () => {
     navigate(ROUTES.profile)
@@ -26,11 +20,6 @@ export const Header = () => {
 
   const handleGoToAdPage = () => {
     navigate(ROUTES.adPage)
-  }
-
-  const handleGoToNewAdPage = () => {
-    navigate(ROUTES.newAd)
-    // dispatch(showModal('newAd'))
   }
 
   const handleGoToAdMyPage = () => {
@@ -62,7 +51,6 @@ export const Header = () => {
           <Button
             type="secondary"
             width={234}
-            // onClick={handleGoToNewAdPage}
           >Разместить объявление</Button>
         </Link>
         
@@ -72,11 +60,12 @@ export const Header = () => {
           onClick={handleGoToProfile}
         >Личный кабинет</Button>
         
-        <Button
-          type="secondary"
-          width={226}
-          onClick={handleEnterProfile}
-        >Вход в личный кабинет</Button>
+        <Link to={ROUTES.login} state={{ background: location }}>
+          <Button
+            type="secondary"
+            width={226}
+          >Вход в личный кабинет</Button>
+        </Link>
       </div>
     </nav>
   )

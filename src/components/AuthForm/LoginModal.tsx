@@ -1,6 +1,7 @@
 import React, { FC} from 'react'
-import { Button } from '../Button/Button'
+import { useNavigate } from 'react-router-dom'
 
+import { Button } from '../Button/Button'
 import styles from './style.module.css'
 import LogoIcon from '../../icons/Logo/LogoIcon'
 import { Modal } from '../Modal/Modal'
@@ -14,6 +15,7 @@ type Props = {
 }
 
 export const LoginModal: FC<Props> = ({ isOpen = false, handleOpen = () => void {} }) => {
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const modalShownName = useAppSelector(selectModal)
 
@@ -27,7 +29,8 @@ export const LoginModal: FC<Props> = ({ isOpen = false, handleOpen = () => void 
   }
 
   return (
-    <Modal isModalOpenArg={modalShownName === 'login'}>
+    // <Modal isModalOpenArg={modalShownName === 'login'}>
+    <Modal isModalOpenArg={true}>
       <Page mode="mobOnly">
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.logo}>
