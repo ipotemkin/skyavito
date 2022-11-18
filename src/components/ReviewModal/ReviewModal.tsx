@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/appHooks'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
 import { hideModals, selectModal } from '../../slices/modalSlice'

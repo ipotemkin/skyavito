@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
-import cn from 'classnames'
+// import cn from 'classnames'
 
-import { useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../hooks/appHooks'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
 import { Search } from '../../components/Search/Search'

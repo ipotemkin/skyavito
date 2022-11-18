@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAppDispatch } from '../../app/hooks'
+import { useAppDispatch } from '../../hooks/appHooks'
 
 import TrianglesIcon from '../../icons/Triangles/TrianglesIcon'
 import { ROUTES } from '../../routes'

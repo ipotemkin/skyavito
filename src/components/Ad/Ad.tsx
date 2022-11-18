@@ -4,7 +4,7 @@ import { Button } from '../Button/Button'
 import styles from './style.module.css'
 import { Avatar } from '../Avatar/Avatar'
 import { Page } from '../../pages/Page/Page'
-import { useAppDispatch } from '../../app/hooks'
+import { useAppDispatch } from '../../hooks/appHooks'
 import { showModal } from '../../slices/modalSlice'
 
 type Props = {
