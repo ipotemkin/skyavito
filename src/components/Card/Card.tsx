@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import { CardType } from '../../types'
 
 import styles from './style.module.css'
@@ -7,14 +8,10 @@ type Props = {
   card: CardType
 }
 
-
 export const Card: FC<Props> = ({ card }) => {
   return (
     <div className={styles.card}>
       <div className={styles.image}>
-        {/* <a href="#" target="_blank">
-          <img src="#" alt="picture">
-        </a> */}
       </div>
       <div className={styles.info}>
         <a href="" target="_blank">

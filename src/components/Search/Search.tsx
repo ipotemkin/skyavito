@@ -1,4 +1,5 @@
 import React from 'react'
+
 import TrianglesIcon from '../../icons/Triangles/TrianglesIcon'
 import { Button } from '../Button/Button'
 

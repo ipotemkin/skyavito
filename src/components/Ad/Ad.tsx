@@ -1,11 +1,12 @@
 import React, { FC, useState } from 'react'
+
+import { useAppDispatch } from '../../hooks/appHooks'
+import { Page } from '../../pages/Page/Page'
+import { showModal } from '../../slices/modalSlice'
+import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 
 import styles from './style.module.css'
-import { Avatar } from '../Avatar/Avatar'
-import { Page } from '../../pages/Page/Page'
-import { useAppDispatch } from '../../hooks/appHooks'
-import { showModal } from '../../slices/modalSlice'
 
 type Props = {
   mode?: 'seller' | null
@@ -40,24 +41,24 @@ export const Ad: FC<Props> = ({ mode = null }) => {
         <div className={styles.left}>
             <div className={styles['article__fill-img']}>
                 <div className={styles.article__img}>                                        
-                        <img src="" alt="" />                             
+                  <img src="" alt="" />                             
                 </div>                                    
                 <div className={styles['article__img-bar']}>
-                    <div className={styles['article__img-bar-div']}>
-                        <img src="" alt="" />
-                    </div>
-                    <div className={styles['article__img-bar-div']}>
-                        <img src="" alt="" />
-                    </div>
-                    <div className={styles['article__img-bar-div']}>
-                        <img src="" alt="" />
-                    </div>
-                    <div className={styles['article__img-bar-div']}>
-                        <img src="" alt="" />
-                    </div>
-                    <div className={styles['article__img-bar-div']}>
-                        <img src="" alt="" />
-                    </div>
+                  <div className={styles['article__img-bar-div']}>
+                    <img src="" alt="" />
+                  </div>
+                  <div className={styles['article__img-bar-div']}>
+                    <img src="" alt="" />
+                  </div>
+                  <div className={styles['article__img-bar-div']}>
+                    <img src="" alt="" />
+                  </div>
+                  <div className={styles['article__img-bar-div']}>
+                    <img src="" alt="" />
+                  </div>
+                  <div className={styles['article__img-bar-div']}>
+                    <img src="" alt="" />
+                  </div>
                 </div>
             </div>                                
         </div>

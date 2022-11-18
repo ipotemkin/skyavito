@@ -1,12 +1,11 @@
 import React, { FC, ReactNode } from 'react'
-// import cn from 'classnames'
 
-import { useAppSelector } from '../../hooks/appHooks'
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
 import { Search } from '../../components/Search/Search'
 import { SearchMob } from '../../components/SearchMob/SearchMob'
 import { SubHeader } from '../../components/SubHeader/SubHeader'
+import { useAppSelector } from '../../hooks/appHooks'
 import { selectModal } from '../../slices/modalSlice'
 
 import styles from './style.module.css'

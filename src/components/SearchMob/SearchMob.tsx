@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import { LogoMob } from '../LogoMob/LogoMob'
 
 import styles from './style.module.css'

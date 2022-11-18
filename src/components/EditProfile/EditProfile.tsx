@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 
-import styles from './style.module.css'
-import { Button } from '../Button/Button'
-import { FormInput } from './FormInput'
 import { Avatar } from '../Avatar/Avatar'
+import { Button } from '../Button/Button'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
+import { FormInput } from './FormInput'
+
+import styles from './style.module.css'
 
 export const EditProfile = () => {
   const [name, setName] = useState('')

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { goods } from '../../fixtures/goods'
 import { Gallery } from '../Gallery/Gallery'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
