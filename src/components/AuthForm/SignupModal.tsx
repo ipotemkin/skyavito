@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import LogoIcon from '../../icons/Logo/LogoIcon'
@@ -10,26 +10,19 @@ import { AuthInput } from './AuthInput'
 
 import styles from './style.module.css'
 
-type Props = {
-  isOpen?: boolean
-}
-
-export const SignupModal: FC<Props> = ({ isOpen = false }) => {
-  // const modalShownName = useAppSelector(selectModal)
+export const SignupModal = () => {
   const navigate = useNavigate()
-  // const dispatch = useAppDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log('SignupModal: handleSubmit')
-    // dispatch(hideModals())
     navigate(ROUTES.profile)
   }
 
   return (
     // <Modal isModalOpenArg={modalShownName === 'signup'}>
     <Modal isModalOpenArg={true}>
-      <Page mode="mobOnly">
+      <Page mode="modal">
         <form className={styles.signup} onSubmit={handleSubmit}>
           <div className={styles.logo}>
             <LogoIcon />

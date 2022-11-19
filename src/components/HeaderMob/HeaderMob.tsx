@@ -8,7 +8,7 @@ type Props = {
   search?: boolean
 }
 
-export const SearchMob: FC<Props> = ({ search = false }) => {
+export const HeaderMob: FC<Props> = ({ search = false }) => {
   return (
     <div className={styles.container}>
       <div className={styles.search}>

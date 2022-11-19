@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import LogoIcon from '../../icons/Logo/LogoIcon'
@@ -10,34 +10,20 @@ import { AuthInput } from './AuthInput'
 
 import styles from './style.module.css'
 
-type Props = {
-  isOpen?: boolean
-  handleOpen?: VoidFunction
-}
-
-export const LoginModal: FC<Props> = ({ isOpen = false, handleOpen = () => void {} }) => {
+export const LoginModal = () => {
   const location = useLocation()
   const background = location.state && location.state.background
     ? location.state.background
     : location
   
-  // const navigate = useNavigate()
-  // const dispatch = useAppDispatch()
-  // const modalShownName = useAppSelector(selectModal)
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log('LoginModal: handleSubmit')
   }
 
-  // const handleRegister = () => {
-  //   dispatch(showModal('signup'))
-  // }
-
   return (
-    // <Modal isModalOpenArg={modalShownName === 'login'}>
     <Modal isModalOpenArg={true}>
-      <Page mode="mobOnly">
+      <Page mode="modal">
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.logo}>
             <LogoIcon />

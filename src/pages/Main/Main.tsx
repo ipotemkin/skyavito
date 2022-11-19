@@ -7,7 +7,7 @@ import { Page } from '../Page/Page'
 
 export const Main = () => {
   return (
-    <Page search>
+    <Page mobSearch>
       <PageTitle>Объявления</PageTitle>
       <Gallery items={goods} />
     </Page>

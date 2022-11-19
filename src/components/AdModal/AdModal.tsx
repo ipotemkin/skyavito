@@ -59,7 +59,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
 
   return (
     <Modal isModalOpenArg={true}>
-      <Page mode="mobOnly">
+      <Page mode="modal">
         <div className={styles.modal__content}>
           <h3 className={styles.title}>{title}</h3>
           <div className={styles.btnClose} onClick={handleClose}>

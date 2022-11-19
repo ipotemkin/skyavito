@@ -25,7 +25,7 @@ export const ReviewModal = () => {
   
   return (
     <Modal isModalOpenArg={true}>
-      <Page mode="mobOnly">
+      <Page mode="modal">
         <div className={styles.modal__content}>
           <h3 className={styles.title}>Отзывы о товаре</h3>
           <div className={styles.btnClose} onClick={handleClose}>
