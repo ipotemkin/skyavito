@@ -5,6 +5,7 @@ import { Page } from '../../pages/Page/Page'
 import { ROUTES } from '../../routes'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
+import { ImgBar } from './ImgBar'
 
 import styles from './style.module.css'
 
@@ -22,24 +23,8 @@ export const Ad: FC<Props> = ({ mode = null }) => {
             <div className={styles['article__fill-img']}>
                 <div className={styles.article__img}>                                        
                   <img src="" alt="" />                             
-                </div>                                    
-                <div className={styles['article__img-bar']}>
-                  <div className={styles['article__img-bar-div']}>
-                    <img src="" alt="" />
-                  </div>
-                  <div className={styles['article__img-bar-div']}>
-                    <img src="" alt="" />
-                  </div>
-                  <div className={styles['article__img-bar-div']}>
-                    <img src="" alt="" />
-                  </div>
-                  <div className={styles['article__img-bar-div']}>
-                    <img src="" alt="" />
-                  </div>
-                  <div className={styles['article__img-bar-div']}>
-                    <img src="" alt="" />
-                  </div>
-                </div>
+                </div>   
+                <ImgBar />                                 
             </div>                                
         </div>
         <div className={styles.right}>
