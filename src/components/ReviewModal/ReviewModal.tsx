@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { useAppDispatch, useAppSelector } from '../../hooks/appHooks'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
-import { hideModals, selectModal } from '../../slices/modalSlice'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import { ReviewList } from '../ReviewList/ReviewList'
@@ -11,14 +10,13 @@ import { ReviewList } from '../ReviewList/ReviewList'
 import styles from './style.module.css'
 
 export const ReviewModal = () => {
-  const dispatch = useAppDispatch()
-  const modalShownName = useAppSelector(selectModal)
+  const navigate = useNavigate()
   const [review, setReview] = useState('')
 
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault()
     console.log('close btn')
-    dispatch(hideModals())
+    navigate(-1)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -26,7 +24,7 @@ export const ReviewModal = () => {
   }
   
   return (
-    <Modal isModalOpenArg={modalShownName === 'reviews'}>
+    <Modal isModalOpenArg={true}>
       <Page mode="mobOnly">
         <div className={styles.modal__content}>
           <h3 className={styles.title}>Отзывы о товаре</h3>

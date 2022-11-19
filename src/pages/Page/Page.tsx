@@ -22,8 +22,8 @@ export const Page: FC<Props> = ({ children, mode = 'search', search = false }) =
   return (
     <div className={styles.outerPage}>
       <div className={mod && mode !== 'mobOnly' ? styles.none : styles.page}>
-        {mode !== 'mobOnly' && <header><Header /></header>}
         <div className={styles.desktop}>
+          {mode !== 'mobOnly' && <Header />}
           {mode === 'search' && <Search />}
           {mode !== 'search' && mode !== 'mobOnly' && <SubHeader />}
         </div>

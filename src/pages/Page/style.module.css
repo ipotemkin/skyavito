@@ -44,9 +44,9 @@
   display: none;
 }
 
-header {
+/* header {
   display: block;
-}
+} */
 
 footer {
   display: none;
@@ -106,9 +106,9 @@ footer {
     display: block;
   }
 
-  header {
+  /* header {
     display: none;
-  }
+  } */
 
   footer {
     display: block;

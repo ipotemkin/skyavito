@@ -7,6 +7,7 @@ import { Route, Routes, useLocation,
 import { AdModal } from './components/AdModal/AdModal'
 import { LoginModal } from './components/AuthForm/LoginModal'
 import { SignupModal } from './components/AuthForm/SignupModal'
+import { ReviewModal } from './components/ReviewModal/ReviewModal'
 import { AdMyPage } from './pages/AdMyPage/AdMyPage'
 import { AdPage } from './pages/AdPage/AdPage'
 
@@ -23,10 +24,7 @@ export const ROUTES = {
   newAd: '/new-ad',
   login: '/login',
   signup: '/signup',
-
-  admin: '/admin',
-  aboutCourse: '/aboutcourse',
-  workout: '/courses/{}/workouts/{}', // '/courses/:id/workouts/:day'
+  reviews: '/reviews',
 }
 
 // type Props = {
@@ -89,12 +87,14 @@ export const AppRoutes = () => {
         <Route path={ROUTES.login} element={<LoginModal />} />
         <Route path={ROUTES.signup} element={<SignupModal />} />
         <Route path={ROUTES.newAd} element={<AdModal />} />
+        <Route path={ROUTES.reviews} element={<ReviewModal />} />
       </Routes>
         {background && (
           <Routes>
             <Route path={ROUTES.login} element={<LoginModal />} />
             <Route path={ROUTES.signup} element={<SignupModal />} />
             <Route path={ROUTES.newAd} element={<AdModal />} />
+            <Route path={ROUTES.reviews} element={<ReviewModal />} />
           </Routes>
         )}
     </>

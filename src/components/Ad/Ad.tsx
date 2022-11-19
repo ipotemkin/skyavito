@@ -1,8 +1,8 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-import { useAppDispatch } from '../../hooks/appHooks'
 import { Page } from '../../pages/Page/Page'
-import { showModal } from '../../slices/modalSlice'
+import { ROUTES } from '../../routes'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 
@@ -13,27 +13,7 @@ type Props = {
 }
 
 export const Ad: FC<Props> = ({ mode = null }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [showLoginModal, setShowLoginModal] = useState(false)
-  const dispatch = useAppDispatch()
-
-  const handleGoToReviews = (e: React.MouseEvent) => {
-    e.preventDefault()
-    dispatch(showModal('reviews'))
-  }
-
-  // const modalRef = useRef(null)
-
-  // useEffect(() => {
-  //   if (modalRef.current) {
-  //     console.log('Modal: useEffect')
-  //     const el = modalRef.current as HTMLDivElement
-  //     el.setAttribute('tabindex', '0')
-  //     el.addEventListener("focusout", (ev)=> {
-  //       if (!el.contains(ev.relatedTarget as Node | null)) el.focus()
-  //     })
-  //   }
-  // }, [])
+  const location = useLocation()
 
   return (
     <Page>
@@ -68,7 +48,13 @@ export const Ad: FC<Props> = ({ mode = null }) => {
             <div className={styles.article__info}>
               <p className={styles.article__date}>Сегодня в 10:45</p>
               <p className={styles.article__city}>Санкт-Петербург</p>
-              <a className={styles.article__link} href="" onClick={handleGoToReviews}>4 отзыва</a>
+              <Link
+                className={styles.article__link}
+                to={ROUTES.reviews}
+                state={{ background: location }}
+              >
+                4 отзыва
+              </Link>
             </div>
             <p className={styles.article__price}>2 200 ₽</p>
             <div className={styles.btnBlock}>
