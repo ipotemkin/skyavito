@@ -83,11 +83,12 @@ export const AppRoutes = () => {
         <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
         <Route path={ROUTES.adPage} element={<AdPage />} />
         <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
+        <Route path={'*'} element={<h2>Page not found</h2>} />
         
-        <Route path={ROUTES.login} element={<LoginModal />} />
+        {/* <Route path={ROUTES.login} element={<LoginModal />} />
         <Route path={ROUTES.signup} element={<SignupModal />} />
         <Route path={ROUTES.newAd} element={<AdModal />} />
-        <Route path={ROUTES.reviews} element={<ReviewModal />} />
+        <Route path={ROUTES.reviews} element={<ReviewModal />} /> */}
       </Routes>
         {background && (
           <Routes>
