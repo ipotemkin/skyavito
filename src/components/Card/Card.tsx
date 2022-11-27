@@ -1,4 +1,6 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../../routes'
 
 import { CardType } from '../../types'
 
@@ -9,15 +11,19 @@ type Props = {
 }
 
 export const Card: FC<Props> = ({ card }) => {
+  const path = ROUTES.adPage + '/' + card.id
+
   return (
     <div className={styles.card}>
-      <div className={styles.image}>
-        <img src={card.image} />
-      </div>
+      <Link to={path}>
+        <div className={styles.image}>
+          <img src={card.image} />
+        </div>
+      </Link>
       <div className={styles.info}>
-        <a href="" target="_blank">
+        <Link to={path}>
           <h3 className={styles.title}>{ card.title }</h3>
-        </a>
+        </Link>
         <p className={styles.price}>{ card.price }&nbsp;₽</p>
         <p className={styles.place}>{card.place }</p>
         <p className={styles.date}>Сегодня в&nbsp;10:45</p>

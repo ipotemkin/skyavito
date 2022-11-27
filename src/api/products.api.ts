@@ -12,18 +12,19 @@ export const productsApi = createApi({
     getProducts: build.query<CardType[], void>({
       query: () => 'products',
     }),
-    // getCourse: build.query<CourseData, number>({
-    //   query: (courseId: number) => `courses/${courseId}.json`,
-    //   transformResponse: (response: CourseData) => {
-    //     if (!response) throw Error('Нет такого курса')
-    //     if (response.description)
-    //       response.description = parseFirebaseString(response.description)
-    //     return response
-    //   },
-    // }),
+    getProduct: build.query<CardType, number>({
+      query: (idx: number) => `products/${idx}`,
+      // transformResponse: (response: CourseData) => {
+      //   if (!response) throw Error('Нет такого курса')
+      //   if (response.description)
+      //     response.description = parseFirebaseString(response.description)
+      //   return response
+      // },
+    }),
   }),
 })
 
 export const {
   useGetProductsQuery,
+  useGetProductQuery,
 } = productsApi

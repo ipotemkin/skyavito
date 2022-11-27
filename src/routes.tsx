@@ -81,7 +81,7 @@ export const AppRoutes = () => {
         <Route path={ROUTES.home} element={<Main />} />
         <Route path={ROUTES.profile} element={<Profile />} />
         <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
-        <Route path={ROUTES.adPage} element={<AdPage />} />
+        <Route path={ROUTES.adPage + '/:id'} element={<AdPage />} />
         <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
         <Route path={'*'} element={<h2>Page not found</h2>} />
         
