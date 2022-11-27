@@ -31,7 +31,7 @@ export const Page: FC<Props> = ({ children, mode = 'search', mobSearch = false }
         <div className={styles.mobile}>
           <HeaderMob search={mobSearch}/>
         </div>
-        <div className={styles.container}>
+        <div className={mode === 'modal' ? styles.containerModal: styles.container}>
           <div className={styles.content}>
             {children}
           </div>
