@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { ImgBarType } from '../../types'
 
 import { Img } from './Img'
 
@@ -19,15 +20,25 @@ const getImageLst = (images: string[]) => {
 }
 
 type Props = {
-  images?: string[]
+  imageData: ImgBarType
+  onChange: VoidFunction
 }
 
-export const ImgBar: FC<Props> = ({ images = []}) => {
-  const imageLst = getImageLst(images)
+export const ImgBar: FC<Props> = ({
+  imageData,
+  onChange
+}) => {
+  // const imageLst = getImageLst(images)
 
   return (
     <div className={styles['article__img-bar']}>
-      {imageLst.map(item => <Img key={item.id} imageUrl={item.imageUrl}/>)}
+      {imageData.imageUrls.map(
+        (item, index) => <Img
+          key={index}
+          imageData={imageData}
+          id={index}
+          onChange={onChange}
+        />)}
     </div>
   )
 }

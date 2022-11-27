@@ -1,15 +1,26 @@
 import React, { FC } from 'react'
+import { ImgBarType } from '../../types'
 
 import styles from './style.module.css'
 
 type Props = {
-  imageUrl?: string
+  imageData: ImgBarType,
+  id: number
+  onChange: VoidFunction
 }
 
-export const Img: FC<Props> = ({ imageUrl }) => {
+export const Img: FC<Props> = ({
+  imageData, id,
+  onChange
+}) => {
+  const handleClick = () => {
+    console.log('id =', id)
+    imageData.selectedId = id
+    onChange()
+  }
   return (
     <div className={styles['article__img-bar-div']}>
-      <img src={imageUrl} alt="" />
+      <img src={imageData.imageUrls[id]} alt="" onClick={handleClick}/>
     </div>
   )
 }

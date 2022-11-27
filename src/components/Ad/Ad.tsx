@@ -5,11 +5,27 @@ import { useGetProductQuery } from '../../api/products.api'
 
 import { Page } from '../../pages/Page/Page'
 import { ROUTES } from '../../routes'
+import { ImgBarType } from '../../types'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
-import { ImgBar } from './ImgBar'
+import { Slider } from './Slider'
 
 import styles from './style.module.css'
+
+const mockImages = [
+  'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
+  'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+  'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'  
+]
+
+const mockImages1: ImgBarType = {
+  selectedId: 0,
+  imageUrls: [
+    'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
+    'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+    'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'  
+  ]
+}
 
 type Props = {
   mode?: 'seller' | null
@@ -28,12 +44,8 @@ export const Ad: FC<Props> = ({ mode = null }) => {
     <Page>
       <div className={styles.content}>
         <div className={styles.left}>
-            <div className={styles['article__fill-img']}>
-                <div className={styles.article__img}>                                        
-                  <img src={product?.image} alt="Изображение продукта" />                             
-                </div>   
-                <ImgBar images={[product?.image || '']}/>
-            </div>                                
+          {/* <Slider images={[product?.image || '']} /> */}
+          <Slider images={mockImages} />
         </div>
         <div className={styles.right}>
           <div className={styles.article__block}>

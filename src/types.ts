@@ -13,3 +13,8 @@ export type Product = {
   title: string
   price: string
 }
+
+export type ImgBarType = {
+  selectedId: number
+  imageUrls: string[]
+}
