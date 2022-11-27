@@ -12,6 +12,7 @@ export const Card: FC<Props> = ({ card }) => {
   return (
     <div className={styles.card}>
       <div className={styles.image}>
+        <img src={card.image} />
       </div>
       <div className={styles.info}>
         <a href="" target="_blank">
