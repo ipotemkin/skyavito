@@ -10,14 +10,14 @@ import { getPath } from './utils'
 type Props = {
   basename?: string
   children?: React.ReactNode
-  window?: Window
+  // window?: Window
 }
 
 // храним страницы, для которых уже загружен код
 const loadedPages: string[] = []
 
 // не переключает на новую страницу, пока она не готова
-export const SuspenseRouter: FC<Props> = ({ basename, children, window }) => {
+export const SuspenseRouter: FC<Props> = ({ basename, children }) => {
   const historyRef = useRef<BrowserHistory | null>(null)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isPending, startTransition] = useTransition()
@@ -38,13 +38,11 @@ export const SuspenseRouter: FC<Props> = ({ basename, children, window }) => {
     const newLoc = getPath(update.location.pathname)
     
     // если код страницы еще не загружен, добавляем её в список и показываем спиннер
-    if (newLoc && !loadedPages.includes(newLoc)) {
-      loadedPages.push(newLoc)
-    }
+    if (newLoc && !loadedPages.includes(newLoc)) loadedPages.push(newLoc)
     startTransition(() => setState(update))
   }
 
-  useLayoutEffect(() => { history.listen(setStateAsync) }, [history])
+  useLayoutEffect(() => history.listen(setStateAsync), [history])
 
   // useEffect(() => {
   //   if (!isPending) dispatch(hideSpinner())

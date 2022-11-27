@@ -32,7 +32,7 @@ export const Ad: FC<Props> = ({ mode = null }) => {
                 <div className={styles.article__img}>                                        
                   <img src={product?.image} alt="Изображение продукта" />                             
                 </div>   
-                <ImgBar />                                 
+                <ImgBar images={[product?.image || '']}/>
             </div>                                
         </div>
         <div className={styles.right}>
