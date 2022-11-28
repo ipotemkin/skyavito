@@ -2,14 +2,16 @@ import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import CrossIcon from '../../icons/Cross/CossIcon'
-import PlusIcon from '../../icons/Plus/PlusIcon'
+// import PlusIcon from '../../icons/Plus/PlusIcon'
 import { Page } from '../../pages/Page/Page'
 import { Button } from '../Button/Button'
+// import { InputFile } from '../InputFile/InputFile'
+import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
 
 import styles from './style.module.css'
 
-const adImages = [1, 2, 3, 4, 5]
+// const adImages = [1, 2, 3, 4, 5]
 
 type Props = {
   type?: 'new' | 'edit'
@@ -67,47 +69,46 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
           </div>
           <form className={styles.form} id="formNewArt" action="#">
             <div className={styles.formBlock}>
-                <label htmlFor="name">Название</label>
-                <input className={styles.input}
+              <label htmlFor="name">Название</label>
+              <input className={styles.input}
+                type="text"
+                placeholder="Введите название"
+                value={form.name}
+                onChange={(e) => handleFieldChange(e, 'name')}
+                autoFocus
+              />
+            </div>
+            <div className={styles.formBlock}>
+              <label htmlFor="text">Описание</label>                            
+              <textarea className={styles.area}
+                rows={10}
+                placeholder="Введите описание"
+                value={form.desc}
+                onChange={(e) => handleFieldChange(e, 'desc')}
+              />
+            </div>
+            <div className={styles.formBlock}>
+              <p className={styles.p}>Фотографии товара<span>не более 5 фотографий</span></p>
+              <InputFileBar />
+              {/* <div className={styles.imgBar}>
+                {adImages.map(image => (
+                  <div className={styles.img} key={image} onClick={() => console.log(`image #${image}`)}>
+                    <img src="" alt=""/>
+                    <PlusIcon />
+                  </div>
+                ))}
+              </div> */}
+            </div>
+            <div className={styles.formBlock}>
+              <label htmlFor="price">Цена</label>
+              <div className={styles.priceBlock}>
+                <input className={styles.price}
                   type="text"
-                  placeholder="Введите название"
-                  value={form.name}
-                  onChange={(e) => handleFieldChange(e, 'name')}
-                  autoFocus
+                  value={form.price}
+                  onChange={(e) => handleFieldChange(e, 'price')}
                 />
-            </div>
-            <div className={styles.formBlock}>
-                <label htmlFor="text">Описание</label>                            
-                <textarea className={styles.area}
-                  rows={10}
-                  placeholder="Введите описание"
-                  value={form.desc}
-                  onChange={(e) => handleFieldChange(e, 'desc')}
-                />
-            </div>
-            <div className={styles.formBlock}>
-                {/* <div className={styles.photosHeader}> */}
-                  <p className={styles.p}>Фотографии товара<span>не более 5 фотографий</span></p>
-                {/* </div> */}
-                <div className={styles.imgBar}>
-                  {adImages.map(image => (
-                    <div className={styles.img} key={image} onClick={() => console.log(`image #${image}`)}>
-                      <img src="" alt=""/>
-                      <PlusIcon />
-                    </div>
-                  ))}
-                </div>
-            </div>
-            <div className={styles.formBlock}>
-                <label htmlFor="price">Цена</label>
-                <div className={styles.priceBlock}>
-                  <input className={styles.price}
-                    type="text"
-                    value={form.price}
-                    onChange={(e) => handleFieldChange(e, 'price')}
-                  />
-                  <div className={styles.rouble}>₽</div>
-                </div>
+                <div className={styles.rouble}>₽</div>
+              </div>
             </div>
             
             <Button size="l"  disabled={checkFormValid() ? false : true}>{btnName}</Button>

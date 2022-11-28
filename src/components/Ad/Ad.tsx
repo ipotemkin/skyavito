@@ -14,7 +14,8 @@ import styles from './style.module.css'
 const mockImages = [
   'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
   'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
-  'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'  
+  'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
+  'https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg',
 ]
 
 // const mockImages1: ImgBarType = {
@@ -36,8 +37,16 @@ export const Ad: FC<Props> = ({ mode = null }) => {
   // const { id } = useParams()
   const productId = Number(useParams()?.id)
   // console.log('productId -->', productId)
-  const { data: product } = useGetProductQuery(productId ?? skipToken)
+  const { data: product, isLoading } = useGetProductQuery(productId ?? skipToken)
   // const { data: product } = useGetProductQuery(2)
+
+  if (isLoading) return (
+    <Page>
+      <div className={styles.content}>
+        Загрузка...
+      </div>
+    </Page>
+  )
 
   return (
     <Page>

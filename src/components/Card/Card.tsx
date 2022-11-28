@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { ROUTES } from '../../routes'
 
+import { ROUTES } from '../../routes'
 import { CardType } from '../../types'
 
 import styles from './style.module.css'
@@ -24,7 +24,7 @@ export const Card: FC<Props> = ({ card }) => {
         <Link to={path}>
           <h3 className={styles.title}>{ card.title }</h3>
         </Link>
-        <p className={styles.price}>{ card.price }&nbsp;₽</p>
+        <p className={styles.price}>{ Math.round(card.price * 60).toLocaleString() }&nbsp;₽</p>
         <p className={styles.place}>{card.place }</p>
         <p className={styles.date}>Сегодня в&nbsp;10:45</p>
       </div>
