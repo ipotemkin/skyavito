@@ -82,6 +82,10 @@
   cursor: pointer;
 }
 
+.selected {
+  border: 1px solid #009EE4;
+}
+
 .article__img-bar-div img {
   width: 100%;
   height: 100%;

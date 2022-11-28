@@ -1,14 +1,13 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import React, { FC } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { useGetProductQuery } from '../../api/products.api'
 
+import { useGetProductQuery } from '../../api/products.api'
 import { Page } from '../../pages/Page/Page'
 import { ROUTES } from '../../routes'
-import { ImgBarType } from '../../types'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
-import { Slider } from './Slider'
+import { Slider } from '../Slider/Slider'
 
 import styles from './style.module.css'
 
@@ -18,14 +17,14 @@ const mockImages = [
   'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'  
 ]
 
-const mockImages1: ImgBarType = {
-  selectedId: 0,
-  imageUrls: [
-    'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
-    'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
-    'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'  
-  ]
-}
+// const mockImages1: ImgBarType = {
+//   selectedId: 0,
+//   imageUrls: [
+//     'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
+//     'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
+//     'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'  
+//   ]
+// }
 
 type Props = {
   mode?: 'seller' | null
@@ -61,7 +60,7 @@ export const Ad: FC<Props> = ({ mode = null }) => {
                 4 отзыва
               </Link>
             </div>
-            <p className={styles.article__price}>{product?.price} ₽</p>
+            <p className={styles.article__price}>{((product?.price || 0) * 1000).toLocaleString()} ₽</p>
             <div className={styles.btnBlock}>
               {mode !== 'seller' && <Button>
                 Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span>          
