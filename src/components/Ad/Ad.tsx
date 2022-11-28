@@ -47,20 +47,20 @@ export const Ad: FC<Props> = ({ mode = null }) => {
           <Slider images={mockImages} />
         </div>
         <div className={styles.right}>
-          <div className={styles.article__block}>
-          <h3 className={styles.article__title}>{product?.title}</h3>
-            <div className={styles.article__info}>
-              <p className={styles.article__date}>Сегодня в 10:45</p>
-              <p className={styles.article__city}>Санкт-Петербург</p>
+          <div className={styles.block}>
+            <h3 className={styles.title}>{product?.title}</h3>
+            <div className={styles.info}>
+              <p className={styles.date}>Сегодня в 10:45</p>
+              <p className={styles.city}>Санкт-Петербург</p>
               <Link
-                className={styles.article__link}
+                className={styles.link}
                 to={ROUTES.reviews}
                 state={{ background: location }}
               >
                 4 отзыва
               </Link>
             </div>
-            <p className={styles.article__price}>{((product?.price || 0) * 1000).toLocaleString()} ₽</p>
+            <p className={styles.price}>{((product?.price || 0) * 1000).toLocaleString()} ₽</p>
             <div className={styles.btnBlock}>
               {mode !== 'seller' && <Button>
                 Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span>          
@@ -71,23 +71,25 @@ export const Ad: FC<Props> = ({ mode = null }) => {
               {mode === 'seller' && <Button height={50}>Снять&nbsp;с&nbsp;публикации</Button>}
             </div>
             
-            <div className={styles.article__author}>
-              <Avatar size="s" />
-              <div className={styles.author__cont}>
-                <p className={styles.author__name}>Антон</p>
-                <p className={styles.author__about}>Продает товары с&nbsp;мая 2022</p>
+            <div className={styles.author}>
+              <div style={{ width: 40, height: 40 }}>
+                <Avatar size="s" />                
+              </div>
+              <div className={styles.authorCont}>
+                <p className={styles.authorName}>Антон</p>
+                <p className={styles.authorAbout}>Продает товары с&nbsp;мая 2022</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={styles.main__container}>
-        <h3 className={styles.main__title}>
+      <div className={styles.mainContainer}>
+        <h3 className={styles.mainTitle}>
           Описание товара
         </h3>
-        <div className={styles.main__content}>
-        <p className={styles.main__text}>{product?.description}</p>
+        <div className={styles.mainContent}>
+        <p className={styles.mainText}>{product?.description}</p>
           {/* <p className={styles.main__text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>           */}
         </div>
       </div>
