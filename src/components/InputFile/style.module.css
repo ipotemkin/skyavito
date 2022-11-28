@@ -44,7 +44,7 @@
   box-sizing: border-box;
 }
 
-.img:not(.disabled):hover, img:not(.disabled):focus {
+.img:not(.disabled):not(img):hover, img:not(.disabled):not(img):focus {
   cursor: pointer;
   border: 1px solid #009EE4;
 }
@@ -52,10 +52,14 @@
 .img img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   -o-object-fit: cover;
     object-fit: cover;
 }
+
+/* .img:hover img {
+  border: none;
+} */
 
 .disabled * {
   color: #F0F0F0;

@@ -18,17 +18,24 @@ export const InputFile: FC<Props> = ({ id, disabled = false}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target
     const fileName = files && files[0].name ? files[0].name : ''
+    const file = files && files[0]
     console.log(fileName)
-    setImgUrl(fileName)
-    setImageUrl(fileName, id)
+    const reader = new FileReader()
+    
+    reader.onload = () =>  {
+      setImageUrl(reader.result as string, id)
+      setImgUrl(reader.result as string)
+    }
+
+    reader.readAsDataURL(file as Blob);
   }
   
   return (
     <div className={cn(styles.container, disabled ? styles.disabled : '')}>
       <label htmlFor={String(id)}>
         <div className={cn(styles.img, disabled ? styles.disabled : '')}>
-          <img src={imgUrl} alt=""/>
-          <PlusIcon />
+          {imgUrl &&<img src={imgUrl} alt="" className={styles.img}/>}
+          {!imgUrl && <PlusIcon />}
         </div>
       </label>
       <input
@@ -37,7 +44,7 @@ export const InputFile: FC<Props> = ({ id, disabled = false}) => {
         name="file"
         type="file"
         accept="image/*"
-        multiple
+        // multiple
         onChange={handleChange}
         disabled={disabled}
       />

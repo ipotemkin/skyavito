@@ -2,10 +2,8 @@ import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import CrossIcon from '../../icons/Cross/CossIcon'
-// import PlusIcon from '../../icons/Plus/PlusIcon'
 import { Page } from '../../pages/Page/Page'
 import { Button } from '../Button/Button'
-// import { InputFile } from '../InputFile/InputFile'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
 
@@ -41,10 +39,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
     btnName = 'Опубликовать'
   }
   
-  const handleClose = () => {
-    console.log('close btn')
-    navigate(-1)    
-  }
+  const handleClose = () => navigate(-1)    
 
   const handleFieldChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
@@ -90,14 +85,6 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
             <div className={styles.formBlock}>
               <p className={styles.p}>Фотографии товара<span>не более 5 фотографий</span></p>
               <InputFileBar />
-              {/* <div className={styles.imgBar}>
-                {adImages.map(image => (
-                  <div className={styles.img} key={image} onClick={() => console.log(`image #${image}`)}>
-                    <img src="" alt=""/>
-                    <PlusIcon />
-                  </div>
-                ))}
-              </div> */}
             </div>
             <div className={styles.formBlock}>
               <label htmlFor="price">Цена</label>
