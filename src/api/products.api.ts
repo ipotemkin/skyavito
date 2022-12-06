@@ -10,10 +10,12 @@ export const productsApi = createApi({
   }),
   endpoints: (build) => ({
     getProducts: build.query<CardType[], void>({
-      query: () => 'products',
+      // query: () => 'products',
+      query: () => 'ads',
     }),
     getProduct: build.query<CardType, number>({
-      query: (idx: number) => `products/${idx}`,
+      query: (idx: number) => `ads/${idx}`,
+      // query: (idx: number) => `products/${idx}`,
       // transformResponse: (response: CourseData) => {
       //   if (!response) throw Error('Нет такого курса')
       //   if (response.description)

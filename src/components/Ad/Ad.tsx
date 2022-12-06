@@ -5,6 +5,7 @@ import { Link, useLocation, useParams } from 'react-router-dom'
 import { useGetProductQuery } from '../../api/products.api'
 import { Page } from '../../pages/Page/Page'
 import { ROUTES } from '../../routes'
+import { prettyDate } from '../../utils'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 import { Slider } from '../Slider/Slider'
@@ -59,8 +60,8 @@ export const Ad: FC<Props> = ({ mode = null }) => {
           <div className={styles.block}>
             <h3 className={styles.title}>{product?.title}</h3>
             <div className={styles.info}>
-              <p className={styles.date}>Сегодня в 10:45</p>
-              <p className={styles.city}>Санкт-Петербург</p>
+              <p className={styles.date}>{prettyDate(String(product?.created_on)) }</p>
+              <p className={styles.city}>{ product?.user?.city }</p>
               <Link
                 className={styles.link}
                 to={ROUTES.reviews}
@@ -69,7 +70,7 @@ export const Ad: FC<Props> = ({ mode = null }) => {
                 4 отзыва
               </Link>
             </div>
-            <p className={styles.price}>{((product?.price || 0) * 1000).toLocaleString()} ₽</p>
+            <p className={styles.price}>{((product?.price || 0) ).toLocaleString()} ₽</p>
             <div className={styles.btnBlock}>
               {mode !== 'seller' && <Button>
                 Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span>          
