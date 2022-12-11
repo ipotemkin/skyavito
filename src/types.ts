@@ -18,6 +18,8 @@ export type Image = {
 
 export type User = {
   id: number
+  email: string
+  name?: string
   city: string
 }
 
@@ -30,4 +32,11 @@ export type Product = {
 export type ImgBarType = {
   selectedId: number
   imageUrls: string[]
+}
+
+export type Review = {
+  id: number
+  text: string
+  created_on: string
+  author: User
 }

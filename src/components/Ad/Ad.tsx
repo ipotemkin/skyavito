@@ -2,10 +2,10 @@ import { skipToken } from '@reduxjs/toolkit/dist/query'
 import React, { FC } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 
-import { useGetProductQuery } from '../../api/products.api'
+import { useGetProductCommentsQuery, useGetProductQuery } from '../../api/products.api'
 import { Page } from '../../pages/Page/Page'
 import { ROUTES } from '../../routes'
-import { prettyDate } from '../../utils'
+import { formatString, prettyDate } from '../../utils'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 import { Slider } from '../Slider/Slider'
@@ -45,10 +45,13 @@ export const Ad: FC<Props> = ({ mode = null }) => {
   const productId = Number(useParams()?.id)
   // console.log('productId -->', productId)
   const { data: product, isLoading } = useGetProductQuery(productId ?? skipToken)
+  const { data: reviews } = useGetProductCommentsQuery(productId ?? skipToken)
   // const { data: product } = useGetProductQuery(2)
 
   const imagesIn: Image[] = product && product.images ? product.images : []
   const images = convertImages(imagesIn)
+  const user = undefined
+  const linkEnabled = (!reviews || reviews.length === 0) && !user ? false : true
 
   if (isLoading) return (
     <Page>
@@ -72,13 +75,18 @@ export const Ad: FC<Props> = ({ mode = null }) => {
             <div className={styles.info}>
               <p className={styles.date}>{prettyDate(String(product?.created_on)) }</p>
               <p className={styles.city}>{ product?.user?.city }</p>
-              <Link
+              {linkEnabled && <Link
                 className={styles.link}
-                to={ROUTES.reviews}
+                // to={'#'}
+                to={formatString(ROUTES.reviews, [`${productId}`])}
                 state={{ background: location }}
               >
-                4 отзыва
-              </Link>
+                {/* 4 отзыва */}
+                {reviews && reviews.length > 0 && <span>отзывов: {reviews.length}</span>}
+                {(!reviews || reviews.length === 0) && user && <span>добавьте свой отзыв</span>}
+                {/* {(!reviews || reviews.length === 0) && !user && <span>отзывов пока нет</span>} */}
+              </Link>}
+              {!linkEnabled && <span className={styles.city}>отзывов пока нет</span>}
             </div>
             <p className={styles.price}>{((product?.price || 0) ).toLocaleString()} ₽</p>
             <div className={styles.btnBlock}>

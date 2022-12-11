@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { API_URL } from '../constants'
-import { CardType } from '../types'
+import { CardType, Review } from '../types'
 
 export const productsApi = createApi({
   reducerPath: 'products/api',
@@ -16,6 +16,7 @@ export const productsApi = createApi({
     getProduct: build.query<CardType, number>({
       query: (idx: number) => `ads/${idx}`,
       // query: (idx: number) => `products/${idx}`,
+     
       // transformResponse: (response: CourseData) => {
       //   if (!response) throw Error('Нет такого курса')
       //   if (response.description)
@@ -23,10 +24,15 @@ export const productsApi = createApi({
       //   return response
       // },
     }),
+    getProductComments: build.query<Review[], number>({
+      query: (idx: number) => `ads/${idx}/comments`,
+    }),
+
   }),
 })
 
 export const {
   useGetProductsQuery,
   useGetProductQuery,
+  useGetProductCommentsQuery,
 } = productsApi

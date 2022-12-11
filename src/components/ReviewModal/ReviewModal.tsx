@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
@@ -10,8 +10,10 @@ import { ReviewList } from '../ReviewList/ReviewList'
 import styles from './style.module.css'
 
 export const ReviewModal = () => {
+  const { id } = useParams()
   const navigate = useNavigate()
   const [review, setReview] = useState('')
+  const user = undefined
 
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -31,21 +33,23 @@ export const ReviewModal = () => {
           <div className={styles.btnClose} onClick={handleClose}>
             <CrossIcon width={30} height={30}/>
           </div>
-          <form className={styles.form}>
-            <div className={styles.formBlock}>
-              <label htmlFor="text">Добавить отзыв</label>                            
-              <textarea className={styles.area}
-                rows={10}
-                placeholder="Введите отзыв"
-                onChange={handleChange}
-                value={review}
-              />
-            </div>
-            <div className={styles.formBlock}></div>
-            <Button size="ml" disabled={review.length ? false : true}>Опубликовать</Button>            
-          </form>
+
+            {user && <form className={styles.form}>
+              <div className={styles.formBlock}>
+                <label htmlFor="text">Добавить отзыв</label>                            
+                <textarea className={styles.area}
+                  rows={10}
+                  placeholder="Введите отзыв"
+                  onChange={handleChange}
+                  value={review}
+                />
+              </div>
+              <div className={styles.formBlock}></div>
+              <Button size="ml" disabled={review.length ? false : true}>Опубликовать</Button>            
+            </form>}
+
           <div className={styles.reviewsContainer}>
-            <ReviewList />
+            <ReviewList adId={Number(id)}/>
           </div>
         </div>
       </Page>

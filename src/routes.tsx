@@ -14,6 +14,7 @@ import { AdPage } from './pages/AdPage/AdPage'
 import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
 import { SellerProfile } from './pages/SellerProfile/SellerProfile'
+import { formatString } from './utils'
 
 export const ROUTES = {
   home: '/',
@@ -24,7 +25,8 @@ export const ROUTES = {
   newAd: '/new-ad',
   login: '/login',
   signup: '/signup',
-  reviews: '/reviews',
+  // reviews: '/reviews',
+  reviews: '/ads/{}/reviews',
 }
 
 // type Props = {
@@ -95,7 +97,7 @@ export const AppRoutes = () => {
             <Route path={ROUTES.login} element={<LoginModal />} />
             <Route path={ROUTES.signup} element={<SignupModal />} />
             <Route path={ROUTES.newAd} element={<AdModal />} />
-            <Route path={ROUTES.reviews} element={<ReviewModal />} />
+            <Route path={ formatString(ROUTES.reviews, [':id'])} element={<ReviewModal />} />
           </Routes>
         )}
     </>
