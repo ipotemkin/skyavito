@@ -9,8 +9,10 @@ import { prettyDate } from '../../utils'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 import { Slider } from '../Slider/Slider'
+import { Image } from '../../types'
 
 import styles from './style.module.css'
+import { API_URL } from '../../constants'
 
 const mockImages = [
   'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
@@ -28,6 +30,10 @@ const mockImages = [
 //   ]
 // }
 
+const convertImages = (imagesIn: Image[]) => {
+  return imagesIn.map((item: Image) => API_URL + item.url)
+}
+
 type Props = {
   mode?: 'seller' | null
   // productId?: number
@@ -40,6 +46,9 @@ export const Ad: FC<Props> = ({ mode = null }) => {
   // console.log('productId -->', productId)
   const { data: product, isLoading } = useGetProductQuery(productId ?? skipToken)
   // const { data: product } = useGetProductQuery(2)
+
+  const imagesIn: Image[] = product && product.images ? product.images : []
+  const images = convertImages(imagesIn)
 
   if (isLoading) return (
     <Page>
@@ -54,7 +63,8 @@ export const Ad: FC<Props> = ({ mode = null }) => {
       <div className={styles.content}>
         <div className={styles.left}>
           {/* <Slider images={[product?.image || '']} /> */}
-          <Slider images={mockImages} />
+          {/* <Slider images={mockImages} /> */}
+          <Slider images={images} />
         </div>
         <div className={styles.right}>
           <div className={styles.block}>

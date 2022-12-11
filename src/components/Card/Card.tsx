@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { API_URL } from '../../constants'
 
@@ -12,7 +12,7 @@ type Props = {
   card: CardType
 }
 
-export const Card: FC<Props> = ({ card }) => {
+export const Card = ({ card }: Props) => {
   const path = ROUTES.adPage + '/' + card.id
 
   const image = card.images && card.images[0] ? API_URL + card.images[0].url : undefined
