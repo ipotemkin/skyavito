@@ -40,3 +40,14 @@ export type Review = {
   created_on: string
   author: User
 }
+
+export type Credentials = {
+  email: string
+  password: string
+}
+
+export type Tokens = {
+  access_token: string
+  refresh_token: string
+  token_type: string
+}
