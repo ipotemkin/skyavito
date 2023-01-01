@@ -101,11 +101,11 @@ export const Ad: FC<Props> = ({ mode = null }) => {
             
             <div className={styles.author}>
               <div style={{ width: 40, height: 40 }}>
-                <Avatar size="s" />                
+                <Avatar size="s" image={product?.user?.avatar} />                
               </div>
               <div className={styles.authorCont}>
-                <p className={styles.authorName}>Антон</p>
-                <p className={styles.authorAbout}>Продает товары с&nbsp;мая 2022</p>
+                <p className={styles.authorName}>{product?.user?.name || product?.user?.email}</p>
+                <p className={styles.authorAbout}>Продает товары с&nbsp;{product?.user?.sells_from}</p>
               </div>
             </div>
           </div>

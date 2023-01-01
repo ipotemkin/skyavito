@@ -1,26 +1,32 @@
-import React, { FC } from 'react'
+import React from 'react'
+import { InputType } from 'zlib'
 
 import styles from './style.module.css'
 
 type Props = {
-  name?: string
+  // name?: string
   type?: string
   placeholder?: string
   autoFocus?: boolean
+  ref?: React.LegacyRef<HTMLInputElement>
 }
 
-export const AuthInput: FC<Props> = ({
-  name = '#',
+export const AuthInput = ({
+  // name = '#',
   type = 'text',
   placeholder = '',
-  autoFocus = false
-}) => {
+  autoFocus = false,
+  ref,
+  // ...props
+}: Props) => {
   return (
     <input className={styles.input}
+      ref={ref}
       type={type}
       placeholder={placeholder}
       autoFocus={autoFocus}
-      name={name}
+      // {...props}
+      // name={name}
     />
   )
 }

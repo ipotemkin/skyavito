@@ -20,7 +20,9 @@ export type User = {
   id: number
   email: string
   name?: string
-  city: string
+  city?: string
+  avatar?: string
+  sells_from?: string
 }
 
 export type Product = {
