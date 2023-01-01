@@ -1,12 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { API_URL } from '../constants'
-import { CardType, Credentials, Review, Tokens, User } from '../types'
+import { RootState } from '../store';
+import { CardType, Credentials, Review, Tokens, UpdateUser, User } from '../types'
 
 export const productsApi = createApi({
   reducerPath: 'products/api',
+  tagTypes: ['userData'],
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
+    prepareHeaders: (headers, { getState }) => {
+      const token = (getState() as RootState).token.access_token;
+      if (token) headers.set('authorization', `Bearer ${token}`);
+      return headers;
+    },
   }),
   endpoints: (build) => ({
     getProducts: build.query<CardType[], void>({
@@ -38,7 +45,18 @@ export const productsApi = createApi({
         }
       }
     }),
-
+    getUser: build.query<User, number>({
+      query: () => `user`,
+      providesTags: ['userData'],
+    }),
+    updateUser: build.mutation<User, UpdateUser>({
+      query: (arg: UpdateUser) => ({
+        url: `user`,
+        method: 'PATCH',
+        body: arg,
+      }),
+      invalidatesTags: ['userData'],
+    }),
   }),
 })
 
@@ -47,4 +65,6 @@ export const {
   useGetProductQuery,
   useGetProductCommentsQuery,
   useLoginMutation,
+  useGetUserQuery,
+  useUpdateUserMutation,
 } = productsApi

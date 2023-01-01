@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const Avatar: FC<Props> = ({ size = 'l', image }) => {
-  const imageUrl = API_URL + image
+  const imageUrl = image ? API_URL + image : undefined
 
   return (
     <div className={cn(styles.avatar, styles[size])}>

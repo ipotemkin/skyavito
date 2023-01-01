@@ -17,12 +17,21 @@ export type Image = {
 }
 
 export type User = {
-  id: number
+  id?: number
   email: string
   name?: string
+  surname?: string
+  phone?: string
   city?: string
   avatar?: string
   sells_from?: string
+}
+
+export type UpdateUser = {
+  name?: string
+  surname?: string
+  phone?: string
+  city?: string
 }
 
 export type Product = {

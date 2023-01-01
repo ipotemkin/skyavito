@@ -1,7 +1,7 @@
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { useLoginMutation } from '../../api/products.api'
 import { getErrorMessage } from '../../api/utils'
@@ -19,6 +19,7 @@ const validEmail = new RegExp(/^[\w]{1}[\w-.]*@[\w-]+\.[a-z]{2,3}$/i)
 export const LoginModal = () => {
   const [isBlocked, setIsBlocked] = useState(false)
   const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   const {
     register,
@@ -42,7 +43,7 @@ export const LoginModal = () => {
 
     try {
       const resp = await login({ email: data.email, password: data.password }).unwrap()
-      // navigate(ROUTES.profile)
+      navigate(ROUTES.profile)
       console.log(resp)
     } catch (error) {
       setError(getErrorMessage(error as FetchBaseQueryError))

@@ -1,19 +1,21 @@
 import React, {
   // FC, lazy, useEffect, useState
 } from 'react'
-import { Route, Routes, useLocation,
+import { Navigate, Outlet, Route, Routes, useLocation, useNavigate,
   // Outlet, Navigate
 } from 'react-router-dom'
 import { AdModal } from './components/AdModal/AdModal'
 import { LoginModal } from './components/AuthForm/LoginModal'
 import { SignupModal } from './components/AuthForm/SignupModal'
 import { ReviewModal } from './components/ReviewModal/ReviewModal'
+import { useAppSelector } from './hooks/appHooks'
 import { AdMyPage } from './pages/AdMyPage/AdMyPage'
 import { AdPage } from './pages/AdPage/AdPage'
 
 import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
 import { SellerProfile } from './pages/SellerProfile/SellerProfile'
+import { selectAccessToken } from './slices/tokenSlice'
 import { formatString } from './utils'
 
 export const ROUTES = {
@@ -29,25 +31,40 @@ export const ROUTES = {
   reviews: '/ads/{}/reviews',
 }
 
-// type Props = {
-//   redirectPath?: string
-//   isAllowed?: boolean
-// }
+type Props = {
+  redirectPath?: string
+  isAllowed?: boolean
+}
 
-// const ProtectedRoute: FC<Props> = ({
-//   redirectPath = ROUTES.home,
-//   isAllowed,
-// }) => {
-//   if (isAllowed === undefined) redirectPath = ROUTES.login
+const ProtectedRoute = ({
+  redirectPath = ROUTES.login,
+  isAllowed,
+}: Props) => {
+  const location = useLocation()
+  // const navigate = useNavigate()
+  // console.log('ProtectedRoute: location -->', location)
+  // const background = location.state && location.state.background
 
-//   if (!isAllowed) return <Navigate to={redirectPath} replace={true} />
+  // if (isAllowed === undefined) redirectPath = ROUTES.login
+  
+  if (!isAllowed) {
+    return <Navigate
+      to={redirectPath}
+      replace={true}
+      state={{ background: location.state.prevLoc }}
+    />
+  }
 
-//   return <Outlet />
-// }
+  return <Outlet />
+}
 
-export const AppRoutes = () => {  
+export const AppRoutes = () => {
   const location = useLocation()
   const background = location.state && location.state.background
+  const token = useAppSelector(selectAccessToken)
+
+  // console.log('background -->', background)
+  // console.log('location -->', location)
 
   // const user = useAppSelector(selectCurrentUser)
   // const message = useAppSelector(selectMessage)
@@ -79,21 +96,36 @@ export const AppRoutes = () => {
 
   return (
     <>
-      <Routes location={background || location}>
+      <Routes location={{
+        ...(background || location),
+        state: {
+          // ...background.state,
+          prevLoc: location,
+          prevPrevLoc: location.state?.prevLoc,
+        }
+      }} >
         <Route path={ROUTES.home} element={<Main />} />
-        <Route path={ROUTES.profile} element={<Profile />} />
+        {/* <Route path={ROUTES.profile} element={<Profile />} /> */}
         <Route path={ROUTES.sellerProfile} element={<SellerProfile />} />
         <Route path={ROUTES.adPage + '/:id'} element={<AdPage />} />
         <Route path={ROUTES.adMyPage} element={<AdMyPage />} />
-        <Route path={'*'} element={<h2>Page not found</h2>} />
+        <Route path={'*'} element={<Main />} />
+        {/* <Route path={'*'} element={<h2>Page not found</h2>} /> */}
         
         {/* <Route path={ROUTES.login} element={<LoginModal />} />
         <Route path={ROUTES.signup} element={<SignupModal />} />
         <Route path={ROUTES.newAd} element={<AdModal />} />
         <Route path={ROUTES.reviews} element={<ReviewModal />} /> */}
+        <Route element={<ProtectedRoute isAllowed={token ? true: false} />}>
+          <Route path={ROUTES.profile} element={<Profile />} />
+        </Route>
+
       </Routes>
         {background && (
           <Routes>
+            {/* <Route element={<ProtectedRoute isAllowed={token ? true: false} />}>
+              <Route path={ROUTES.profile} element={<Profile />} />
+            </Route> */}
             <Route path={ROUTES.login} element={<LoginModal />} />
             <Route path={ROUTES.signup} element={<SignupModal />} />
             <Route path={ROUTES.newAd} element={<AdModal />} />

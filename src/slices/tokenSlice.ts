@@ -113,9 +113,13 @@ export const tokenSlice = createSlice({
     deleteTokens
   } = tokenSlice.actions
   
-  export const selectCurrentUser = (state: RootState) => {
+  export const selectTokens = (state: RootState) => {
     return state.token
   }
-  
+
+  export const selectAccessToken = (state: RootState) => {
+    return state.token.access_token
+  }
+
   export default tokenSlice.reducer
   
