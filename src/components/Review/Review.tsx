@@ -15,7 +15,7 @@ export const Review = ({ review }: Props) => {
   return (
     <div className={styles.review}>
       <div className={styles.left}>
-        <Avatar size="s" />
+        <Avatar size="s" image={review.author.avatar}/>
       </div>
       <div className={styles.right}>
         {/* <p className={cn(styles.name, styles.fontT)}>Олег <span>14 августа</span></p>
