@@ -20,6 +20,9 @@ export const productsApi = createApi({
       // query: () => 'products',
       query: () => 'ads',
     }),
+    getMyAds: build.query<CardType[], void>({
+      query: () => 'ads/me',
+    }),
     getProduct: build.query<CardType, number>({
       query: (idx: number) => `ads/${idx}`,
       // query: (idx: number) => `products/${idx}`,
@@ -67,4 +70,5 @@ export const {
   useLoginMutation,
   useGetUserQuery,
   useUpdateUserMutation,
+  useGetMyAdsQuery,
 } = productsApi
