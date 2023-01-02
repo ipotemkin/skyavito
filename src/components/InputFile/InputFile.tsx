@@ -11,7 +11,7 @@ type Props = {
   disabled?: boolean
 }
 
-export const InputFile: FC<Props> = ({ id, disabled = false}) => {
+export const InputFile: FC<Props> = ({ id, disabled = false }) => {
   const [imgUrl, setImgUrl] = useState('')
   const { setImageUrl } = useInputFileBarContext()
 
@@ -23,7 +23,7 @@ export const InputFile: FC<Props> = ({ id, disabled = false}) => {
     const reader = new FileReader()
     
     reader.onload = () =>  {
-      setImageUrl(reader.result as string, id)
+      setImageUrl(reader.result as string, id, file)
       setImgUrl(reader.result as string)
     }
 

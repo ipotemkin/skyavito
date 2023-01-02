@@ -15,9 +15,8 @@ export const useSearch = () => {
   }, [text])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target
-    setText(value)
+    setText(e.target.value)
   }
-
+  
   return { data: text, handleChange }
 }

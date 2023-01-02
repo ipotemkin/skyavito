@@ -11,9 +11,33 @@ export type CardType = {
   user?: User
 }
 
+export type CreateAd =  {
+  title: string
+  price: number
+  description?: string
+}
+
+export type CreateAdForm =  {
+  [index: string]: string
+  title: string
+  price: string
+  description: string
+}
+
+export type CreateAdArgs = {
+  params: CreateAd
+  body: { files: FormData[] }
+}
+
+export type AdImageToAdArgs = {
+  idx: number
+  body: FormData
+}
+
 export type Image = {
   id: number
   url: string
+  file: Blob | null
 }
 
 export type User = {

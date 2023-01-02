@@ -2,11 +2,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { API_URL } from '../constants'
 import { RootState } from '../store';
-import { CardType, Credentials, Review, Tokens, UpdateUser, User } from '../types'
+import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, Credentials, Review, Tokens, UpdateUser, User } from '../types'
 
 export const productsApi = createApi({
   reducerPath: 'products/api',
-  tagTypes: ['userData'],
+  tagTypes: ['userData', 'adsData'],
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
     prepareHeaders: (headers, { getState }) => {
@@ -19,9 +19,11 @@ export const productsApi = createApi({
     getProducts: build.query<CardType[], void>({
       // query: () => 'products',
       query: () => 'ads',
+      providesTags: ['adsData']
     }),
     getMyAds: build.query<CardType[], void>({
       query: () => 'ads/me',
+      providesTags: ['adsData']
     }),
     getProduct: build.query<CardType, number>({
       query: (idx: number) => `ads/${idx}`,
@@ -68,6 +70,32 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['userData'],
     }),
+    createAdText: build.mutation<CardType, CreateAd>({
+      query: (newAd: CreateAd) => ({
+        url: `adstext`,
+        method: 'POST',
+        body: newAd
+      }),
+      invalidatesTags: ['adsData'],
+    }),
+    createAd: build.mutation<CardType, CreateAdArgs>({
+      query: (args: CreateAdArgs) => ({
+        url: `ads`,
+        method: 'POST',
+        body: args.body,
+        params: args.params,
+      }),
+      invalidatesTags: ['adsData'],
+    }),
+    adImageToAd: build.mutation<CardType, AdImageToAdArgs>({
+      query: ({idx, body}) => ({
+        url: `ads/${idx}/image`,
+        method: 'POST',
+        body: body
+      }),
+      invalidatesTags: ['adsData'],
+    }),
+
   }),
 })
 
@@ -80,4 +108,7 @@ export const {
   useUpdateUserMutation,
   useGetMyAdsQuery,
   useUpdateUserAvatarMutation,
+  useCreateAdMutation,
+  useCreateAdTextMutation,
+  useAdImageToAdMutation,
 } = productsApi
