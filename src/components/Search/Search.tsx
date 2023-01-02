@@ -1,35 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useAppDispatch } from '../../hooks/appHooks'
-// import useDebounce, { useDebounceLazy } from '../../hooks/useDebounce'
+import React from 'react'
 
+import { useSearch } from '../../hooks/useSearch'
 import TrianglesIcon from '../../icons/Triangles/TrianglesIcon'
-import { setSearchValue } from '../../slices/searchSlice'
 import { Button } from '../Button/Button'
 
 import styles from './style.module.css'
 
 export const Search = () => {
-  // const searchValue = useAppSelector(selectSearchValue)
-  const dispatch = useAppDispatch()
-  const [searchStr, setSearchStr] = useState<string>('')
-  // const debounce = useDebounceLazy()
+  const { data, handleChange } = useSearch()
 
-  // debounce
-  useEffect(() => {
-    const handler = setTimeout(() => dispatch(setSearchValue(searchStr)), 300)
-
-    return () => clearTimeout(handler)
-  }, [searchStr])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target
-    setSearchStr(value)
-    // dispatch(setSearchValue(debounce(value)))
-  }
-
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  }
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => e.preventDefault()
   
   return (
     <div className={styles.search}>
@@ -41,8 +21,8 @@ export const Search = () => {
           placeholder="Поиск по объявлениям"
           name="search"
           onChange={handleChange}
-          value={searchStr}
-        ></input>
+          value={data || ''}
+        />
         <Button>Найти</Button>
       </form>
     </div>
