@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useGetUserQuery, useUpdateUserMutation } from '../../api/products.api'
-import { UpdateUser, User } from '../../types'
+import { useGetUserQuery, useUpdateUserAvatarMutation, useUpdateUserMutation } from '../../api/products.api'
+import { UpdateUser } from '../../types'
 
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
@@ -21,6 +21,7 @@ export const EditProfile = () => {
   const { data: user } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
   const [formUser, setFormUser] = useState<UpdateUser>(initialState)
   const [updateUser] = useUpdateUserMutation()
+  const [updateAvatar] = useUpdateUserAvatarMutation()
 
   // useEffect(() => {
   //   refetch()
@@ -43,6 +44,29 @@ export const EditProfile = () => {
     setFormUser((prev: UpdateUser) => ({...prev, [field]: e.target.value}))
   }
 
+  const handleChangeAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target
+    // const fileName = files && files[0].name ? files[0].name : ''
+    const file = files && files[0]
+    // console.log(fileName)
+    const reader = new FileReader()
+
+    reader.onload = async () =>  {
+      if (file) {
+        try {
+          const formData = new FormData()
+          formData.append('file', file)
+          await updateAvatar(formData).unwrap()
+        } catch(error) {
+          console.log('error -->', error)
+        }
+      }
+    }
+
+    reader.readAsDataURL(file as Blob);
+  }
+
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log('before preventDefault')
     console.log(e)
@@ -64,9 +88,15 @@ export const EditProfile = () => {
         
         <div className={styles.settings__left}>
           <Avatar image={user?.avatar}/>
-          <a className={styles['settings__change-photo']} href="" target="_self">
+          <label className={styles.inputAvatarLabel} htmlFor="input_avatar">
             Заменить
-          </a>
+          </label>
+          <input className={styles.inputAvatar} type="file"
+            id="input_avatar"
+            name="file"
+            accept="image/*"
+            onChange={handleChangeAvatar}
+           />
         </div>
 
         <div className={styles.settings__right}>

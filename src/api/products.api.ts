@@ -60,6 +60,14 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['userData'],
     }),
+    updateUserAvatar: build.mutation<User, FormData>({
+      query: (arg: FormData) => ({
+        url: `user/avatar`,
+        method: 'POST',
+        body: arg
+      }),
+      invalidatesTags: ['userData'],
+    }),
   }),
 })
 
@@ -71,4 +79,5 @@ export const {
   useGetUserQuery,
   useUpdateUserMutation,
   useGetMyAdsQuery,
+  useUpdateUserAvatarMutation,
 } = productsApi

@@ -51,7 +51,7 @@ const ProtectedRoute = ({
     return <Navigate
       to={redirectPath}
       replace={true}
-      state={{ background: location.state.prevLoc }}
+      state={{ background: location.state.prevLoc || location }}
     />
   }
 
@@ -128,8 +128,10 @@ export const AppRoutes = () => {
             </Route> */}
             <Route path={ROUTES.login} element={<LoginModal />} />
             <Route path={ROUTES.signup} element={<SignupModal />} />
-            <Route path={ROUTES.newAd} element={<AdModal />} />
             <Route path={ formatString(ROUTES.reviews, [':id'])} element={<ReviewModal />} />
+            <Route element={<ProtectedRoute isAllowed={token ? true: false} />}>
+              <Route path={ROUTES.newAd} element={<AdModal />} />
+            </Route>
           </Routes>
         )}
     </>
