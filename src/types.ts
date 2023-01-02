@@ -86,3 +86,8 @@ export type Tokens = {
   refresh_token?: string
   token_type?: string
 }
+
+export type UserIdAndPage = {
+  id: number
+  page: number
+}

@@ -67,9 +67,6 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
 
   const checkFormValid = () => {
     if (form.title.length === 0 || form.price.length === 0) return false
-
-    // for (const key in form)
-    //   if (form[key].length === 0) return false 
     return true
   }
 
@@ -117,7 +114,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
           if (imageFile.file && resp.id) {
             const formData = new FormData()
             formData.append('file', imageFile.file)
-            await adImageToAd({ idx: resp.id, body: formData }).unwrap()  
+            await adImageToAd({ idx: resp.id, body: formData }).unwrap()
           }
         } catch (error) {
           console.log('error -->', error)
@@ -128,6 +125,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
       console.log('error -->', error)
     }
 
+    // TODO: сделать закрытие, чтобы модалка не оставалась в истории
     handleClose()
   }
 

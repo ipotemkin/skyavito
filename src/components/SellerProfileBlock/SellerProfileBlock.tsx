@@ -1,24 +1,31 @@
-import React from 'react'
 import cn from 'classnames'
+import React from 'react'
 
+import { User } from '../../types'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 
 import styles from './style.module.css'
 
-export const SellerProfileBlock = () => {
+type Props = {
+  seller?: User
+}
+
+export const SellerProfileBlock = ({ seller }: Props) => {
+  if (!seller) return <h2>Ошибка загрузки информации о продавце</h2>
+  
   return (
     <div className={styles.profileSellerBlock}>
       <div className={cn(styles.left, styles.desktop)}>
-        <Avatar />
+        <Avatar image={seller.avatar} />
       </div>
       <div className={styles.right}>
-        <h3 className={styles.title}>Кирилл Матвеев</h3>
-        <p className={styles.city}>Санкт-Петербург</p>
-        <p className={styles.inf}>Продает товары с августа 2021</p>
+        <h3 className={styles.title}>{seller.name || seller.email}</h3>
+        <p className={styles.city}>{seller.city}</p>
+        <p className={styles.inf}>Продает товары с {seller.sells_from}</p>
         
         <div className={styles.mob}>
-        <Avatar />
+          <Avatar image={seller.avatar} />
         </div>
 
         <Button>

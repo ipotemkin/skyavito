@@ -104,7 +104,9 @@ export const Ad: FC<Props> = ({ mode = null }) => {
                 <Avatar size="s" image={product?.user?.avatar} />                
               </div>
               <div className={styles.authorCont}>
-                <p className={styles.authorName}>{product?.user?.name || product?.user?.email}</p>
+                <Link to={ROUTES.sellerProfile + '/' + product?.user?.id}>
+                  <p className={styles.authorName}>{product?.user?.name || product?.user?.email}</p>
+                </Link>
                 <p className={styles.authorAbout}>Продает товары с&nbsp;{product?.user?.sells_from}</p>
               </div>
             </div>

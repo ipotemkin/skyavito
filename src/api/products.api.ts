@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { API_URL } from '../constants'
 import { RootState } from '../store';
-import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, Credentials, Review, Tokens, UpdateUser, User } from '../types'
+import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, Credentials, Review, Tokens, UpdateUser, User, UserIdAndPage } from '../types'
 
 export const productsApi = createApi({
   reducerPath: 'products/api',
@@ -23,6 +23,14 @@ export const productsApi = createApi({
     }),
     getMyAds: build.query<CardType[], void>({
       query: () => 'ads/me',
+      providesTags: ['adsData']
+    }),
+    getAdsByUserId: build.query<CardType[], number>({
+      query: (id: number) => `ads?user_id=${id}`,
+      providesTags: ['adsData']
+    }),
+    getAdsByUserIdaAndPage: build.query<CardType[], UserIdAndPage>({
+      query: ({id, page}) => `ads?user_id=${id}&page=${page}`,
       providesTags: ['adsData']
     }),
     getProduct: build.query<CardType, number>({
@@ -111,4 +119,6 @@ export const {
   useCreateAdMutation,
   useCreateAdTextMutation,
   useAdImageToAdMutation,
+  useGetAdsByUserIdQuery,
+  useGetAdsByUserIdaAndPageQuery,
 } = productsApi

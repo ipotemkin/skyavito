@@ -1,16 +1,22 @@
 import React from 'react'
 
-import { goods } from '../../fixtures/goods'
+import { CardType } from '../../types'
 import { Gallery } from '../Gallery/Gallery'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
 
 // import styles from './style.module.css'
 
-export const SellerGoods = () => {
+type Props = {
+  ads?: CardType[]
+}
+
+export const SellerGoods = ({ ads }: Props) => {
+  if (!ads) return <h2>Ошибка загрузки объявлений</h2>
+
   return (
     <div>
       <PageSubTitle>Товары продавца</PageSubTitle>
-      <Gallery items={goods} />
+      <Gallery items={ads} />
     </div>
   )
 }
