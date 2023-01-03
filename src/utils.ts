@@ -30,3 +30,33 @@ export const getImageLst = (count = 5): Image[] => {
   for (let i = 0; i < count; i++) res.push({ id: i, url: '', file: null })
   return res
 }
+
+export const parseJWT = (token: string) => {
+  const base64Url = token.split('.')[1]
+  const base64 = decodeURIComponent(atob(base64Url).split('').map((c) => {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+  }).join(''))
+
+  return JSON.parse(base64)
+}
+
+export const getUserIdFromJWT = (token: string) => {
+  return parseJWT(token).user_id
+}
+
+export const getUserEmailFromJWT = (token: string) => {
+  return parseJWT(token).email
+}
+
+export const getJWTExpTime = (token: string) => {
+  return new Date(+parseJWT(token).exp*1000)
+}
+
+export const checkJWTExpTime = (token: string) => {
+  return new Date() < getJWTExpTime(token)
+}
+
+export const getQueryErrorStatus = (error: any) => {
+  if (error && 'status' in error) return error.status
+  return undefined
+}

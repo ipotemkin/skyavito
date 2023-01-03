@@ -16,7 +16,7 @@ import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
 import { SellerProfile } from './pages/SellerProfile/SellerProfile'
 import { selectAccessToken } from './slices/tokenSlice'
-import { formatString } from './utils'
+import { checkJWTExpTime, formatString } from './utils'
 
 export const ROUTES = {
   home: '/',
@@ -62,6 +62,11 @@ export const AppRoutes = () => {
   const location = useLocation()
   const background = location.state && location.state.background
   const token = useAppSelector(selectAccessToken)
+
+  const isTokenValid = () => {
+    if (!token) return false
+    return checkJWTExpTime(token)
+  }
 
   // console.log('background -->', background)
   // console.log('location -->', location)
@@ -116,7 +121,7 @@ export const AppRoutes = () => {
         <Route path={ROUTES.signup} element={<SignupModal />} />
         <Route path={ROUTES.newAd} element={<AdModal />} />
         <Route path={ROUTES.reviews} element={<ReviewModal />} /> */}
-        <Route element={<ProtectedRoute isAllowed={token ? true: false} />}>
+        <Route element={<ProtectedRoute isAllowed={isTokenValid()} />}>
           <Route path={ROUTES.profile} element={<Profile />} />
         </Route>
 
@@ -129,7 +134,7 @@ export const AppRoutes = () => {
             <Route path={ROUTES.login} element={<LoginModal />} />
             <Route path={ROUTES.signup} element={<SignupModal />} />
             <Route path={ formatString(ROUTES.reviews, [':id'])} element={<ReviewModal />} />
-            <Route element={<ProtectedRoute isAllowed={token ? true: false} />}>
+            <Route element={<ProtectedRoute isAllowed={isTokenValid()} />}>
               <Route path={ROUTES.newAd} element={<AdModal />} />
             </Route>
           </Routes>

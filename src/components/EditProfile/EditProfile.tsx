@@ -18,7 +18,7 @@ const initialState: UpdateUser = {
 
 export const EditProfile = () => {
   // const [name, setName] = useState('')
-  const { data: user } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
+  const { data: user, isLoading, error } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
   const [formUser, setFormUser] = useState<UpdateUser>(initialState)
   const [updateUser] = useUpdateUserMutation()
   const [updateAvatar] = useUpdateUserAvatarMutation()
@@ -80,6 +80,11 @@ export const EditProfile = () => {
     } 
   }
 
+  if (isLoading) return <h2>Загрузка...</h2>
+
+  if (error) return <h2>Ошибка: {JSON.stringify(error)}</h2>
+
+  
   return (
     <div className={styles.editProfile}>
       <PageSubTitle>Настройки профиля</PageSubTitle>
