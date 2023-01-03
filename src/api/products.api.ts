@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { API_URL } from '../constants'
 import { RootState } from '../store';
-import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, CreateUser, Credentials, Review, Tokens, UpdateUser, User, UserIdAndPage } from '../types'
+import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, CreateUser, Credentials, RefreshTokensRequest, Review, Tokens, UpdateUser, User, UserIdAndPage } from '../types'
 
 export const productsApi = createApi({
   reducerPath: 'products/api',
@@ -64,6 +64,16 @@ export const productsApi = createApi({
         return {
           url: `auth/register`,
           method: 'POST',
+          body,
+        }
+      }
+    }),
+    refreshTokens: build.mutation<Tokens, RefreshTokensRequest>({
+      query: (body: RefreshTokensRequest) => {
+        // console.log('api:credentials -->', args)
+        return {
+          url: `auth/login`,
+          method: 'PUT',
           body,
         }
       }

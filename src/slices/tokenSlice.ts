@@ -46,9 +46,21 @@ export const tokenSlice = createSlice({
         //   if (payload.idToken)
         //     Cookies.set(accessTokenName, payload.idToken)
           
-          return state = {...payload}
+          return state = { ...payload }
         }
       )
+
+      // refreshToken
+      builder.addMatcher(
+        productsApi.endpoints.refreshTokens.matchFulfilled,
+        (state, { payload }) => {
+        //   if (payload.idToken)
+        //     Cookies.set(accessTokenName, payload.idToken)
+          
+          return state = { ...payload }
+        }
+      )
+
     //   // changeEmail
     //   builder.addMatcher(
     //     authApi.endpoints.changeEmail.matchFulfilled,
