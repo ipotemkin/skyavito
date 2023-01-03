@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { API_URL } from '../constants'
 import { RootState } from '../store';
-import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, Credentials, Review, Tokens, UpdateUser, User, UserIdAndPage } from '../types'
+import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, CreateUser, Credentials, Review, Tokens, UpdateUser, User, UserIdAndPage } from '../types'
 
 export const productsApi = createApi({
   reducerPath: 'products/api',
@@ -47,6 +47,7 @@ export const productsApi = createApi({
     getProductComments: build.query<Review[], number>({
       query: (idx: number) => `ads/${idx}/comments`,
     }),
+
     login: build.mutation<Tokens, Credentials>({
       query: (args: Credentials) => {
         // console.log('api:credentials -->', args)
@@ -54,10 +55,20 @@ export const productsApi = createApi({
           url: `auth/login`,
           method: 'POST',
           body: { ...args },
-          // mode: 'no-cors',
         }
       }
     }),
+    signUp: build.mutation<User, CreateUser>({
+      query: (body: CreateUser) => {
+        console.log('api:body -->', body)
+        return {
+          url: `auth/register`,
+          method: 'POST',
+          body,
+        }
+      }
+    }),
+
     getUser: build.query<User, number>({
       query: () => `user`,
       providesTags: ['userData'],
@@ -112,6 +123,7 @@ export const {
   useGetProductQuery,
   useGetProductCommentsQuery,
   useLoginMutation,
+  useSignUpMutation,
   useGetUserQuery,
   useUpdateUserMutation,
   useGetMyAdsQuery,

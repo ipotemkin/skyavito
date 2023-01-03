@@ -51,6 +51,17 @@ export type User = {
   sells_from?: string
 }
 
+export type CreateUser = {
+  email: string
+  password: string
+  passwordRepeat: string
+  role: 'user' | 'admin'
+  name?: string
+  surname?: string
+  phone?: string
+  city?: string
+}
+
 export type UpdateUser = {
   name?: string
   surname?: string

@@ -9,12 +9,11 @@ import LogoIcon from '../../icons/Logo/LogoIcon'
 import { Page } from '../../pages/Page/Page'
 import { ROUTES } from '../../routes'
 import { Credentials } from '../../types'
+import { validEmail } from '../../validators'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 
 import styles from './style.module.css'
-
-const validEmail = new RegExp(/^[\w]{1}[\w-.]*@[\w-]+\.[a-z]{2,3}$/i)
 
 export const LoginModal = () => {
   const [isBlocked, setIsBlocked] = useState(false)
@@ -91,7 +90,7 @@ export const LoginModal = () => {
           <div className={styles.horDiv}></div>
           <Button
             style={{ marginBottom: 20, width: 278, height: 52 }}
-            disabled={isBlocked ? true : false}            
+            disabled={isBlocked ? true : false}
           >
             Войти
           </Button>

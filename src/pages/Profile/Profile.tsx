@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useGetUserQuery } from '../../api/products.api'
 
 import { EditProfile } from '../../components/EditProfile/EditProfile'
@@ -11,7 +11,7 @@ import { Page } from '../Page/Page'
 export const Profile = () => {
   const { data: user, isLoading } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
   // console.log(user)
-  const header = `Здравствуйте, ${user?.name}!`
+  const header = `Здравствуйте, ${user?.name || user?.email}!`
 
   // useEffect(() => {
   //   refetch()
