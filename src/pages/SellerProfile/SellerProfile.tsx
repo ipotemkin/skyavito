@@ -37,7 +37,7 @@ export const SellerProfile = () => {
   // если при уславноленном фильтре не будет найдено объявлений
   const [seller, setSeller] = useState<User>()
   useEffect(() => {
-    if (ads && !seller && ads.length) setSeller(ads[0].user)
+    if (!seller && ads && ads.length) setSeller(ads[0].user)
   }, [ads])  
 
   if (isLoading) return <h2>Загрузка...</h2>
