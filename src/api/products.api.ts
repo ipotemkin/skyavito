@@ -3,18 +3,20 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { API_URL } from '../constants'
 import { RootState } from '../store';
 import { AdImageToAdArgs, CardType, CreateAd, CreateAdArgs, CreateUser, Credentials, RefreshTokensRequest, Review, Tokens, UpdateUser, User, UserIdAndPage } from '../types'
+import customFetchBase from './customFetchBase';
 
 export const productsApi = createApi({
   reducerPath: 'products/api',
   tagTypes: ['userData', 'adsData'],
-  baseQuery: fetchBaseQuery({
-    baseUrl: API_URL,
-    prepareHeaders: (headers, { getState }) => {
-      const token = (getState() as RootState).token.access_token;
-      if (token) headers.set('authorization', `Bearer ${token}`);
-      return headers;
-    },
-  }),
+  baseQuery: customFetchBase,
+  // baseQuery: fetchBaseQuery({
+  //   baseUrl: API_URL,
+  //   prepareHeaders: (headers, { getState }) => {
+  //     const token = (getState() as RootState).token.access_token;
+  //     if (token) headers.set('authorization', `Bearer ${token}`);
+  //     return headers;
+  //   },
+  // }),
   endpoints: (build) => ({
     getProducts: build.query<CardType[], void>({
       // query: () => 'products',
