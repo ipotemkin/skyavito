@@ -1,22 +1,11 @@
 import React, { useEffect, useState } from 'react'
+
+import { Image } from '../../types'
+import { getImageLst } from '../../utils'
 import { InputFile } from '../InputFile/InputFile'
 import { InputFileBarContext } from './inputFileBarContext'
 
 import styles from './style.module.css'
-
-// const adImages = [1, 2, 3, 4, 5]
-
-type Image = {
-  id: number
-  url: string
-  file: Blob | null
-}
-
-const getImageLst = (count = 5): Image[] => {
-  const res = []
-  for (let i = 0; i < count; i++) res.push({ id: i, url: '', file: null })
-  return res
-}
 
 type Props = {
   setImageFiles: (imageFiles: Image[]) => void

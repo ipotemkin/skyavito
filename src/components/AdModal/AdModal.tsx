@@ -1,17 +1,16 @@
 import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAdImageToAdMutation, useCreateAdMutation, useCreateAdTextMutation } from '../../api/products.api'
 
+import { useAdImageToAdMutation, useCreateAdTextMutation } from '../../api/products.api'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
-import { CreateAd, CreateAdArgs, CreateAdForm, Image } from '../../types'
+import { CreateAd, CreateAdForm, Image } from '../../types'
+import { getImageLst } from '../../utils'
 import { Button } from '../Button/Button'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
 
 import styles from './style.module.css'
-
-// const adImages = [1, 2, 3, 4, 5]
 
 type Props = {
   type?: 'new' | 'edit'
@@ -34,12 +33,6 @@ const initialValue: CreateAdForm = {
   title: '',
   price: '',
   description: '',
-}
-
-const getImageLst = (count = 5): Image[] => {
-  const res = []
-  for (let i = 0; i < count; i++) res.push({ id: i, url: '', file: null })
-  return res
 }
 
 export const AdModal: FC<Props> = ({ type = 'new' }) => {

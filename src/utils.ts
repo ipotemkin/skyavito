@@ -1,3 +1,5 @@
+import { Image } from './types'
+
 export const prettyDate = (timeISOstring: string) => {
   const date = new Date((timeISOstring).replace(/-/g, '/').replace(/[TZ]/g, ' '))
   const now = new Date()
@@ -18,5 +20,13 @@ export const prettyDate = (timeISOstring: string) => {
 export const formatString = (text: string, args: string[]) => {
   let res = text
   for (const arg of args) res = res.replace(/{}/, arg)
+  return res
+}
+
+// генератор списка изображений для объявления
+// используется для формирования начального (пустого) списка нужной структуры
+export const getImageLst = (count = 5): Image[] => {
+  const res = []
+  for (let i = 0; i < count; i++) res.push({ id: i, url: '', file: null })
   return res
 }

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 
 import { Img } from './Img'
 
@@ -26,7 +26,7 @@ type Props = {
   images: string[]
 }
 
-export const ImgBar: FC<Props> = ({ images }) => {
+export const ImgBar = ({ images }: Props) => {
   const imageLst = getImageLst(images)
 
   return (
