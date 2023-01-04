@@ -24,6 +24,25 @@ export type CreateAdForm =  {
   description: string
 }
 
+export type UpdateAd =  {
+  title?: string
+  price?: number
+  description?: string
+}
+
+export type UpdateAdArgs =  {
+  id: number
+  body: UpdateAd
+}
+
+export type UpdateAdForm =  {
+  [index: string]: string | number | undefined | Image[]
+  title: string
+  price: number
+  description?: string
+  images?: Image[]
+}
+
 export type CreateAdArgs = {
   params: CreateAd
   body: { files: FormData[] }
@@ -32,6 +51,11 @@ export type CreateAdArgs = {
 export type AdImageToAdArgs = {
   idx: number
   body: FormData
+}
+
+export type DeleteAdImageArgs = {
+  idx: number
+  fileUrl: string
 }
 
 export type Image = {

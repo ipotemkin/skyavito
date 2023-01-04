@@ -1,19 +1,37 @@
-import React, { FC, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'classnames'
 
 import PlusIcon from '../../icons/Plus/PlusIcon'
 
 import styles from './style.module.css'
 import { useInputFileBarContext } from '../InputFileBar/inputFileBarContext'
+import { API_URL } from '../../constants'
 
 type Props = {
   id: number
   disabled?: boolean
+  url?: string
 }
 
-export const InputFile: FC<Props> = ({ id, disabled = false }) => {
+export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
   const [imgUrl, setImgUrl] = useState('')
   const { setImageUrl } = useInputFileBarContext()
+  // const [urlIn, setUrlIn] = useState('')
+
+  useEffect(() => {
+    if (url) setImgUrl(url)
+  }, [url])
+
+  // useEffect(() => {
+  //   console.log('InputFile:useEffect:url -->', url)
+  //   if (urlIn && !urlIn.startsWith('data:')) setImgUrl(API_URL + url)
+  // }, [urlIn])
+  
+  useEffect(() => {
+    console.log('imgUrl -->', imgUrl)
+  }, [imgUrl])
+  // console.log('InputFile:url -->', url)
+  // console.log('InputFile:imgUrl -->', imgUrl)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target

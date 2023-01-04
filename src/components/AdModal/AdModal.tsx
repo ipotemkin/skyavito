@@ -53,7 +53,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
 
   const handleFieldChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    field: string
+    field: string,
   ) => {
     setForm((prev: CreateAdForm) => ({ ...prev, [field]: e.target.value }))
   }

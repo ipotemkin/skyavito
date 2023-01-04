@@ -6,6 +6,7 @@ import { Navigate, Outlet, Route, Routes, useLocation,
   // Outlet, Navigate
 } from 'react-router-dom'
 import { AdModal } from './components/AdModal/AdModal'
+import { UpdateAdModal } from './components/AdModal/UpdateAdModal'
 import { LoginModal } from './components/AuthForm/LoginModal'
 import { SignupModal } from './components/AuthForm/SignupModal'
 import { ReviewModal } from './components/ReviewModal/ReviewModal'
@@ -26,6 +27,7 @@ export const ROUTES = {
   adPage: '/ad-page',
   // adMyPage: '/ad-my-page',
   newAd: '/new-ad',
+  editAd: '/edit-ad',
   login: '/login',
   signup: '/signup',
   // reviews: '/reviews',
@@ -143,6 +145,7 @@ export const AppRoutes = () => {
             <Route path={ formatString(ROUTES.reviews, [':id'])} element={<ReviewModal />} />
             <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
               <Route path={ROUTES.newAd} element={<AdModal />} />
+              <Route path={ROUTES.editAd + '/:id'} element={<UpdateAdModal />} />
             </Route>
           </Routes>
         )}

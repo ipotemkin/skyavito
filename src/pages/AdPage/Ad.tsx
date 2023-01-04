@@ -76,7 +76,9 @@ export const Ad = () => {
             <div className={styles.btnBlock}>
               {seller
                 ? <>
-                  <Button height={50}>Редактировать</Button>
+                  <Link to={ROUTES.editAd + `/${product?.id}`} state={{ background: location }}>
+                    <Button height={50}>Редактировать</Button>
+                  </Link>
                   <Button height={50}>Снять&nbsp;с&nbsp;публикации</Button>
                 </>
                 : <Button>

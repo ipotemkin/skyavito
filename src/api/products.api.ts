@@ -7,8 +7,11 @@ import {
 // import { RootState } from '../store';
 import {
   AdImageToAdArgs, CardType, CreateAd, CreateAdArgs,
+  DeleteAdImageArgs,
   // CreateUser, Credentials, RefreshTokensRequest,
   Review,
+  // UpdateAd,
+  UpdateAdArgs,
   // Tokens,
   UpdateUser, User, UserIdAndPage,
  } from '../types'
@@ -46,6 +49,7 @@ export const productsApi = createApi({
     }),
     getProduct: build.query<CardType, number>({
       query: (idx: number) => `ads/${idx}`,
+      providesTags: ['adsData']
       // query: (idx: number) => `products/${idx}`,
      
       // transformResponse: (response: CourseData) => {
@@ -127,11 +131,26 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['adsData'],
     }),
+    updateAd: build.mutation<CardType, UpdateAdArgs>({
+      query: ({ id, body }) => ({
+        url: `ads/${id}`,
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: ['adsData'],
+    }),
     adImageToAd: build.mutation<CardType, AdImageToAdArgs>({
       query: ({idx, body}) => ({
         url: `ads/${idx}/image`,
         method: 'POST',
         body: body
+      }),
+      invalidatesTags: ['adsData'],
+    }),
+    deleteAdImage: build.mutation<CardType, DeleteAdImageArgs>({
+      query: ({idx, fileUrl }) => ({
+        url: `ads/${idx}/image?file_url=${fileUrl}`,
+        method: 'DELETE',
       }),
       invalidatesTags: ['adsData'],
     }),
@@ -150,8 +169,10 @@ export const {
   useGetMyAdsQuery,
   useUpdateUserAvatarMutation,
   useCreateAdMutation,
+  useUpdateAdMutation,
   useCreateAdTextMutation,
   useAdImageToAdMutation,
+  useDeleteAdImageMutation,
   useGetAdsByUserIdQuery,
   useGetAdsByUserIdaAndPageQuery,
 } = productsApi
