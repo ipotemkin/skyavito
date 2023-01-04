@@ -24,7 +24,7 @@ export const ROUTES = {
   profile: '/profile',
   sellerProfile: '/seller-profile',
   adPage: '/ad-page',
-  adMyPage: '/ad-my-page',
+  // adMyPage: '/ad-my-page',
   newAd: '/new-ad',
   login: '/login',
   signup: '/signup',
