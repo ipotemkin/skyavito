@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { API_URL } from '../../constants'
-import { useAppSelector } from '../../hooks/appHooks'
 
+import { API_URL } from '../../constants'
 import { ROUTES } from '../../routes'
-import { selectAccessToken } from '../../slices/tokenSlice'
 import { CardType } from '../../types'
-import { getUserEmailFromJWT, prettyDate } from '../../utils'
+import { prettyDate } from '../../utils'
 
 import styles from './style.module.css'
 
@@ -16,13 +14,7 @@ type Props = {
 
 export const Card = ({ card }: Props) => {
   const path = ROUTES.adPage + '/' + card.id
-  const token = useAppSelector(selectAccessToken)
-  const user_id = token ? getUserEmailFromJWT(token) : undefined
-
   const image = card.images && card.images[0] ? API_URL + card.images[0].url : undefined
-
-  
-  // console.log(image)
 
   return (
     <div className={styles.card}>
@@ -33,12 +25,10 @@ export const Card = ({ card }: Props) => {
       </Link>
       <div className={styles.info}>
         <Link to={path}>
-          <h3 className={styles.title}>{ card.title }</h3>
+          <h3 className={styles.title}>{card.title}</h3>
         </Link>
         <p className={styles.price}>{ card.price.toLocaleString() }&nbsp;₽</p>
         <p className={styles.place}>{ card.user?.city }</p>
-        {/* <p className={styles.date}>Сегодня в&nbsp;10:45</p> */}
-        {/* <p className={styles.date}>{ String(new Date(String(card.created_on)).toLocaleString()) }</p> */}
         <p className={styles.date}>{ prettyDate(String(card.created_on)) }</p>
       </div>
     </div>
