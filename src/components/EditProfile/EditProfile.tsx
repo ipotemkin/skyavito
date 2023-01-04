@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
+
 import { useGetUserQuery, useUpdateUserAvatarMutation, useUpdateUserMutation } from '../../api/products.api'
 import { UpdateUser } from '../../types'
-
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
@@ -13,7 +13,7 @@ const initialState: UpdateUser = {
   name: '',
   surname: '',
   city: '',
-  phone: ''
+  phone: '',
 }
 
 export const EditProfile = () => {
@@ -58,7 +58,7 @@ export const EditProfile = () => {
           formData.append('file', file)
           await updateAvatar(formData).unwrap()
         } catch(error) {
-          console.log('error -->', error)
+          console.error(error)
         }
       }
     }
@@ -66,15 +66,14 @@ export const EditProfile = () => {
     reader.readAsDataURL(file as Blob);
   }
 
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('before preventDefault')
-    console.log(e)
+    // console.log('before preventDefault')
+    // console.log(e)
     e.preventDefault()
     try {
-      console.log('before updateUser')
+      // console.log('before updateUser')
       const resp = await updateUser(formUser).unwrap()
-      console.log('resp -->', resp)
+      // console.log('resp -->', resp)
     } catch(error) {
       console.log(error)
     } 

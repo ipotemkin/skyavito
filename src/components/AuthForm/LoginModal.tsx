@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import { useLoginMutation } from '../../api/products.api'
+import { useLoginMutation } from '../../api/auth.api'
 import { getErrorMessage } from '../../api/utils'
 import LogoIcon from '../../icons/Logo/LogoIcon'
 import { Page } from '../../pages/Page/Page'

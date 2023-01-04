@@ -1,4 +1,6 @@
-import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query"
+import { BaseQueryApi, FetchBaseQueryError } from "@reduxjs/toolkit/dist/query"
+import { RefreshTokensRequest } from "../types"
+import { authApi } from "./auth.api"
 
 type ErrorData = {
   detail?: string
@@ -30,4 +32,8 @@ const ERRORS: ERRORSTypes = {
   'Incorrect email': 'Неверный email',
   'Incorrect password': 'Неверный пароль',
   // 'UNIQUE constraint failed': 'Email занят'
+}
+
+export const refreshTokens = async (api: BaseQueryApi, payload: RefreshTokensRequest) => {
+  return await api.dispatch(authApi.endpoints.refreshTokens.initiate(payload))
 }

@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Tokens } from '../types'
-import { productsApi } from '../api/products.api'
+import { authApi } from '../api/auth.api'
 import { RootState } from '../store'
+import { Tokens } from '../types'
 
-const initialState: Tokens = {
-}
+const initialState: Tokens = {}
 
 export const tokenSlice = createSlice({
     name: 'currentUser',
@@ -41,7 +40,7 @@ export const tokenSlice = createSlice({
     //   )
       // signIn
       builder.addMatcher(
-        productsApi.endpoints.login.matchFulfilled,
+        authApi.endpoints.login.matchFulfilled,
         (state, { payload }) => {
         //   if (payload.idToken)
         //     Cookies.set(accessTokenName, payload.idToken)
@@ -52,10 +51,12 @@ export const tokenSlice = createSlice({
 
       // refreshToken
       builder.addMatcher(
-        productsApi.endpoints.refreshTokens.matchFulfilled,
+        authApi.endpoints.refreshTokens.matchFulfilled,
         (state, { payload }) => {
         //   if (payload.idToken)
         //     Cookies.set(accessTokenName, payload.idToken)
+
+          console.log('tokens have been updated')
           
           return state = { ...payload }
         }

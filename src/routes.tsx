@@ -1,7 +1,8 @@
 import React, {
   // FC, lazy, useEffect, useState
 } from 'react'
-import { Navigate, Outlet, Route, Routes, useLocation, useNavigate,
+import { Navigate, Outlet, Route, Routes, useLocation,
+  // useNavigate,
   // Outlet, Navigate
 } from 'react-router-dom'
 import { AdModal } from './components/AdModal/AdModal'
@@ -15,7 +16,8 @@ import { AdPage } from './pages/AdPage/AdPage'
 import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
 import { SellerProfile } from './pages/SellerProfile/SellerProfile'
-import { selectAccessToken } from './slices/tokenSlice'
+import { selectNeedRelogin } from './slices/reloginSlice'
+import { selectAccessToken, selectTokens } from './slices/tokenSlice'
 import { checkJWTExpTime, formatString } from './utils'
 
 export const ROUTES = {
@@ -61,12 +63,18 @@ const ProtectedRoute = ({
 export const AppRoutes = () => {
   const location = useLocation()
   const background = location.state && location.state.background
-  const token = useAppSelector(selectAccessToken)
+  // const token = useAppSelector(selectAccessToken)
+  const { access_token, refresh_token } = useAppSelector(selectTokens)
+  const needRelogin = useAppSelector(selectNeedRelogin)
 
-  const isTokenValid = () => {
-    if (!token) return false
-    return checkJWTExpTime(token)
-  }
+  // const isTokenValid = () => {
+  //   if (!token) return false
+  //   return checkJWTExpTime(token)
+  // }
+
+  const isToken = access_token ? true : false
+  const isRefreshTokenValid = refresh_token && checkJWTExpTime(refresh_token) ? true : false
+  const isAllowed = isToken && !needRelogin && isRefreshTokenValid
 
   // console.log('background -->', background)
   // console.log('location -->', location)
@@ -121,7 +129,7 @@ export const AppRoutes = () => {
         <Route path={ROUTES.signup} element={<SignupModal />} />
         <Route path={ROUTES.newAd} element={<AdModal />} />
         <Route path={ROUTES.reviews} element={<ReviewModal />} /> */}
-        <Route element={<ProtectedRoute isAllowed={isTokenValid()} />}>
+        <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
           <Route path={ROUTES.profile} element={<Profile />} />
         </Route>
 
@@ -134,7 +142,7 @@ export const AppRoutes = () => {
             <Route path={ROUTES.login} element={<LoginModal />} />
             <Route path={ROUTES.signup} element={<SignupModal />} />
             <Route path={ formatString(ROUTES.reviews, [':id'])} element={<ReviewModal />} />
-            <Route element={<ProtectedRoute isAllowed={isTokenValid()} />}>
+            <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
               <Route path={ROUTES.newAd} element={<AdModal />} />
             </Route>
           </Routes>

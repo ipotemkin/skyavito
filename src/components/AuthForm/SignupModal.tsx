@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { useSignUpMutation } from '../../api/products.api'
+import { useSignUpMutation } from '../../api/auth.api'
 import { getErrorMessage } from '../../api/utils'
 import LogoIcon from '../../icons/Logo/LogoIcon'
 import { Page } from '../../pages/Page/Page'
