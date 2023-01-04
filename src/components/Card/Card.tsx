@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { API_URL } from '../../constants'
+import { useAppSelector } from '../../hooks/appHooks'
 
 import { ROUTES } from '../../routes'
+import { selectAccessToken } from '../../slices/tokenSlice'
 import { CardType } from '../../types'
-import { prettyDate } from '../../utils'
+import { getUserEmailFromJWT, prettyDate } from '../../utils'
 
 import styles from './style.module.css'
 
@@ -14,8 +16,12 @@ type Props = {
 
 export const Card = ({ card }: Props) => {
   const path = ROUTES.adPage + '/' + card.id
+  const token = useAppSelector(selectAccessToken)
+  const user_id = token ? getUserEmailFromJWT(token) : undefined
 
   const image = card.images && card.images[0] ? API_URL + card.images[0].url : undefined
+
+  
   // console.log(image)
 
   return (
