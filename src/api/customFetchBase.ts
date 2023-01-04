@@ -50,7 +50,7 @@ const customFetchBase: BaseQueryFn<
 
         // console.log('refreshing tokens')
         try {
-          const resp = await refreshTokens(api, { access_token, refresh_token })
+          await refreshTokens(api, { access_token, refresh_token })
 
           // alert(JSON.stringify(resp))
       
