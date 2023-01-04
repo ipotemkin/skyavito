@@ -10,7 +10,7 @@ import { LoginModal } from './components/AuthForm/LoginModal'
 import { SignupModal } from './components/AuthForm/SignupModal'
 import { ReviewModal } from './components/ReviewModal/ReviewModal'
 import { useAppSelector } from './hooks/appHooks'
-import { AdPage } from './pages/AdPage/AdPage'
+import { Ad } from './pages/AdPage/Ad'
 
 import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
@@ -119,7 +119,7 @@ export const AppRoutes = () => {
         <Route path={ROUTES.home} element={<Main />} />
         {/* <Route path={ROUTES.profile} element={<Profile />} /> */}
         <Route path={ROUTES.sellerProfile + '/:id' } element={<SellerProfile />} />
-        <Route path={ROUTES.adPage + '/:id'} element={<AdPage />} />
+        <Route path={ROUTES.adPage + '/:id'} element={<Ad />} />
         {/* <Route path={ROUTES.adMyPage + '/:id'} element={<AdMyPage />} /> */}
         <Route path={'*'} element={<Main />} />
         {/* <Route path={'*'} element={<h2>Page not found</h2>} /> */}
