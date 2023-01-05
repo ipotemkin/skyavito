@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { useSearch } from '../../hooks/useSearch'
-import TrianglesIcon from '../../icons/Triangles/TrianglesIcon'
 import { Button } from '../Button/Button'
+import { Logo } from '../Logo/Logo'
 
 import styles from './style.module.css'
 
@@ -13,7 +13,7 @@ export const Search = () => {
   
   return (
     <div className={styles.search}>
-      <TrianglesIcon />
+      <Logo />
       <form className={styles.form} onSubmit={handleSubmit}>
         <input className={styles.text}
           type="text"

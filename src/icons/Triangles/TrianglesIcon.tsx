@@ -6,7 +6,7 @@ type Props  = {
   type?: 'triangles' | 'secondary'
 } & SVGProps<SVGSVGElement>
 
-const TrianglesIcon: React.FC<Props> = ({ type = 'triangles', ...props }) => (
+const TrianglesIcon: React.FC<Props> = ({ type = 'triangles', ...props }) =>  (
   <svg
     className={ styles[type] }
     role="img"

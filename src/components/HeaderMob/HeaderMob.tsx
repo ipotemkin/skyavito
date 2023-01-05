@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { useSearch } from '../../hooks/useSearch'
 
-import { LogoMob } from '../LogoMob/LogoMob'
+import { LogoMob } from '../Logo/LogoMob'
 
 import styles from './style.module.css'
 
