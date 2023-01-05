@@ -2,7 +2,7 @@ import { skipToken } from '@reduxjs/toolkit/dist/query'
 import React from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
-import { useDelAdMutation, useGetProductCommentsQuery, useGetProductQuery } from '../../api/products.api'
+import { useDelAdMutation, useGetAdReviewsQuery, useGetAdQuery } from '../../api/products.api'
 import { Avatar } from '../../components/Avatar/Avatar'
 import { Button } from '../../components/Button/Button'
 import { Slider } from '../../components/Slider/Slider'
@@ -25,8 +25,8 @@ export const Ad = () => {
   
   // загружаем объявление и комментарии
   const productId = Number(useParams()?.id)
-  const { data: product, isLoading, isError } = useGetProductQuery(productId ?? skipToken)
-  const { data: reviews } = useGetProductCommentsQuery(productId ?? skipToken)
+  const { data: product, isLoading, isError } = useGetAdQuery(productId ?? skipToken)
+  const { data: reviews } = useGetAdReviewsQuery(productId ?? skipToken)
 
   // проверяем, является ли текущий пользователь владельцем объявления
   const token = useAppSelector(selectAccessToken)

@@ -1,7 +1,7 @@
 import React from 'react'
-import { useGetProductCommentsQuery } from '../../api/products.api'
-import { Review as ReviewType } from '../../types'
 
+import { useGetAdReviewsQuery } from '../../api/products.api'
+import { Review as ReviewType } from '../../types'
 import { Review } from '../Review/Review'
 
 import styles from './style.module.css'
@@ -12,10 +12,7 @@ type Props = {
 }
 
 export const ReviewList = ({ adId }: Props) => {
-  // const reviews = [1, 2]
-  // const reviews = [1, 2, 3, 4, 5]
-
-  const { data: reviews, isLoading } = useGetProductCommentsQuery(adId)
+  const { data: reviews, isLoading } = useGetAdReviewsQuery(adId)
 
   if (isLoading)
     return <>Загружаем...</>

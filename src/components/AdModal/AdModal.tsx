@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useAdImageToAdMutation, useCreateAdTextMutation } from '../../api/products.api'
+import { useAddImageToAdMutation, useCreateAdTextMutation } from '../../api/products.api'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
 import { CreateAd, CreateAdForm, Image } from '../../types'
@@ -39,7 +39,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
   const navigate = useNavigate()
   const [form, setForm] = useState<CreateAdForm>(initialValue)
   const [createAdText] = useCreateAdTextMutation()
-  const [adImageToAd] = useAdImageToAdMutation()
+  const [addImageToAd] = useAddImageToAdMutation()
   const [imageFiles, setImageFiles] = useState<Image[]>(getImageLst(5))
 
   let title = 'Редактировать объявление'
@@ -107,7 +107,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
           if (imageFile.file && resp.id) {
             const formData = new FormData()
             formData.append('file', imageFile.file)
-            await adImageToAd({ idx: resp.id, body: formData }).unwrap()
+            await addImageToAd({ idx: resp.id, body: formData }).unwrap()
           }
         } catch (error) {
           console.log('error -->', error)

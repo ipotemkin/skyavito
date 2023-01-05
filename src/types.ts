@@ -48,7 +48,7 @@ export type CreateAdArgs = {
   body: { files: FormData[] }
 }
 
-export type AdImageToAdArgs = {
+export type AddImageToAdArgs = {
   idx: number
   body: FormData
 }

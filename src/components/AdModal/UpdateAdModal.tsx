@@ -1,11 +1,10 @@
-import { skipToken } from '@reduxjs/toolkit/dist/query'
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useAdImageToAdMutation, useUpdateAdMutation, useGetProductQuery, useDeleteAdImageMutation } from '../../api/products.api'
+import { useAddImageToAdMutation, useUpdateAdMutation, useGetAdQuery, useDeleteAdImageMutation } from '../../api/products.api'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
-import { CreateAd, CreateAdForm, DeleteAdImageArgs, Image, UpdateAd, UpdateAdArgs, UpdateAdForm } from '../../types'
+import { DeleteAdImageArgs, Image, UpdateAd, UpdateAdArgs, UpdateAdForm } from '../../types'
 import { getImageLst } from '../../utils'
 import { Button } from '../Button/Button'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
@@ -37,7 +36,7 @@ const initialValue: UpdateAdForm = {
 
 export const UpdateAdModal = () => {
   const adId = Number(useParams().id)
-  const { data: ad } = useGetProductQuery(adId)
+  const { data: ad } = useGetAdQuery(adId)
 
   const [isBlocked, setIsBlocked] = useState(false)
 
@@ -45,7 +44,7 @@ export const UpdateAdModal = () => {
   const [form, setForm] = useState<UpdateAdForm>(initialValue)
   
   const [updateAd] = useUpdateAdMutation()
-  const [adImageToAd] = useAdImageToAdMutation()
+  const [addImageToAd] = useAddImageToAdMutation()
   const [deleteAdImage] = useDeleteAdImageMutation()
   
   const [imageFiles, setImageFiles] = useState<Image[]>(getImageLst(5))
@@ -89,7 +88,7 @@ export const UpdateAdModal = () => {
     // =======================
 
     console.group('UpdateAdModal:handleSubmit:')
-    console.log('form.images -->', form.iamges)
+    // console.log('form.images -->', form.iamges)
 
     let imageUrlsToDelete: string[] = []
     if (form.images) {
@@ -100,8 +99,8 @@ export const UpdateAdModal = () => {
     
     const imagesToSave = getImagesToSave(imageFiles)
 
-    console.log('imageUrlsToDelete -->', imageUrlsToDelete)
-    console.log('imagesToSave -->', imagesToSave)
+    // console.log('imageUrlsToDelete -->', imageUrlsToDelete)
+    // console.log('imagesToSave -->', imagesToSave)
 
     // =======================
 
@@ -126,7 +125,7 @@ export const UpdateAdModal = () => {
           if (imageFile.file) {
             const formData = new FormData()
             formData.append('file', imageFile.file)
-            await adImageToAd({ idx: adId, body: formData }).unwrap()
+            await addImageToAd({ idx: adId, body: formData }).unwrap()
           }
         } catch (error) {
           console.error(error)
@@ -149,7 +148,7 @@ export const UpdateAdModal = () => {
       }     
 
     } catch (error) {
-      console.log('error -->', error)
+      console.error(error)
     }
 
     console.groupEnd()

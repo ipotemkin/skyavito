@@ -1,12 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 
 import {
-  AdImageToAdArgs, CardType, CreateAd, CreateAdArgs,
-  CreateReviewArgs,
+  AddImageToAdArgs, CardType, CreateAd, CreateAdArgs, UpdateAdArgs,
+  CreateReviewArgs, Review,
   DeleteAdImageArgs,
-  Review,
-  UpdateAdArgs,
-  UpdateUser, User, UserIdAndPage,
+  UpdateUser, User
  } from '../types'
 import customFetchBase from './customFetchBase';
 
@@ -16,25 +14,22 @@ export const productsApi = createApi({
   baseQuery: customFetchBase,
   endpoints: (build) => ({
     // adverisments ==========================================================
-    getProducts: build.query<CardType[], void>({
-      query: () => 'ads',
-      providesTags: ['adsData']
+    createAd: build.mutation<CardType, CreateAdArgs>({
+      query: ({ body, params }) => ({
+        url: `ads`,
+        method: 'POST',
+        body,
+        params,
+      }),
+      invalidatesTags: ['adsData'],
     }),
-    getMyAds: build.query<CardType[], number>({
-      query: () => 'ads/me',
-      providesTags: ['adsData']
-    }),
-    getAdsByUserId: build.query<CardType[], number>({
-      query: (id: number) => `ads?user_id=${id}`,
-      providesTags: ['adsData']
-    }),
-    getAdsByUserIdaAndPage: build.query<CardType[], UserIdAndPage>({
-      query: ({id, page}) => `ads?user_id=${id}&page=${page}`,
-      providesTags: ['adsData']
-    }),
-    getProduct: build.query<CardType, number>({
-      query: (idx: number) => `ads/${idx}`,
-      providesTags: ['adsData']
+    createAdText: build.mutation<CardType, CreateAd>({
+      query: (newAd: CreateAd) => ({
+        url: `adstext`,
+        method: 'POST',
+        body: newAd
+      }),
+      invalidatesTags: ['adsData'],
     }),
     delAd: build.mutation<void, number>({
       query: (idx: number) => ({
@@ -43,12 +38,32 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['adsData']
     }),
+    getAd: build.query<CardType, number>({
+      query: (idx: number) => `ads/${idx}`,
+      providesTags: ['adsData']
+    }),
+    getAds: build.query<CardType[], void>({
+      query: () => 'ads',
+      providesTags: ['adsData']
+    }),
+    getAdsByUserId: build.query<CardType[], number>({
+      query: (id: number) => `ads?user_id=${id}`,
+      providesTags: ['adsData']
+    }),
+    getMyAds: build.query<CardType[], number>({
+      query: () => 'ads/me',
+      providesTags: ['adsData']
+    }),
+    updateAd: build.mutation<CardType, UpdateAdArgs>({
+      query: ({ id, body }) => ({
+        url: `ads/${id}`,
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: ['adsData'],
+    }),
 
     // comments/reviews ======================================================
-    getProductComments: build.query<Review[], number>({
-      query: (idx: number) => `ads/${idx}/comments`,
-      providesTags: ['commentsData']
-    }),
     createReview: build.mutation<Review, CreateReviewArgs>({
       query: ({id, body }) => ({
         url: `ads/${id}/comments`,
@@ -56,6 +71,10 @@ export const productsApi = createApi({
         body,
       }),
       invalidatesTags: ['commentsData']
+    }),
+    getAdReviews: build.query<Review[], number>({
+      query: (idx: number) => `ads/${idx}/comments`,
+      providesTags: ['commentsData']
     }),
 
     // user ==================================================================
@@ -80,34 +99,8 @@ export const productsApi = createApi({
       invalidatesTags: ['userData'],
     }),
     
-    createAdText: build.mutation<CardType, CreateAd>({
-      query: (newAd: CreateAd) => ({
-        url: `adstext`,
-        method: 'POST',
-        body: newAd
-      }),
-      invalidatesTags: ['adsData'],
-    }),
-    createAd: build.mutation<CardType, CreateAdArgs>({
-      query: ({ body, params }) => ({
-        url: `ads`,
-        method: 'POST',
-        body,
-        params,
-      }),
-      invalidatesTags: ['adsData'],
-    }),
-    updateAd: build.mutation<CardType, UpdateAdArgs>({
-      query: ({ id, body }) => ({
-        url: `ads/${id}`,
-        method: 'PATCH',
-        body,
-      }),
-      invalidatesTags: ['adsData'],
-    }),
-
     // images ================================================================
-    adImageToAd: build.mutation<CardType, AdImageToAdArgs>({
+    addImageToAd: build.mutation<CardType, AddImageToAdArgs>({
       query: ({idx, body}) => ({
         url: `ads/${idx}/image`,
         method: 'POST',
@@ -127,20 +120,10 @@ export const productsApi = createApi({
 })
 
 export const {
-  useGetProductsQuery,
-  useGetProductQuery,
-  useDelAdMutation,
-  useGetProductCommentsQuery,
-  useGetUserQuery,
-  useUpdateUserMutation,
-  useGetMyAdsQuery,
-  useUpdateUserAvatarMutation,
-  useCreateAdMutation,
+  useCreateAdMutation, useCreateAdTextMutation, useDelAdMutation,
+  useGetAdQuery, useGetAdsQuery, useGetAdsByUserIdQuery, useGetMyAdsQuery,
   useUpdateAdMutation,
-  useCreateAdTextMutation,
-  useAdImageToAdMutation,
-  useDeleteAdImageMutation,
-  useGetAdsByUserIdQuery,
-  useGetAdsByUserIdaAndPageQuery,
-  useCreateReviewMutation,
+  useCreateReviewMutation, useGetAdReviewsQuery,
+  useGetUserQuery, useUpdateUserMutation, useUpdateUserAvatarMutation,
+  useAddImageToAdMutation, useDeleteAdImageMutation,
 } = productsApi
