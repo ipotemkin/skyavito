@@ -2,6 +2,7 @@ import cn from 'classnames'
 import React from 'react'
 
 import { User } from '../../types'
+import { formatSellsFrom } from '../../utils'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 
@@ -22,7 +23,7 @@ export const SellerProfileBlock = ({ seller }: Props) => {
       <div className={styles.right}>
         <h3 className={styles.title}>{seller.name || seller.email}</h3>
         <p className={styles.city}>{seller.city}</p>
-        <p className={styles.inf}>Продает товары с {seller.sells_from}</p>
+        <p className={styles.inf}>Продает товары с {formatSellsFrom(seller.sells_from || '')}</p>
         
         <div className={styles.mob}>
           <Avatar image={seller.avatar} />

@@ -11,7 +11,7 @@ import { useAppSelector } from '../../hooks/appHooks'
 import { ROUTES } from '../../routes'
 import { selectAccessToken } from '../../slices/tokenSlice'
 import { Image } from '../../types'
-import { formatString, getUserEmailFromJWT, prettyDate } from '../../utils'
+import { formatSellsFrom, formatString, getUserEmailFromJWT, prettyDate } from '../../utils'
 import { Page } from '../Page/Page'
 
 import styles from './style.module.css'
@@ -115,7 +115,7 @@ export const Ad = () => {
                 <Link to={ROUTES.sellerProfile + '/' + product?.user?.id}>
                   <p className={styles.authorName}>{product?.user?.name || product?.user?.email}</p>
                 </Link>
-                <p className={styles.authorAbout}>Продает товары с&nbsp;{product?.user?.sells_from}</p>
+                <p className={styles.authorAbout}>Продает товары с&nbsp;{product?.user?.sells_from && formatSellsFrom(product?.user?.sells_from)}</p>
               </div>
             </div>
           </div>

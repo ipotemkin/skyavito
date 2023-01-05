@@ -64,7 +64,38 @@ export const checkJWTExpTime = (token: string) => {
   return new Date() < getJWTExpTime(token)
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getQueryErrorStatus = (error: any) => {
   if (error && 'status' in error) return error.status
   return undefined
+}
+
+type MonthsType = {
+  [index: string]: string
+}
+
+const months: MonthsType = {
+  '01': 'января',
+  '02': 'февраля',
+  '03': 'марта',
+  '04': 'апреля',
+  '05': 'мая',
+  '06': 'июня',
+  '07': 'июля',
+  '08': 'августа',
+  '09': 'сентября',
+  '10': 'октября',
+  '11': 'ноября',
+  '12': 'декабря',
+}
+
+export const formatSellsFrom = (date: string) => {
+ const date_split = date.split('-')
+ const year = date_split[0]
+ 
+ if (date_split.length < 2) return year
+ 
+ const month = date_split[1]
+ const msg = months[month] + ' ' + year
+ return msg
 }
