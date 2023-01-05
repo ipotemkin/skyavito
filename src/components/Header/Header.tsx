@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import { useAppSelector } from '../../hooks/appHooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/appHooks'
 import { ROUTES } from '../../routes'
-import { selectAccessToken } from '../../slices/tokenSlice'
+import { deleteTokens, selectAccessToken } from '../../slices/tokenSlice'
 import { Button } from '../Button/Button'
 
 import styles from './style.module.css'
@@ -11,6 +11,13 @@ import styles from './style.module.css'
 export const Header = () => {
   const token = useAppSelector(selectAccessToken)
   const location = useLocation()
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    setTimeout(() => dispatch(deleteTokens()), 100)
+    navigate(ROUTES.home)
+  }
 
   return (
     <nav className={styles.header}>
@@ -34,6 +41,9 @@ export const Header = () => {
               Вход&nbsp;в&nbsp;личный&nbsp;кабинет
             </Button>
         </Link>}
+
+        {token && <Button type="secondary" onClick={handleLogout}>Logout</Button>}
+
       </div>
     </nav>
   )
