@@ -15,12 +15,16 @@ type Props = {
 
 export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
   const [imgUrl, setImgUrl] = useState('')
-  const { setImageUrl } = useInputFileBarContext()
+  const { setImageUrl, delImageUrl } = useInputFileBarContext()
+  const flag = true
   // const [urlIn, setUrlIn] = useState('')
 
+  console.log('InputFile:id -->', id)
+  console.log('InputFile:imgUrl -->', imgUrl)
+  
   useEffect(() => {
     if (url) setImgUrl(url)
-  }, [url])
+  }, [url, flag])
 
   // useEffect(() => {
   //   console.log('InputFile:useEffect:url -->', url)
@@ -37,10 +41,10 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
     e.preventDefault()
     e.stopPropagation()
 
-    if (imgUrl) {
-      e.preventDefault()
-      return
-    }
+    // if (imgUrl) {
+    //   e.preventDefault()
+    //   return
+    // }
 
     const { files } = e.target
     const fileName = files && files[0].name ? files[0].name : ''
@@ -49,6 +53,7 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
     const reader = new FileReader()
     
     reader.onload = () =>  {
+      console.log('onload:id -->', id)
       setImageUrl(reader.result as string, id, file)
       setImgUrl(reader.result as string)
     }
@@ -62,7 +67,10 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
       // чтобы не вызывался диалог выбора файла
       e.stopPropagation()
       e.preventDefault()
+      setImgUrl('')
+      delImageUrl(id)
     }
+    // setImgUrl('')
   }
 
   return (
@@ -86,7 +94,7 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
         accept="image/*"
         // multiple
         onChange={handleChange}
-        onClick={handleDeleteOnClick}
+        // onClick={handleDeleteOnClick}
         disabled={disabled}
       />
     </div>

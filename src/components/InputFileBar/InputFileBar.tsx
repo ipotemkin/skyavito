@@ -1,8 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { API_URL } from '../../constants'
+// import { randomUUID } from 'crypto'
 
+import { API_URL } from '../../constants'
 import { Image } from '../../types'
-import { getImageLst } from '../../utils'
+import { getImageLst, getMaxIndex } from '../../utils'
 import { InputFile } from '../InputFile/InputFile'
 import { InputFileBarContext } from './inputFileBarContext'
 
@@ -24,6 +25,19 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
       return temp
     })
   }
+  
+  const delImageUrl = (imgId: number) => setImageLst(prev => {
+    const newImageList = prev.filter(img => img.id !== imgId)
+    const maxInd = getMaxIndex(newImageList)
+    newImageList.push({ id: maxInd + 1, url: '', file: null})
+    console.log('newImageList -->', newImageList)
+    let counter = 0
+    newImageList.forEach(image => {
+      image.id = counter
+      counter++
+    })
+    return newImageList
+  })
 
   useLayoutEffect(() => {
     console.log('images -->', images)
@@ -53,7 +67,7 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
   }
 
   return (
-    <InputFileBarContext.Provider value={{ setImageUrl }}>
+    <InputFileBarContext.Provider value={{ setImageUrl, delImageUrl }}>
       <div className={styles.inputFileBar}>
         {imageLst.map((image, index) => {
           let disabled = true
@@ -63,7 +77,7 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
             imageLst[index - 1].url && (index === imageLst.length - 1 || !imageLst[index + 1].url)
           ) disabled = false
 
-          return <InputFile key={image.id} disabled={disabled} id={image.id} url={makeUrlPath(image.url)}/>
+          return <InputFile key={Math.random()} disabled={disabled} id={image.id} url={makeUrlPath(image.url)}/>
         })}
       </div>
     </InputFileBarContext.Provider>

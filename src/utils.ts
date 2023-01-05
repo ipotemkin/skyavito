@@ -31,6 +31,14 @@ export const getImageLst = (count = 5): Image[] => {
   return res
 }
 
+export const getMaxIndex = (images: Image[]) => {
+  let maxInd = 0
+  images.forEach(image => {
+    maxInd = image.id > maxInd ? image.id : maxInd
+  })
+  return maxInd
+}
+
 export const parseJWT = (token: string) => {
   const base64Url = token.split('.')[1]
   const base64 = decodeURIComponent(atob(base64Url).split('').map((c) => {

@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 import { createContext, useContext } from 'react'
 
 export const InputFileBarContext = createContext({
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-    setImageUrl: (imgUrl = '', imgId = 0, file: File | null) => {},
-  })
+  setImageUrl: (imgUrl = '', imgId = 0, file: File | null) => {},
+  delImageUrl: (imgUrl: number) => {},
+})
 
 export const useInputFileBarContext = () => useContext(InputFileBarContext)
