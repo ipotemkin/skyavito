@@ -5,7 +5,7 @@ import PlusIcon from '../../icons/Plus/PlusIcon'
 
 import styles from './style.module.css'
 import { useInputFileBarContext } from '../InputFileBar/inputFileBarContext'
-import { API_URL } from '../../constants'
+import DeleteIcon from '../../icons/Delete/DeleteIcon'
 
 type Props = {
   id: number
@@ -34,6 +34,14 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
   // console.log('InputFile:imgUrl -->', imgUrl)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (imgUrl) {
+      e.preventDefault()
+      return
+    }
+
     const { files } = e.target
     const fileName = files && files[0].name ? files[0].name : ''
     const file = files && files[0]
@@ -47,12 +55,26 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
 
     reader.readAsDataURL(file as Blob);
   }
-  
+
+  const handleDeleteOnClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    console.log('handleDeleteOnClick')
+    if (disabled || imgUrl) {
+      // чтобы не вызывался диалог выбора файла
+      e.stopPropagation()
+      e.preventDefault()
+    }
+  }
+
   return (
     <div className={cn(styles.container, disabled ? styles.disabled : '')}>
       <label htmlFor={String(id)}>
         <div className={cn(styles.img, disabled ? styles.disabled : '')}>
-          {imgUrl &&<img src={imgUrl} alt="" className={styles.img}/>}
+          {imgUrl && <>
+            <img src={imgUrl} alt="" className={styles.img}/>
+            <div className={cn(styles.deleteIcon)} onClick={handleDeleteOnClick}>
+              <DeleteIcon />
+            </div>
+          </>}
           {!imgUrl && <PlusIcon />}
         </div>
       </label>
@@ -64,6 +86,7 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
         accept="image/*"
         // multiple
         onChange={handleChange}
+        onClick={handleDeleteOnClick}
         disabled={disabled}
       />
     </div>

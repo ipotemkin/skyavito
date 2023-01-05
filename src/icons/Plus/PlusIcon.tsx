@@ -8,6 +8,7 @@ type Props  = {
 
 const PlusIcon: React.FC<Props> = ({ type = 'cross', ...props }) => (
   <svg
+    id="cross"
     className={ styles[type] }
     role="img"
     focusable = "false"
