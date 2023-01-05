@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import { useCreateReviewMutation, useGetUserQuery } from '../../api/products.api'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
 import { Button } from '../Button/Button'
@@ -10,10 +11,12 @@ import { ReviewList } from '../ReviewList/ReviewList'
 import styles from './style.module.css'
 
 export const ReviewModal = () => {
-  const { id } = useParams()
+  const id = Number(useParams().id)
   const navigate = useNavigate()
   const [review, setReview] = useState('')
-  const user = undefined
+  const { data: user } = useGetUserQuery(0)
+  const [createReview] = useCreateReviewMutation()
+  const [isBlocked, setIsBlocked] = useState(false)
 
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -23,6 +26,18 @@ export const ReviewModal = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setReview(e.target.value)
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsBlocked(true)
+    try {
+      await createReview({ id, body: { text: review }}).unwrap()
+      setReview('')
+    } catch (error) {
+      console.error(error)
+    }
+    setIsBlocked(false)
   }
   
   return (
@@ -34,7 +49,7 @@ export const ReviewModal = () => {
             <CrossIcon width={30} height={30}/>
           </div>
 
-            {user && <form className={styles.form}>
+            {user && <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formBlock}>
                 <label htmlFor="text">Добавить отзыв</label>                            
                 <textarea className={styles.area}
@@ -45,11 +60,16 @@ export const ReviewModal = () => {
                 />
               </div>
               <div className={styles.formBlock}></div>
-              <Button size="ml" disabled={review.length ? false : true}>Опубликовать</Button>            
+              <Button
+                size="ml"
+                disabled={review.length && !isBlocked ? false : true}
+              >
+                Опубликовать
+              </Button>            
             </form>}
 
           <div className={styles.reviewsContainer}>
-            <ReviewList adId={Number(id)}/>
+            <ReviewList adId={id}/>
           </div>
         </div>
       </Page>

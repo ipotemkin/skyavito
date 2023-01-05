@@ -104,13 +104,6 @@ export type ImgBarType = {
   imageUrls: string[]
 }
 
-export type Review = {
-  id: number
-  text: string
-  created_on: string
-  author: User
-}
-
 export type Credentials = {
   email: string
   password: string
@@ -130,4 +123,20 @@ export type RefreshTokensRequest = {
 export type UserIdAndPage = {
   id: number
   page: number
+}
+
+export type Review = {
+  id: number
+  text: string
+  created_on: string
+  author: User
+}
+
+export type CreateReview = {
+  text: string
+}
+
+export type CreateReviewArgs = {
+  id: number
+  body: CreateReview
 }
