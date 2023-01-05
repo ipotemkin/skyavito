@@ -1,5 +1,4 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
-// import { randomUUID } from 'crypto'
 
 import { API_URL } from '../../constants'
 import { Image } from '../../types'
@@ -21,7 +20,13 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
   const setImageUrl = (imgUrl = '', imgId = 0, file: Blob | null) => {
     setImageLst(prev => {
       const temp = [...prev]
-      temp[imgId] = { ...temp[imgId], url: imgUrl, file }
+      temp.forEach(image => {
+        if (image.id === imgId) {
+          image.url = imgUrl
+          image.file = file
+        }
+      })
+      // temp[imgId] = { ...temp[imgId], url: imgUrl, file }
       return temp
     })
   }
@@ -31,11 +36,11 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
     const maxInd = getMaxIndex(newImageList)
     newImageList.push({ id: maxInd + 1, url: '', file: null})
     console.log('newImageList -->', newImageList)
-    let counter = 0
-    newImageList.forEach(image => {
-      image.id = counter
-      counter++
-    })
+    // let counter = 0
+    // newImageList.forEach(image => {
+    //   image.id = counter
+    //   counter++
+    // })
     return newImageList
   })
 
@@ -44,10 +49,7 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
 
     if (images.length) {
       let imgId = 0
-      images.forEach((image: Image) => {
-        setImageUrl(image.url, imgId, null)
-        imgId++
-      })
+      images.forEach((image: Image) => setImageUrl(image.url, imgId++, null))
       console.log(imageLst)
     }  
   }, [])
@@ -77,7 +79,7 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
             imageLst[index - 1].url && (index === imageLst.length - 1 || !imageLst[index + 1].url)
           ) disabled = false
 
-          return <InputFile key={Math.random()} disabled={disabled} id={image.id} url={makeUrlPath(image.url)}/>
+          return <InputFile key={image.id} disabled={disabled} id={image.id} url={makeUrlPath(image.url)}/>
         })}
       </div>
     </InputFileBarContext.Provider>
