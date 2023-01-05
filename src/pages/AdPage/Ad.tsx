@@ -1,8 +1,8 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import React from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
-import { useGetProductCommentsQuery, useGetProductQuery } from '../../api/products.api'
+import { useDelAdMutation, useGetProductCommentsQuery, useGetProductQuery } from '../../api/products.api'
 import { Avatar } from '../../components/Avatar/Avatar'
 import { Button } from '../../components/Button/Button'
 import { Slider } from '../../components/Slider/Slider'
@@ -49,6 +49,18 @@ export const Ad = () => {
     ? <span>отзывов: {reviews.length}</span>
     : userEmail && <span>добавьте свой отзыв</span>
 
+  
+  const navigate = useNavigate()
+  const [deleteAd] = useDelAdMutation()
+  const handleDeleteAd = async () => {
+    try {
+      await deleteAd(productId).unwrap()
+      navigate(-1)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   if (isLoading) return (
     <Page>
       <div className={styles.content}>Загрузка...</div>
@@ -79,7 +91,7 @@ export const Ad = () => {
                   <Link to={ROUTES.editAd + `/${product?.id}`} state={{ background: location }}>
                     <Button height={50}>Редактировать</Button>
                   </Link>
-                  <Button height={50}>Снять&nbsp;с&nbsp;публикации</Button>
+                  <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>
                 </>
                 : <Button>
                   Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span>          

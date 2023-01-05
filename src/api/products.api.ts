@@ -59,6 +59,15 @@ export const productsApi = createApi({
       //   return response
       // },
     }),
+
+    delAd: build.mutation<void, number>({
+      query: (idx: number) => ({
+        url: `ads/${idx}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['adsData']
+    }),
+
     getProductComments: build.query<Review[], number>({
       query: (idx: number) => `ads/${idx}/comments`,
     }),
@@ -161,9 +170,8 @@ export const productsApi = createApi({
 export const {
   useGetProductsQuery,
   useGetProductQuery,
+  useDelAdMutation,
   useGetProductCommentsQuery,
-  // useLoginMutation,
-  // useSignUpMutation,
   useGetUserQuery,
   useUpdateUserMutation,
   useGetMyAdsQuery,
