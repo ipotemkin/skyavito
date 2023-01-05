@@ -17,38 +17,25 @@ const initialState: UpdateUser = {
 }
 
 export const EditProfile = () => {
-  // const [name, setName] = useState('')
   const { data: user, isLoading, error } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
   const [formUser, setFormUser] = useState<UpdateUser>(initialState)
   const [updateUser] = useUpdateUserMutation()
   const [updateAvatar] = useUpdateUserAvatarMutation()
 
-  // useEffect(() => {
-  //   refetch()
-  // }, [])
-
   useEffect(() => {
     if (user) {
       const { name, surname, city, phone } = user
-      setFormUser({
-        name,
-        surname,
-        city,
-        phone
-      })
+      setFormUser({ name, surname, city, phone })
     }
   }, [user])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
-    // setName(e.target.value)
-    setFormUser((prev: UpdateUser) => ({...prev, [field]: e.target.value}))
+    setFormUser((prev: UpdateUser) => ({ ...prev, [field]: e.target.value }))
   }
 
   const handleChangeAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target
-    // const fileName = files && files[0].name ? files[0].name : ''
     const file = files && files[0]
-    // console.log(fileName)
     const reader = new FileReader()
 
     reader.onload = async () =>  {
@@ -67,15 +54,11 @@ export const EditProfile = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // console.log('before preventDefault')
-    // console.log(e)
     e.preventDefault()
     try {
-      // console.log('before updateUser')
-      const resp = await updateUser(formUser).unwrap()
-      // console.log('resp -->', resp)
+      await updateUser(formUser).unwrap()
     } catch(error) {
-      console.log(error)
+      console.error(error)
     } 
   }
 
@@ -87,7 +70,6 @@ export const EditProfile = () => {
   return (
     <div className={styles.editProfile}>
       <PageSubTitle>Настройки профиля</PageSubTitle>
-      {/* <h3 className={styles.profile__title}>Настройки профиля</h3> */}
       <div className={styles.profile__settings}>
         
         <div className={styles.settings__left}>

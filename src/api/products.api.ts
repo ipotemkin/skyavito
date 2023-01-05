@@ -1,19 +1,11 @@
-import {
-  createApi,
-  // fetchBaseQuery,
-} from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
 
-// import { API_URL } from '../constants'
-// import { RootState } from '../store';
 import {
   AdImageToAdArgs, CardType, CreateAd, CreateAdArgs,
   CreateReviewArgs,
   DeleteAdImageArgs,
-  // CreateUser, Credentials, RefreshTokensRequest,
   Review,
-  // UpdateAd,
   UpdateAdArgs,
-  // Tokens,
   UpdateUser, User, UserIdAndPage,
  } from '../types'
 import customFetchBase from './customFetchBase';
@@ -28,7 +20,7 @@ export const productsApi = createApi({
       query: () => 'ads',
       providesTags: ['adsData']
     }),
-    getMyAds: build.query<CardType[], void>({
+    getMyAds: build.query<CardType[], number>({
       query: () => 'ads/me',
       providesTags: ['adsData']
     }),
@@ -52,7 +44,7 @@ export const productsApi = createApi({
       invalidatesTags: ['adsData']
     }),
 
-    // comments ==============================================================
+    // comments/reviews ======================================================
     getProductComments: build.query<Review[], number>({
       query: (idx: number) => `ads/${idx}/comments`,
       providesTags: ['commentsData']

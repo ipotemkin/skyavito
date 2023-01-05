@@ -25,7 +25,7 @@ export const Ad = () => {
   
   // загружаем объявление и комментарии
   const productId = Number(useParams()?.id)
-  const { data: product, isLoading } = useGetProductQuery(productId ?? skipToken)
+  const { data: product, isLoading, isError } = useGetProductQuery(productId ?? skipToken)
   const { data: reviews } = useGetProductCommentsQuery(productId ?? skipToken)
 
   // проверяем, является ли текущий пользователь владельцем объявления
@@ -63,9 +63,18 @@ export const Ad = () => {
 
   if (isLoading) return (
     <Page>
-      <div className={styles.content}>Загрузка...</div>
+      <div className={styles.content}><h2>Загрузка...</h2></div>
     </Page>
   )
+
+  if (isError) {
+    setTimeout(() => navigate(-1), 800)
+    return (
+      <Page>
+        <div className={styles.content}><h2>Нет такого объявления</h2></div>
+      </Page>
+    )
+  }
 
   return (
     <Page>

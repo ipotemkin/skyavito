@@ -1,12 +1,11 @@
 import React from 'react'
-import { useGetMyAdsQuery } from '../../api/products.api'
 
-import { goods } from '../../fixtures/goods'
+import { useGetMyAdsQuery } from '../../api/products.api'
 import { Gallery } from '../Gallery/Gallery'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
 
 export const MyGoods = () => {
-  const { data, isLoading } = useGetMyAdsQuery()
+  const { data, isLoading } = useGetMyAdsQuery(0, { refetchOnMountOrArgChange: true })
 
   if (isLoading) return <h2>Загрузка...</h2>
 
