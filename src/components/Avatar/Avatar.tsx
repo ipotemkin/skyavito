@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import cn from 'classnames'
 
 import styles from './style.module.css'
@@ -9,14 +9,12 @@ type Props = {
   image?: string
 }
 
-export const Avatar: FC<Props> = ({ size = 'l', image }) => {
+export const Avatar = ({ size = 'l', image }: Props) => {
   const imageUrl = image ? API_URL + image : undefined
 
   return (
     <div className={cn(styles.avatar, styles[size])}>
-      {/* <a href="" target="_self"> */}
         <img src={imageUrl} alt=""/>
-      {/* </a> */}
     </div>
   )
 }
