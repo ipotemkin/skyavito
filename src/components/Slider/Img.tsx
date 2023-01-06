@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
-import { useSliderContext } from './sliderContext'
 import cn from 'classnames'
+import React from 'react'
+
+import { useSliderContext } from './sliderContext'
 
 import styles from './style.module.css'
 
@@ -9,14 +10,17 @@ type Props = {
   id: number
 }
 
-export const Img: FC<Props> = ({ image, id }) => {
+export const Img = ({ image, id }: Props) => {
   const { selImageId, setSelImageId } = useSliderContext()
+  
+  // чтобы не показывать картинку поврежденного изображения при его отсутствии
+  const imageUrl = image ? image : undefined
 
   const handleClick = () => setSelImageId(id)
   
   return (
     <div className={cn(styles.imgBarDiv, selImageId == id ? styles.selected : '')}>
-      <img src={image} alt="" onClick={handleClick}/>
+      <img src={imageUrl} alt="" onClick={handleClick}/>
     </div>
   )
 }

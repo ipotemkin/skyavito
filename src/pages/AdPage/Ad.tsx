@@ -19,7 +19,7 @@ import { Page } from '../Page/Page'
 import styles from './style.module.css'
 
 const convertImages = (imagesIn: Image[]) => {
-  return imagesIn.map((item: Image) => API_URL + item.url)
+  return imagesIn.map((item: Image) => item.url && API_URL + item.url)
 }
 
 export const Ad = () => {

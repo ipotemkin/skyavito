@@ -26,8 +26,8 @@ export const Slider: FC<Props> = ({ images = [] }) => {
     <SliderContext.Provider value={{ selImageId: selImage, setSelImageId }}>
       <div className={styles.fillImg}>
         <div className={styles.img}>                                        
-          <img src={images[selImage]} alt="Изображение продукта" />                             
-        </div>   
+          <img src={images[selImage]} alt="" />
+        </div>
         <ImgBar images={images} />
       </div>
     </SliderContext.Provider>
