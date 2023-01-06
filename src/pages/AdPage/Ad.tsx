@@ -1,5 +1,5 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { useDelAdMutation, useGetAdReviewsQuery, useGetAdQuery } from '../../api/products.api'
@@ -12,6 +12,7 @@ import { ROUTES } from '../../routes'
 import { selectAccessToken } from '../../slices/tokenSlice'
 import { Image } from '../../types'
 import { formatSellsFrom, formatString, getUserEmailFromJWT, prettyDate } from '../../utils'
+import { formatPhone, getPhoneMasked } from '../../validators'
 import { Page } from '../Page/Page'
 
 import styles from './style.module.css'
@@ -48,8 +49,15 @@ export const Ad = () => {
   const linkText = reviews && reviews.length > 0
     ? <span>отзывов: {reviews.length}</span>
     : userEmail && <span>добавьте свой отзыв</span>
-
   
+  // show phone number =======================================================
+  const [isPhoneMasked, setIsPhoneMasked] = useState(true)
+  const phoneDb = product?.user?.phone || ''
+  const phone = isPhoneMasked ? getPhoneMasked(phoneDb) : formatPhone(phoneDb)
+  const handlePhoneClick = () => setIsPhoneMasked(false)
+  // =========================================================================
+
+  // delete advertissment ====================================================
   const navigate = useNavigate()
   const [deleteAd] = useDelAdMutation()
   const handleDeleteAd = async () => {
@@ -60,6 +68,7 @@ export const Ad = () => {
       console.error(error)
     }
   }
+  // =========================================================================
 
   if (isLoading) return (
     <Page>
@@ -102,8 +111,13 @@ export const Ad = () => {
                   </Link>
                   <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>
                 </>
-                : <Button>
-                  Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span>          
+                : <Button onClick={handlePhoneClick}>
+                  {/* Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span> */}
+                  Показать&nbsp;телефон<br/>
+                  <span>
+                    {/* {product?.user?.phone && getPhoneMask(clearPhone(product?.user?.phone))} */}
+                    {phone}
+                  </span>
               </Button>}
             </div>
             
