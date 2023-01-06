@@ -88,7 +88,7 @@ export const productsApi = createApi({
         method: 'PATCH',
         body: arg,
       }),
-      invalidatesTags: ['userData'],
+      invalidatesTags: ['userData', 'adsData'],
     }),
     updateUserAvatar: build.mutation<User, FormData>({
       query: (arg: FormData) => ({
@@ -96,7 +96,7 @@ export const productsApi = createApi({
         method: 'POST',
         body: arg
       }),
-      invalidatesTags: ['userData'],
+      invalidatesTags: ['userData', 'adsData'],
     }),
     
     // images ================================================================

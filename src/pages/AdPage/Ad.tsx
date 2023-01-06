@@ -73,10 +73,13 @@ export const Ad = () => {
 
   if (isLoading) return <MsgPage message="Загрузка..." />
 
-  if (isError) {
+  if (isError || !product) {
     setTimeout(() => navigate(-1), 800)
     return <MsgPage message="Нет такого объявления" />
   }
+
+  const authorName = product.user?.name || product.user?.email
+  const sells_from = product.user?.sells_from
 
   return (
     <Page>
@@ -84,10 +87,10 @@ export const Ad = () => {
         <div className={styles.left}><Slider images={images} /></div>
         <div className={styles.right}>
           <div className={styles.block}>
-            <h3 className={styles.title}>{product?.title}</h3>
+            <h3 className={styles.title}>{product.title}</h3>
             <div className={styles.info}>
-              <p className={styles.date}>{prettyDate(String(product?.created_on)) }</p>
-              <p className={styles.city}>{ product?.user?.city }</p>
+              <p className={styles.date}>{prettyDate(String(product.created_on))}</p>
+              <p className={styles.city}>{product.user?.city}</p>
               {linkEnabled ? <Link
                   className={styles.link}
                   to={formatString(ROUTES.reviews, [`${productId}`])}
@@ -95,11 +98,11 @@ export const Ad = () => {
                 >{linkText}</Link>
               : <span className={styles.city}>отзывов пока нет</span>}
             </div>
-            <p className={styles.price}>{((product?.price || 0) ).toLocaleString()} ₽</p>
+            <p className={styles.price}>{((product.price || 0) ).toLocaleString()} ₽</p>
             <div className={styles.btnBlock}>
               {seller
                 ? <>
-                  <Link to={ROUTES.editAd + `/${product?.id}`} state={{ background: location }}>
+                  <Link to={ROUTES.editAd + `/${product.id}`} state={{ background: location }}>
                     <Button height={50}>Редактировать</Button>
                   </Link>
                   <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>
@@ -112,13 +115,15 @@ export const Ad = () => {
             
             <div className={styles.author}>
               <div style={{ width: 40, height: 40 }}>
-                <Avatar size="s" image={product?.user?.avatar} />                
+                <Avatar size="s" image={product.user?.avatar} />
               </div>
               <div className={styles.authorCont}>
-                <Link to={ROUTES.sellerProfile + '/' + product?.user?.id}>
-                  <p className={styles.authorName}>{product?.user?.name || product?.user?.email}</p>
+                <Link to={ROUTES.sellerProfile + '/' + product.user?.id}>
+                  <p className={styles.authorName}>{authorName}</p>
                 </Link>
-                <p className={styles.authorAbout}>Продает товары с&nbsp;{product?.user?.sells_from && formatSellsFrom(product?.user?.sells_from)}</p>
+                <p className={styles.authorAbout}>
+                  Продает товары с&nbsp;{sells_from && formatSellsFrom(sells_from)}
+                </p>
               </div>
             </div>
           </div>
@@ -128,7 +133,7 @@ export const Ad = () => {
       <div className={styles.mainContainer}>
         <h3 className={styles.mainTitle}>Описание товара</h3>
         <div className={styles.mainContent}>
-          <p className={styles.mainText}>{product?.description}</p>
+          <p className={styles.mainText}>{product.description}</p>
         </div>
       </div>
     </Page>
