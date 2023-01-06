@@ -114,9 +114,7 @@ export const Ad = () => {
             </div>
             
             <div className={styles.author}>
-              <div style={{ width: 40, height: 40 }}>
-                <Avatar size="s" image={product.user?.avatar} />
-              </div>
+              <Avatar size="s" image={product.user?.avatar} />
               <div className={styles.authorCont}>
                 <Link to={ROUTES.sellerProfile + '/' + product.user?.id}>
                   <p className={styles.authorName}>{authorName}</p>
