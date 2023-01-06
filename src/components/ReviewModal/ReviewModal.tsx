@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useCreateReviewMutation, useGetUserQuery } from '../../api/products.api'
+import { useCreateReviewMutation } from '../../api/products.api'
+import { useAppSelector } from '../../hooks/appHooks'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
+import { selectAccessToken } from '../../slices/tokenSlice'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import { ReviewList } from '../ReviewList/ReviewList'
@@ -14,13 +16,12 @@ export const ReviewModal = () => {
   const id = Number(useParams().id)
   const navigate = useNavigate()
   const [review, setReview] = useState('')
-  const { data: user } = useGetUserQuery(0)
+  const token = useAppSelector(selectAccessToken)
   const [createReview] = useCreateReviewMutation()
   const [isBlocked, setIsBlocked] = useState(false)
 
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault()
-    console.log('close btn')
     navigate(-1)
   }
 
@@ -49,7 +50,7 @@ export const ReviewModal = () => {
             <CrossIcon width={30} height={30}/>
           </div>
 
-            {user && <form className={styles.form} onSubmit={handleSubmit}>
+            {token && <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formBlock}>
                 <label htmlFor="text">Добавить отзыв</label>                            
                 <textarea className={styles.area}

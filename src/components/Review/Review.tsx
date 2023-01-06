@@ -18,10 +18,6 @@ export const Review = ({ review }: Props) => {
         <Avatar size="s" image={review.author.avatar}/>
       </div>
       <div className={styles.right}>
-        {/* <p className={cn(styles.name, styles.fontT)}>Олег <span>14 августа</span></p>
-        <h5 className={cn(styles.title, styles.fontT)}>Комментарий</h5>
-        <p className={cn(styles.text, styles.fontT)}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> */}
-
         <p className={cn(styles.name, styles.fontT)}>
           {review.author.name || review.author.email} <span>{prettyDate(review.created_on)}</span>
         </p>
