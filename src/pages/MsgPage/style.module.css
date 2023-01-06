@@ -1,0 +1,20 @@
+.content {
+  width: 100%;
+  margin: 0 auto;
+  
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: top;
+    -ms-flex-align: top;
+      align-items: top;
+  -webkit-box-pack: center;
+    -ms-flex-pack: center;
+      justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-wrap: wrap;
+  }
+}

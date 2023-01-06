@@ -2,7 +2,7 @@ import { skipToken } from '@reduxjs/toolkit/dist/query'
 import React, { useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
-import { useDelAdMutation, useGetAdReviewsQuery, useGetAdQuery } from '../../api/products.api'
+import { useDelAdMutation, useGetAdQuery, useGetAdReviewsQuery } from '../../api/products.api'
 import { Avatar } from '../../components/Avatar/Avatar'
 import { Button } from '../../components/Button/Button'
 import { Slider } from '../../components/Slider/Slider'
@@ -13,6 +13,7 @@ import { selectAccessToken } from '../../slices/tokenSlice'
 import { Image } from '../../types'
 import { formatSellsFrom, formatString, getUserEmailFromJWT, prettyDate } from '../../utils'
 import { formatPhone, getPhoneMasked } from '../../validators'
+import { MsgPage } from '../MsgPage/MsgPage'
 import { Page } from '../Page/Page'
 
 import styles from './style.module.css'
@@ -70,19 +71,11 @@ export const Ad = () => {
   }
   // =========================================================================
 
-  if (isLoading) return (
-    <Page>
-      <div className={styles.content}><h2>Загрузка...</h2></div>
-    </Page>
-  )
+  if (isLoading) return <MsgPage message="Загрузка..." />
 
   if (isError) {
     setTimeout(() => navigate(-1), 800)
-    return (
-      <Page>
-        <div className={styles.content}><h2>Нет такого объявления</h2></div>
-      </Page>
-    )
+    return <MsgPage message="Нет такого объявления" />
   }
 
   return (
@@ -112,12 +105,8 @@ export const Ad = () => {
                   <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>
                 </>
                 : <Button onClick={handlePhoneClick}>
-                  {/* Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span> */}
                   Показать&nbsp;телефон<br/>
-                  <span>
-                    {/* {product?.user?.phone && getPhoneMask(clearPhone(product?.user?.phone))} */}
-                    {phone}
-                  </span>
+                  <span>{phone}</span>
               </Button>}
             </div>
             
