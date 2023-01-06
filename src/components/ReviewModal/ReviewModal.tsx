@@ -1,44 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useCreateReviewMutation } from '../../api/products.api'
 import { useAppSelector } from '../../hooks/appHooks'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
 import { selectAccessToken } from '../../slices/tokenSlice'
-import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import { ReviewList } from '../ReviewList/ReviewList'
+import { CreateReview } from '../ReviewCreate/CreateReview'
 
 import styles from './style.module.css'
 
 export const ReviewModal = () => {
-  const id = Number(useParams().id)
+  const adId = Number(useParams().id)
   const navigate = useNavigate()
-  const [review, setReview] = useState('')
   const token = useAppSelector(selectAccessToken)
-  const [createReview] = useCreateReviewMutation()
-  const [isBlocked, setIsBlocked] = useState(false)
 
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault()
     navigate(-1)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setReview(e.target.value)
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsBlocked(true)
-    try {
-      await createReview({ id, body: { text: review }}).unwrap()
-      setReview('')
-    } catch (error) {
-      console.error(error)
-    }
-    setIsBlocked(false)
   }
   
   return (
@@ -50,27 +30,10 @@ export const ReviewModal = () => {
             <CrossIcon width={30} height={30}/>
           </div>
 
-            {token && <form className={styles.form} onSubmit={handleSubmit}>
-              <div className={styles.formBlock}>
-                <label htmlFor="text">Добавить отзыв</label>                            
-                <textarea className={styles.area}
-                  rows={10}
-                  placeholder="Введите отзыв"
-                  onChange={handleChange}
-                  value={review}
-                />
-              </div>
-              <div className={styles.formBlock}></div>
-              <Button
-                size="ml"
-                disabled={review.length && !isBlocked ? false : true}
-              >
-                Опубликовать
-              </Button>            
-            </form>}
+          {token && <CreateReview adId={adId} />}
 
           <div className={styles.reviewsContainer}>
-            <ReviewList adId={id}/>
+            <ReviewList adId={adId}/>
           </div>
         </div>
       </Page>
