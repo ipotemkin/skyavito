@@ -8,7 +8,6 @@ type ErrorData = {
 }
 
 export const getErrorMessage = (error: FetchBaseQueryError) => {
-  // console.log('getErrorMessage:error -->', error)
   
   if (!('data' in error))
     return 'Что-то пошло не так...'
