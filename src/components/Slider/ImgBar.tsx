@@ -34,6 +34,7 @@ export const ImgBar = ({ images }: Props) => {
       {imageLst.map(
         item => <Img
           key={item.id}
+          // key={Math.round(Math.random()*100)}
           id={item.id}
           image={item.imageUrl || ''}
         />)}
