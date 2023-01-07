@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { ROUTES } from '../../routes'
 import { Button } from '../Button/Button'
@@ -7,17 +7,13 @@ import { Logo } from '../Logo/Logo'
 
 import styles from './style.module.css'
 
-export const SubHeader = () => {
-  const navigate = useNavigate()
-
-  const handleClick = () => navigate(ROUTES.home)
-
-  return (
-    <div className={styles.sub_header}>
-      <Logo />
-      <Button width={246} onClick={handleClick}>
+export const SubHeader = () => (
+  <div className={styles.sub_header}>
+    <Logo />
+    <Link to={ROUTES.home}>
+      <Button width={246}>
         Вернуться&nbsp;на&nbsp;главную
       </Button>
-    </div>
-  )
-}
+    </Link>
+  </div>
+)
