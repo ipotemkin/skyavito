@@ -1,9 +1,9 @@
-import React, { FC, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
-import { Search } from '../../components/Search/Search'
 import { HeaderMob } from '../../components/HeaderMob/HeaderMob'
+import { Search } from '../../components/Search/Search'
 import { SubHeader } from '../../components/SubHeader/SubHeader'
 import { useAppSelector } from '../../hooks/appHooks'
 import { selectModal } from '../../slices/modalSlice'
@@ -16,7 +16,7 @@ type Props = {
   mobSearch?: boolean
 }
 
-export const Page: FC<Props> = ({ children, mode = 'search', mobSearch = false }) => {
+export const Page = ({ children, mode = 'search', mobSearch = false }: Props) => {
   const mod = useAppSelector(selectModal)
 
   return (
