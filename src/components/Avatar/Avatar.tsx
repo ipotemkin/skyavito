@@ -1,8 +1,8 @@
-import React from 'react'
 import cn from 'classnames'
+import React from 'react'
 
-import styles from './style.module.css'
 import { API_URL, NO_AVATAR_PIC } from '../../constants'
+import styles from './style.module.css'
 
 type Props = {
   size?: 's' | 'l'
@@ -14,7 +14,7 @@ export const Avatar = ({ size = 'l', image }: Props) => {
 
   return (
     <div className={cn(styles.avatar, styles[size])}>
-        <img src={imageUrl || NO_AVATAR_PIC} alt=""/>
+      <img src={imageUrl || NO_AVATAR_PIC} alt=""/>
     </div>
   )
 }
