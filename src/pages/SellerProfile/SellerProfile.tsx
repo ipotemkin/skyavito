@@ -2,8 +2,7 @@ import { skipToken } from '@reduxjs/toolkit/dist/query'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { 
-  // useGetAdsByUserIdaAndPageQuery,
+import {
   useGetAdsByUserIdQuery
 } from '../../api/products.api'
 import { PageTitle } from '../../components/PageTitle/PageTitle'
@@ -15,21 +14,15 @@ import { selectSearchValue } from '../../slices/searchSlice'
 import { User } from '../../types'
 import { Page } from '../Page/Page'
 
-// import styles from './style.module.css'
-
 export const SellerProfile = () => {
+  // TODO убрать searchValue внутрь хука useAdsFiltered
   const searchValue = useAppSelector(selectSearchValue)
+  const sellerId = Number(useParams().id)
 
-  const { id } = useParams()
-  const sellerId = Number(id)
-  
-  // добавить ручку для получения данных о пользовпателе по id
-  // получаем первую страницу объявлений пользователя, чтобы получить данные о самом польлзователе
-  // const { data: tempAds } = useGetAdsByUserIdaAndPageQuery({ id: sellerId ?? skipToken, page: 1 })
-  // const seller = tempAds && tempAds.length ? tempAds[0].user : undefined
-  
   // получаем объявления с учетом фильтра (см. контракт хука useAdsFiltered)
-  const { data: ads, isLoading } = useAdsFiltered(searchValue, useGetAdsByUserIdQuery, sellerId ?? skipToken)
+  const { data: ads, isLoading } = useAdsFiltered(
+    searchValue, useGetAdsByUserIdQuery, sellerId ?? skipToken
+  )
 
   // формируем объект seller
   // и забираем данные о продавце только при первой загрузке ads,
@@ -38,10 +31,9 @@ export const SellerProfile = () => {
   const [seller, setSeller] = useState<User>()
   useEffect(() => {
     if (!seller && ads && ads.length) setSeller(ads[0].user)
-  }, [ads])  
+  }, [ads])
 
   if (isLoading) return <h2>Загрузка...</h2>
-  // if (seller === undefined) return <h2>Загрузка (seller)...</h2>
   
   return (
     <Page>
