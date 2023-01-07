@@ -1,4 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
+import { SORTING } from '../constants';
 
 import {
   AddImageToAdArgs, CardType, CreateAd, CreateAdArgs, UpdateAdArgs,
@@ -43,15 +44,15 @@ export const productsApi = createApi({
       providesTags: ['adsData']
     }),
     getAds: build.query<CardType[], void>({
-      query: () => 'ads',
+      query: () => `ads?${SORTING}`,
       providesTags: ['adsData']
     }),
     getAdsByUserId: build.query<CardType[], number>({
-      query: (id: number) => `ads?user_id=${id}`,
+      query: (id: number) => `ads?user_id=${id}&${SORTING}`,
       providesTags: ['adsData']
     }),
     getMyAds: build.query<CardType[], number>({
-      query: () => 'ads/me',
+      query: () => `ads/me?${SORTING}`,
       providesTags: ['adsData']
     }),
     updateAd: build.mutation<CardType, UpdateAdArgs>({
