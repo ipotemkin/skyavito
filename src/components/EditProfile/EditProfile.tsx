@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useGetUserQuery, useUpdateUserAvatarMutation, useUpdateUserMutation } from '../../api/products.api'
 import { UpdateUser } from '../../types'
+import { isPhoneNumberValid } from '../../validators/phoneNumber'
 import { Avatar } from '../Avatar/Avatar'
 import { Button } from '../Button/Button'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
@@ -30,6 +31,7 @@ export const EditProfile = () => {
   }, [user])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
+    if (field === 'phone' && !isPhoneNumberValid(e.target.value)) return  
     setFormUser((prev: UpdateUser) => ({ ...prev, [field]: e.target.value }))
   }
 

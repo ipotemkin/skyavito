@@ -1,3 +1,17 @@
+export const isPhoneNumberValid = (phone: string) => {
+  // внутрироссийский номер
+  if (phone.startsWith('8')) return /^[0-9]{0,11}$/g.test(phone)
+
+  const params = getCodeParams(clearPhone(phone))
+
+  // если нет в списке CODE_PARAMS
+  if (!params) return /^[+0-9]{0,1}[0-9]{0,12}$/g.test(phone)
+
+  // если в списке CODE_PARAMS, применяем правила и проверяем макс длину из CODE_PATRAMS
+  const regexp = new RegExp(`^[+0-9]{0,1}[0-9]{0,${xCount(params.mask) - 1}}$`, 'g')
+  return regexp.test(phone)
+}
+
 // символ для маски номера X/x
 
 type CodeParamsType = {
