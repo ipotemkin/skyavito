@@ -6,6 +6,7 @@ import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
 import { CreateAd, CreateAdForm, Image } from '../../types'
 import { getImageLst } from '../../utils'
+import { validatePrice } from '../../validators'
 import { Button } from '../Button/Button'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
@@ -55,6 +56,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     field: string,
   ) => {
+    if (field === 'price') e.target.value = validatePrice(e.target.value)
     setForm((prev: CreateAdForm) => ({ ...prev, [field]: e.target.value }))
   }
 

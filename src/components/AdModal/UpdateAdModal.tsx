@@ -6,6 +6,7 @@ import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
 import { DeleteAdImageArgs, Image, UpdateAd, UpdateAdArgs, UpdateAdForm } from '../../types'
 import { getImageLst } from '../../utils'
+import { validatePrice } from '../../validators'
 import { Button } from '../Button/Button'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
@@ -70,6 +71,7 @@ export const UpdateAdModal = () => {
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     field: string,
   ) => {
+    if (field === 'price') e.target.value = validatePrice(e.target.value)
     setForm((prev: UpdateAdForm) => ({ ...prev, [field]: e.target.value }))
   }
 
