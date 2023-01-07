@@ -55,7 +55,6 @@ export const UpdateAdModal = () => {
   
   useEffect(() => {
     if (ad) {
-      console.log('ad -->', ad)
       setForm({
         title: ad.title,
         price: ad.price,
@@ -118,8 +117,7 @@ export const UpdateAdModal = () => {
     }
 
     try {
-      const resp = await updateAd(payload).unwrap()
-      console.log('resp -->', resp)
+      await updateAd(payload).unwrap()
 
       // сохраняем новые картинки
       imagesToSave.forEach(async (imageFile) => {

@@ -35,7 +35,7 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
     const newImageList = prev.filter(img => img.id !== imgId)
     const maxInd = getMaxIndex(newImageList)
     newImageList.push({ id: maxInd + 1, url: '', file: null})
-    console.log('newImageList -->', newImageList)
+    // console.log('newImageList -->', newImageList)
     // let counter = 0
     // newImageList.forEach(image => {
     //   image.id = counter
@@ -45,18 +45,15 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
   })
 
   useLayoutEffect(() => {
-    console.log('images -->', images)
-
     if (images.length) {
       let imgId = 0
       images.forEach((image: Image) => setImageUrl(image.url, imgId++, null))
-      console.log(imageLst)
     }  
   }, [])
 
-  useEffect(() => {
-    console.log('imageLst -->', imageLst)
-  }, [imageLst])
+  // useEffect(() => {
+  //   console.log('imageLst -->', imageLst)
+  // }, [imageLst])
 
   // передаем наружу файлы картинок при каждом изменении данных
   useEffect(() => {

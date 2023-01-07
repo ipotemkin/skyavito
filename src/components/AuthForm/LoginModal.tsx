@@ -38,12 +38,10 @@ export const LoginModal = () => {
   const onSubmit: SubmitHandler<Credentials> = async (data) => {
     setIsBlocked(true)
     setError('')
-    console.log('onSubmit')
 
     try {
-      const resp = await login({ email: data.email, password: data.password }).unwrap()
+      await login({ email: data.email, password: data.password }).unwrap()
       navigate(ROUTES.profile)
-      console.log(resp)
     } catch (error) {
       setError(getErrorMessage(error as FetchBaseQueryError))
       setIsBlocked(false)

@@ -40,7 +40,7 @@ export const SignupModal = () => {
       await signUp(data).unwrap()
       navigate(ROUTES.profile)
     } catch (error) {
-      console.log('SignUp:onSubmit:error -->', error)
+      console.error(error)
       setError(getErrorMessage(error as FetchBaseQueryError))
       setIsBlocked(false)
     }

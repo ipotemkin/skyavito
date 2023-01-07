@@ -102,8 +102,6 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
     
     try {
       const resp = await createAdText(newAd).unwrap()
-      console.log('resp -->', resp)
-
       imageFiles.forEach(async (imageFile) => {
         try {
           if (imageFile.file && resp.id) {
@@ -112,12 +110,12 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
             await addImageToAd({ idx: resp.id, body: formData }).unwrap()
           }
         } catch (error) {
-          console.log('error -->', error)
+          console.error(error)
         }
       })
 
     } catch (error) {
-      console.log('error -->', error)
+      console.error(error)
     }
 
     // TODO: сделать закрытие, чтобы модалка не оставалась в истории

@@ -19,8 +19,8 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
   const flag = true
   // const [urlIn, setUrlIn] = useState('')
 
-  console.log('InputFile:id -->', id)
-  console.log('InputFile:imgUrl -->', imgUrl)
+  // console.log('InputFile:id -->', id)
+  // console.log('InputFile:imgUrl -->', imgUrl)
   
   useEffect(() => {
     if (url) setImgUrl(url)
@@ -31,9 +31,10 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
   //   if (urlIn && !urlIn.startsWith('data:')) setImgUrl(API_URL + url)
   // }, [urlIn])
   
-  useEffect(() => {
-    console.log('imgUrl -->', imgUrl)
-  }, [imgUrl])
+  // useEffect(() => {
+  //   console.log('imgUrl -->', imgUrl)
+  // }, [imgUrl])
+
   // console.log('InputFile:url -->', url)
   // console.log('InputFile:imgUrl -->', imgUrl)
 
@@ -47,13 +48,13 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
     // }
 
     const { files } = e.target
-    const fileName = files && files[0].name ? files[0].name : ''
+    // const fileName = files && files[0].name ? files[0].name : ''
     const file = files && files[0]
-    console.log(fileName)
+    // console.log(fileName)
     const reader = new FileReader()
     
     reader.onload = () =>  {
-      console.log('onload:id -->', id)
+      // console.log('onload:id -->', id)
       setImageUrl(reader.result as string, id, file)
       setImgUrl(reader.result as string)
     }
@@ -62,7 +63,6 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
   }
 
   const handleDeleteOnClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log('handleDeleteOnClick')
     if (disabled || imgUrl) {
       // чтобы не вызывался диалог выбора файла
       e.stopPropagation()
