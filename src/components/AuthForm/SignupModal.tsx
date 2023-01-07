@@ -9,7 +9,7 @@ import LogoIcon from '../../icons/Logo/LogoIcon'
 import { Page } from '../../pages/Page/Page'
 import { ROUTES } from '../../routes'
 import { CreateUser } from '../../types'
-import { validEmail } from '../../validators'
+import { validEmail } from '../../validators/validators'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 

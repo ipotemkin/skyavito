@@ -1,10 +1,11 @@
 import { skipToken } from '@reduxjs/toolkit/dist/query'
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { useDelAdMutation, useGetAdQuery, useGetAdReviewsQuery } from '../../api/products.api'
 import { Avatar } from '../../components/Avatar/Avatar'
 import { Button } from '../../components/Button/Button'
+import { ButtonWithPhone } from '../../components/ButtonWithPhone/ButtonWithPhone'
 import { Slider } from '../../components/Slider/Slider'
 import { API_URL } from '../../constants'
 import { useAppSelector } from '../../hooks/appHooks'
@@ -12,7 +13,6 @@ import { ROUTES } from '../../routes'
 import { selectAccessToken } from '../../slices/tokenSlice'
 import { Image } from '../../types'
 import { formatSellsFrom, formatString, getUserEmailFromJWT, prettyDate } from '../../utils'
-import { formatPhone, getPhoneMasked } from '../../validators'
 import { MsgPage } from '../MsgPage/MsgPage'
 import { Page } from '../Page/Page'
 
@@ -51,13 +51,6 @@ export const Ad = () => {
     ? <span>отзывов: {reviews.length}</span>
     : userEmail && <span>добавьте свой отзыв</span>
   
-  // show phone number =======================================================
-  const [isPhoneMasked, setIsPhoneMasked] = useState(true)
-  const phoneDb = product?.user?.phone || ''
-  const phone = isPhoneMasked ? getPhoneMasked(phoneDb) : formatPhone(phoneDb)
-  const handlePhoneClick = () => setIsPhoneMasked(false)
-  // =========================================================================
-
   // delete advertissment ====================================================
   const navigate = useNavigate()
   const [deleteAd] = useDelAdMutation()
@@ -107,10 +100,8 @@ export const Ad = () => {
                   </Link>
                   <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>
                 </>
-                : <Button onClick={handlePhoneClick}>
-                  Показать&nbsp;телефон<br/>
-                  <span>{phone}</span>
-              </Button>}
+                : <ButtonWithPhone phone={product.user?.phone}/>
+              }
             </div>
             
             <div className={styles.author}>

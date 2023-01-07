@@ -4,7 +4,7 @@ import React from 'react'
 import { User } from '../../types'
 import { formatSellsFrom } from '../../utils'
 import { Avatar } from '../Avatar/Avatar'
-import { Button } from '../Button/Button'
+import { ButtonWithPhone } from '../ButtonWithPhone/ButtonWithPhone'
 
 import styles from './style.module.css'
 
@@ -29,9 +29,7 @@ export const SellerProfileBlock = ({ seller }: Props) => {
           <Avatar image={seller.avatar} />
         </div>
 
-        <Button>
-          Показать&nbsp;телефон<br/><span>8&nbsp;905&nbsp;ХХХ&nbsp;ХХ&nbsp;ХХ</span>          
-        </Button>
+        <ButtonWithPhone phone={seller.phone} />
       </div>
     </div>
   )
