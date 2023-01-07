@@ -1,9 +1,10 @@
 import { Image } from './types'
 
 export const prettyDate = (timeISOstring: string) => {
-  const date = new Date((timeISOstring).replace(/-/g, '/').replace(/[TZ]/g, ' '))
   const now = new Date()
-  
+  const offsetMin = now.getTimezoneOffset()
+  const date = new Date(Date.parse(timeISOstring) - offsetMin * 60000)
+
   const today = now.toDateString()
   const argDate = date.toDateString()
   const diff = new Date(today).getTime() - new Date(argDate).getTime()
