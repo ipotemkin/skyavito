@@ -100,8 +100,7 @@ export const Ad = () => {
                   </Link>
                   <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>
                 </>
-                : <ButtonWithPhone phone={product.user?.phone}/>
-              }
+                : <ButtonWithPhone phone={product.user?.phone}/>}
             </div>
             
             <div className={styles.author}>
