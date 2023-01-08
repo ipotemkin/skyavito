@@ -1,11 +1,17 @@
 import React from 'react'
 
 import { useGetMyAdsQuery } from '../../api/products.api'
+import { useAdsFiltered } from '../../hooks/adHooks'
+import { useAppSelector } from '../../hooks/appHooks'
+import { selectSearchValue } from '../../slices/searchSlice'
 import { Gallery } from '../Gallery/Gallery'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
 
 export const MyGoods = () => {
-  const { data, isLoading } = useGetMyAdsQuery(0, { refetchOnMountOrArgChange: true })
+  const searchValue = useAppSelector(selectSearchValue)
+  const { data, isLoading } = useAdsFiltered(
+    searchValue, useGetMyAdsQuery, [0, { refetchOnMountOrArgChange: true }]
+  )
 
   if (isLoading) return <h2>Загрузка...</h2>
 

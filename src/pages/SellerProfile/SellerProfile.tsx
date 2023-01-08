@@ -21,7 +21,7 @@ export const SellerProfile = () => {
 
   // получаем объявления с учетом фильтра (см. контракт хука useAdsFiltered)
   const { data: ads, isLoading } = useAdsFiltered(
-    searchValue, useGetAdsByUserIdQuery, sellerId ?? skipToken
+    searchValue, useGetAdsByUserIdQuery, [sellerId ?? skipToken]
   )
 
   // формируем объект seller

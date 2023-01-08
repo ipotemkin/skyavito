@@ -5,9 +5,9 @@ import { CardType } from "../types"
 
 export const useAdsFiltered = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  filter = '', queryHook: any = useGetAdsQuery, id?: number
+  filter = '', queryHook: any = useGetAdsQuery, rest: any[] = []
   ) => {
-  const { data, isLoading, error } = queryHook(id)
+  const { data, isLoading, error } = queryHook(...rest)
   const [filteredData, setFilteredData] = useState<CardType[]>([])
 
   useEffect(() => {
