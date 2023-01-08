@@ -75,7 +75,7 @@ export const Ad = () => {
   const sells_from = product.user?.sells_from
 
   return (
-    <Page>
+    <Page mode='subheader'>
       <div className={styles.content}>
         <div className={styles.left}><Slider images={images} /></div>
         <div className={styles.right}>
