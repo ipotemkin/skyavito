@@ -22,6 +22,7 @@ export const EditProfile = () => {
   const [formUser, setFormUser] = useState<UpdateUser>(initialState)
   const [updateUser] = useUpdateUserMutation()
   const [updateAvatar] = useUpdateUserAvatarMutation()
+  const [changed, setChanged] = useState(false)
 
   useEffect(() => {
     if (user) {
@@ -31,6 +32,7 @@ export const EditProfile = () => {
   }, [user])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: string) => {
+    setChanged(true)
     if (field === 'phone' && !isPhoneNumberValid(e.target.value)) return  
     setFormUser((prev: UpdateUser) => ({ ...prev, [field]: e.target.value }))
   }
@@ -59,9 +61,10 @@ export const EditProfile = () => {
     e.preventDefault()
     try {
       await updateUser(formUser).unwrap()
+      setChanged(false)
     } catch(error) {
       console.error(error)
-    } 
+    }
   }
 
   if (isLoading) return <h2>Загрузка...</h2>
@@ -112,7 +115,7 @@ export const EditProfile = () => {
               />
 
             <div className={styles.settings__div} style={{ marginTop: 10 }}>
-              <Button>Сохранить</Button>
+              <Button disabled={!changed}>Сохранить</Button>
             </div>
           </form>
         </div>
