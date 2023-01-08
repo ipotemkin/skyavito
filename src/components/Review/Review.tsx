@@ -21,7 +21,7 @@ export const Review = ({ review }: Props) => {
         <p className={cn(styles.name, styles.fontT)}>
           {review.author.name || review.author.email} <span>{prettyDate(review.created_on)}</span>
         </p>
-        <h5 className={cn(styles.title, styles.fontT)}>Комментарий</h5>
+        {/* <h5 className={cn(styles.title, styles.fontT)}>Комментарий</h5> */}
         <p className={cn(styles.text, styles.fontT)}>{review.text}</p>
 
       </div>
