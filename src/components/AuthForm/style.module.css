@@ -22,7 +22,6 @@
 }
 
 .error {
-  /* position: absolute; */
   height: 30px;
   margin: 0;
   padding-left: 2px;
@@ -45,12 +44,11 @@
   width: 140px;
   height: 21px;
   margin-bottom: 30px;
-  /* margin-bottom: 34px; */
 }
 
 .input {
   width: 100%;
-  /* margin-bottom: 30px; */
+  margin-top: 8px;
   padding: 8px 1px;
 
   border: none;
