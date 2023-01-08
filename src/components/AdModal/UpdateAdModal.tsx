@@ -50,6 +50,8 @@ export const UpdateAdModal = () => {
   
   const [imageFiles, setImageFiles] = useState<Image[]>(getImageLst(5))
 
+  const [changed, setChanged] = useState(false)
+
   const title = 'Редактировать объявление'
   const btnName = 'Сохранить'
   
@@ -70,6 +72,7 @@ export const UpdateAdModal = () => {
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     field: string,
   ) => {
+    setChanged(true)
     if (field === 'price') e.target.value = validatePrice(e.target.value)
     setForm((prev: UpdateAdForm) => ({ ...prev, [field]: e.target.value }))
   }
@@ -146,7 +149,7 @@ export const UpdateAdModal = () => {
           }
         })
       }     
-
+      setChanged(false)
     } catch (error) {
       console.error(error)
     }
@@ -202,7 +205,7 @@ export const UpdateAdModal = () => {
               </div>
             </div>
             
-            <Button size="l"  disabled={checkFormValid() && !isBlocked ? false : true}>{btnName}</Button>
+            <Button size="l"  disabled={checkFormValid() && !isBlocked && changed ? false : true}>{btnName}</Button>
             
           </form>
         </div>
