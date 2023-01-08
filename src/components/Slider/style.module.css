@@ -113,6 +113,7 @@
 }
 
 @media screen and (max-width: 590px) {
+/* @media screen and (max-width: 650px) { */
   .img {
     width: 320px;
     height: 320px;

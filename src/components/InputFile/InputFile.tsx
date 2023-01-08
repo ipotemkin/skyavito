@@ -75,7 +75,7 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
 
   return (
     <div className={cn(styles.container, disabled ? styles.disabled : '')}>
-      <label htmlFor={String(id)}>
+      <label htmlFor={String(id)} style={{ marginLeft: 0 }}>
         <div className={cn(styles.img, disabled ? styles.disabled : '')}>
           {imgUrl && <>
             <img src={imgUrl} alt="" className={styles.img}/>

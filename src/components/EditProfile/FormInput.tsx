@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'classnames'
 
 import styles from './style.module.css'
@@ -15,16 +15,14 @@ type Props = {
 
 const noop = () => void {}
 
-export const FormInput: FC<Props> = ({
-  // value = '',
-  // width = '',
+export const FormInput = ({
   label = '',
-  // placeholder = '',
   onChange = noop,
   autoFocus = false,
   wide = false,
   ...props
-}) => {
+}: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [screenWidth, setScreenWidth] = useState<number>(0)
 
   useEffect(() => {
@@ -36,11 +34,7 @@ export const FormInput: FC<Props> = ({
       <label className={styles.label} htmlFor="name">{label}</label>
       <input className={cn(styles.input, wide ? styles.wide : '')} name="name"
         type="text"
-        // value="Ан"
-        // placeholder={placeholder}
         onChange={onChange}
-        // style={{ width }}
-        // style={ screenWidth < 620 ? { width: '100%' } : { width } }
         autoFocus={autoFocus}
         { ...props }
       />

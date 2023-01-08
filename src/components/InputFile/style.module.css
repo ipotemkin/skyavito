@@ -87,3 +87,15 @@
   stroke: #D9D9D9;
   fill: #D9D9D9;
 }
+
+@media screen and (max-width: 590px) {
+/* @media screen and (max-width: 650px) { */
+    .img {
+    width: 51px;
+    height: 51px;
+  }
+
+  label {
+    margin-left: 0;
+  }
+}

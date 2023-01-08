@@ -13,7 +13,7 @@ export type ButtonProps = {
   disabled?: boolean
   width?: number
   height?: number
-  style?: any
+  style?: object
 }
 
 export const Button: FC<ButtonProps> = ({

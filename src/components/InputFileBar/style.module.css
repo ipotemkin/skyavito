@@ -15,12 +15,13 @@
     -ms-flex-pack: justify;
       justify-content: space-between;
   margin-bottom: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 @media screen and (max-width: 590px) {
   .inputFileBar {
-    width: 280px;
+    width: 180px;
     /* width: 100%; */
+    gap: 6px;
   }
 }

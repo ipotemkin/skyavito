@@ -19,9 +19,9 @@ export const tokenSlice = createSlice({
           ...action.payload
         }
       },
-      deleteTokens: (state) => {
+      deleteTokens: () => {
         // Cookies.remove(accessTokenName)
-        return state = { ...initialState }
+        return { ...initialState }
       }
     },
     extraReducers: builder => {
