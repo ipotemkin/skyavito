@@ -100,3 +100,8 @@ export const formatSellsFrom = (date: string) => {
  const msg = months[month] + ' ' + year
  return msg
 }
+
+export const titleCase = (text?: string) => {
+  if (!text) return text
+  return text[0].toUpperCase() + text.slice(1)
+}

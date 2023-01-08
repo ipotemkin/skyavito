@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { API_URL, NO_IMAGE_PIC } from '../../constants'
 import { ROUTES } from '../../routes'
 import { CardType } from '../../types'
-import { prettyDate } from '../../utils'
+import { prettyDate, titleCase } from '../../utils'
 
 import styles from './style.module.css'
 
@@ -26,7 +26,7 @@ export const Card = ({ card }: Props) => {
       </Link>
       <div className={styles.info}>
         <Link to={path}>
-          <h3 className={styles.title}>{card.title}</h3>
+          <h3 className={styles.title}>{titleCase(card.title)}</h3>
         </Link>
         <p className={styles.price}>{ card.price.toLocaleString() }&nbsp;₽</p>
         <p className={styles.place}>{ card.user?.city }</p>
