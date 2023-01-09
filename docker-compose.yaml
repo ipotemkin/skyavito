@@ -27,8 +27,3 @@ services:
       - ./avatar_images:/code/avatar_images  # to get to avatar images
     command: >
       sh -c "alembic upgrade head"
-
-
-volumes:
-  skyavito_ad_images:
-  skyavito_avatar_images:

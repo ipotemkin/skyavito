@@ -25,6 +25,8 @@ docker-cmopose up -d
 docker-compose down
 ```
 
+### Моковые данные хранятся [здесь](/data)
+
 ### Frontend
 
 Для запуска в development режиме выполните команду
