@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
 import { NO_IMAGE_PIC } from '../../constants'
+import { BackArrow } from '../BackArrow/BackArrow'
 
 import { ImgBar } from './ImgBar'
 import { SliderContext } from './sliderContext'
@@ -26,7 +27,10 @@ export const Slider: FC<Props> = ({ images = [] }) => {
   return (
     <SliderContext.Provider value={{ selImageId: selImage, setSelImageId }}>
       <div className={styles.fillImg}>
-        <div className={styles.img}>                                        
+        <div className={styles.img}>
+          <div className={styles.backArrow}>
+            <BackArrow />
+          </div>
           <img src={images[selImage] || NO_IMAGE_PIC} alt="" />
         </div>
         <ImgBar images={images} />

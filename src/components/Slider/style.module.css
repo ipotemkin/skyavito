@@ -74,6 +74,12 @@
      object-fit: cover;
 }
 
+.backArrow {
+  position: absolute;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
 @media screen and (max-width: 999px) {
   .img {
     width: 400px;
