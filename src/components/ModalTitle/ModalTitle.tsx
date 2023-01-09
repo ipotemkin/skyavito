@@ -7,9 +7,9 @@ type Props = {
   children?: string 
 }
 
-export const PageTitle: FC<Props> = ({ children }) => {
+export const ModalTitle: FC<Props> = ({ children }) => {
   return <h2 className={styles.title}>
-    {/* <BackArrow /> */}
+    <BackArrow />
     {children}
   </h2>
 }

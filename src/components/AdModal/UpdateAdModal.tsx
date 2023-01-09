@@ -13,6 +13,7 @@ import { Modal } from '../Modal/Modal'
 import { difference, getImagesToSave, getUrlsFromImages } from './utils'
 
 import styles from './style.module.css'
+import { ModalTitle } from '../ModalTitle/ModalTitle'
 
 const initialValue: UpdateAdForm = {
   title: '',
@@ -35,7 +36,7 @@ export const UpdateAdModal = () => {
   
   const [imageFiles, setImageFiles] = useState<Image[]>(getImageLst(5))
 
-  const title = 'Редактировать объявление'
+  const title = 'Редактировать'
   const btnName = 'Сохранить'
   
   useEffect(() => {
@@ -157,7 +158,8 @@ export const UpdateAdModal = () => {
     <Modal isModalOpenArg={true}>
       <Page mode="modal">
         <div className={styles.modal__content}>
-          <h3 className={styles.title}>{title}</h3>
+          <ModalTitle>{title}</ModalTitle>
+          {/* <h3 className={styles.title}>{title}</h3> */}
           <div className={styles.btnClose} onClick={handleClose}>
             <CrossIcon width={30} height={30}/>
           </div>

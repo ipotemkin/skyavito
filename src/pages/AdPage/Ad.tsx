@@ -95,7 +95,7 @@ export const Ad = () => {
             <div className={styles.btnBlock}>
               {seller
                 ? <>
-                  <Link to={ROUTES.editAd + `/${product.id}`} state={{ background: location }}>
+                  <Link to={ROUTES.editAd + `/${product.id}`} state={{ background: location }} style={{ width: '100%'}}>
                     <Button height={50}>Редактировать</Button>
                   </Link>
                   <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>

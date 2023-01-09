@@ -7,9 +7,12 @@ import { Page } from '../../pages/Page/Page'
 import { CreateAd, CreateAdForm, Image } from '../../types'
 import { getImageLst } from '../../utils'
 import { validatePrice } from '../../validators/validators'
+import { BackArrow } from '../BackArrow/BackArrow'
 import { Button } from '../Button/Button'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
+import { ModalTitle } from '../ModalTitle/ModalTitle'
+import { PageTitle } from '../PageTitle/PageTitle'
 
 import styles from './style.module.css'
 
@@ -126,7 +129,11 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
     <Modal isModalOpenArg={true}>
       <Page mode="modal">
         <div className={styles.modal__content}>
-          <h3 className={styles.title}>{title}</h3>
+          <ModalTitle>{title}</ModalTitle>
+          {/* <h3 className={styles.title}>
+            <BackArrow />  
+            {title}
+          </h3> */}
           <div className={styles.btnClose} onClick={handleClose}>
             <CrossIcon width={30} height={30}/>
           </div>

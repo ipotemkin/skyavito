@@ -22,7 +22,7 @@ export const Header = () => {
   return (
     <nav className={styles.header}>
       <div className={styles.container}>
-        
+
         {token && <Link to={ROUTES.newAd} state={{ background: location }}>
           <Button
             type="secondary"
