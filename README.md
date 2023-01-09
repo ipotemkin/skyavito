@@ -5,7 +5,7 @@
 Склонируйте репозиторий:
 
 ```sh
-git __________
+git clone https://github.com/ipotemkin/skyavito.git
 ```
 
 ### Backend
@@ -14,7 +14,7 @@ git __________
 Перейдите в директорию проекта и запустите бэкенд командой:
 
 ```sh
-$ docker-cmopose up -d
+docker-cmopose up -d
 ```
 
 Бэкенд и документация в Swagger GUI будут доступны по адресу: `http://localhost:8090/`
