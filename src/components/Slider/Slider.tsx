@@ -3,6 +3,7 @@ import { NO_IMAGE_PIC } from '../../constants'
 import { BackArrow } from '../BackArrow/BackArrow'
 
 import { ImgBar } from './ImgBar'
+import { SelectBar } from './SelectBar'
 import { SliderContext } from './sliderContext'
 
 import styles from './style.module.css'
@@ -32,6 +33,7 @@ export const Slider: FC<Props> = ({ images = [] }) => {
             <BackArrow />
           </div>
           <img src={images[selImage] || NO_IMAGE_PIC} alt="" />
+          <SelectBar images={images}/>
         </div>
         <ImgBar images={images} />
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Img } from './Img'
+import { SelectButton } from './SelectButton'
 
 import styles from './style.module.css'
 
@@ -26,17 +26,12 @@ type Props = {
   images: string[]
 }
 
-export const ImgBar = ({ images }: Props) => {
+export const SelectBar = ({ images }: Props) => {
   const imageLst = getImageLst(images)
 
   return (
-    <div className={styles.imgBar}>
-      {imageLst.map(
-        item => <Img
-          key={item.id}
-          id={item.id}
-          image={item.imageUrl || ''}
-        />)}
+    <div className={styles.selectBar}>
+      {imageLst.map(item => <SelectButton key={item.id} id={item.id} />)}
     </div>
   )
 }
