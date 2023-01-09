@@ -9,7 +9,7 @@ type Props = {
 
 export const ModalTitle: FC<Props> = ({ children }) => {
   return <h2 className={styles.title}>
-    <BackArrow />
+    <BackArrow stroke="black"/>
     {children}
   </h2>
 }
