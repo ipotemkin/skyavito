@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useGetUserQuery, useUpdateUserAvatarMutation, useUpdateUserMutation } from '../../api/products.api'
+import { useAppDispatch } from '../../hooks/appHooks'
+import { ROUTES } from '../../routes'
+import { deleteTokens } from '../../slices/tokenSlice'
 import { UpdateUser } from '../../types'
 import { isPhoneNumberValid } from '../../validators/phoneNumber'
 import { Avatar } from '../Avatar/Avatar'
@@ -23,6 +27,8 @@ export const EditProfile = () => {
   const [updateUser] = useUpdateUserMutation()
   const [updateAvatar] = useUpdateUserAvatarMutation()
   const [changed, setChanged] = useState(false)
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (user) {
@@ -55,6 +61,11 @@ export const EditProfile = () => {
     }
 
     reader.readAsDataURL(file as Blob);
+  }
+
+  const handleLogout = () => {
+    setTimeout(() => dispatch(deleteTokens()), 100)
+    navigate(ROUTES.home)
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -116,6 +127,9 @@ export const EditProfile = () => {
 
             <div className={styles.settings__div} style={{ marginTop: 10 }}>
               <Button disabled={!changed}>Сохранить</Button>
+            </div>
+            <div className={styles.settings__div} style={{ marginTop: 10 }}>
+              <Button onClick={handleLogout}>Logout</Button>
             </div>
           </form>
         </div>
