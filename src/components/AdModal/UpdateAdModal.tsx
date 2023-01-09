@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { useAddImageToAdMutation, useUpdateAdMutation, useGetAdQuery, useDeleteAdImageMutation } from '../../api/products.api'
+import { useAddImageToAdMutation, useDeleteAdImageMutation, useGetAdQuery, useUpdateAdMutation } from '../../api/products.api'
 import CrossIcon from '../../icons/Cross/CossIcon'
 import { Page } from '../../pages/Page/Page'
 import { DeleteAdImageArgs, Image, UpdateAd, UpdateAdArgs, UpdateAdForm } from '../../types'
@@ -10,24 +10,9 @@ import { validatePrice } from '../../validators/validators'
 import { Button } from '../Button/Button'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
+import { difference, getImagesToSave, getUrlsFromImages } from './utils'
 
 import styles from './style.module.css'
-
-const difference = (lst1: string[], lst2: string[]): string[] => {
-  const set2 = new Set(lst2)
-  return lst1.filter(x => !set2.has(x))
-}
-
-const getUrlsFromImages = (data: Image[]): string[] => {
-  const res: string[] = []
-  data.forEach((image: Image) => {
-    if (!image.url.startsWith('data:')) res.push(image.url)
-  })
-  return res
-}
-
-const getImagesToSave = (data: Image[]): Image[] => 
-  data.filter((image: Image) => image.url.startsWith('data:'))
 
 const initialValue: UpdateAdForm = {
   title: '',
@@ -39,7 +24,7 @@ export const UpdateAdModal = () => {
   const adId = Number(useParams().id)
   const { data: ad } = useGetAdQuery(adId)
 
-  const [isBlocked, setIsBlocked] = useState(false)
+  const [isBlocked, setIsBlocked] = useState(true)
 
   const navigate = useNavigate()
   const [form, setForm] = useState<UpdateAdForm>(initialValue)
@@ -50,10 +35,12 @@ export const UpdateAdModal = () => {
   
   const [imageFiles, setImageFiles] = useState<Image[]>(getImageLst(5))
 
-  const [changed, setChanged] = useState(false)
-
   const title = 'Редактировать объявление'
   const btnName = 'Сохранить'
+  
+  useEffect(() => {
+    if (isImagesChanged()) setIsBlocked(false)
+  }, [imageFiles])
   
   useEffect(() => {
     if (ad) {
@@ -65,48 +52,53 @@ export const UpdateAdModal = () => {
       })
     }
   }, [ad])
-  
-  const handleClose = () => navigate(-1)    
 
-  const handleFieldChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    field: string,
-  ) => {
-    setChanged(true)
-    if (field === 'price') e.target.value = validatePrice(e.target.value)
-    setForm((prev: UpdateAdForm) => ({ ...prev, [field]: e.target.value }))
+  // прверяем изменились ли картинки
+  const isImagesChanged = () => {
+    const imageUrlsToDelete = getImageUrlsToDelete()
+    if (imageUrlsToDelete.length) return true
+
+    const imagesToSave = getImagesToSave(imageFiles)
+    if (imagesToSave.length) return true
+
+    return false
   }
 
   const checkFormValid = () => {
+    // добавить необходимую валидацию
     // if (form.title.length === 0 || form.price.length === 0) return false
     return true
   }
 
-// TODO: переделать на создание объявления сразу с несколькими фотографиями
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsBlocked(true)
-
-    // =======================
-    // analyzing image urls
-    // =======================
-
-    console.group('UpdateAdModal:handleSubmit:')
-    // console.log('form.images -->', form.iamges)
-
+  const getImageUrlsToDelete = () => {
     let imageUrlsToDelete: string[] = []
     if (form.images) {
       const oldImageUrls = getUrlsFromImages(form.images)
       const newImageUrls = getUrlsFromImages(imageFiles)
       imageUrlsToDelete = difference(oldImageUrls, newImageUrls)
     }
+    return imageUrlsToDelete
+  }
     
-    const imagesToSave = getImagesToSave(imageFiles)
+  const handleClose = () => navigate(-1)    
 
-    // console.log('imageUrlsToDelete -->', imageUrlsToDelete)
-    // console.log('imagesToSave -->', imagesToSave)
+  const handleFieldChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    field: string,
+  ) => {
+    setIsBlocked(false)
+    if (field === 'price') e.target.value = validatePrice(e.target.value)
+    setForm((prev: UpdateAdForm) => ({ ...prev, [field]: e.target.value }))
+  }
 
-    // =======================
+  const handleInputFileBarClick = () => {
+    if (isImagesChanged()) setIsBlocked(false)
+  }
+
+// TODO: переделать на создание объявления сразу с несколькими фотографиями
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsBlocked(true)
 
     const body: UpdateAd = {
       title: form.title,
@@ -120,9 +112,11 @@ export const UpdateAdModal = () => {
     }
 
     try {
+      // обновляем текствую информацию объявления
       await updateAd(payload).unwrap()
 
       // сохраняем новые картинки
+      const imagesToSave = getImagesToSave(imageFiles)
       imagesToSave.forEach(async (imageFile) => {
         try {
           if (imageFile.file) {
@@ -136,6 +130,7 @@ export const UpdateAdModal = () => {
       })
 
       // удаляем удаленные картинки
+      const imageUrlsToDelete = getImageUrlsToDelete()
       if (imageUrlsToDelete.length) {
         imageUrlsToDelete.forEach(async (imageUrl: string) => {
           try {
@@ -149,12 +144,9 @@ export const UpdateAdModal = () => {
           }
         })
       }     
-      setChanged(false)
     } catch (error) {
       console.error(error)
     }
-
-    console.groupEnd()
 
     setIsBlocked(false)
     // TODO: сделать закрытие, чтобы модалка не оставалась в истории
@@ -191,7 +183,11 @@ export const UpdateAdModal = () => {
             </div>
             <div className={styles.formBlock}>
               <p className={styles.p}>Фотографии товара<span>не более 5 фотографий</span></p>
-              <InputFileBar setImageFiles={setImageFiles} images={form.images}/>
+              <InputFileBar
+                setImageFiles={setImageFiles}
+                images={form.images}
+                onClick={handleInputFileBarClick}
+              />
             </div>
             <div className={styles.formBlock}>
               <label htmlFor="price">Цена</label>
@@ -205,7 +201,7 @@ export const UpdateAdModal = () => {
               </div>
             </div>
             
-            <Button size="l"  disabled={checkFormValid() && !isBlocked && changed ? false : true}>{btnName}</Button>
+            <Button size="l"  disabled={checkFormValid() && !isBlocked ? false : true}>{btnName}</Button>
             
           </form>
         </div>

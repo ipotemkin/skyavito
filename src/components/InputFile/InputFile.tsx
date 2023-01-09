@@ -40,7 +40,6 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
-    e.stopPropagation()
 
     // if (imgUrl) {
     //   e.preventDefault()
@@ -64,8 +63,8 @@ export const InputFile = ({ id, disabled = false, url = undefined}: Props) => {
 
   const handleDeleteOnClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (disabled || imgUrl) {
+      // e.stopPropagation()
       // чтобы не вызывался диалог выбора файла
-      e.stopPropagation()
       e.preventDefault()
       setImgUrl('')
       delImageUrl(id)

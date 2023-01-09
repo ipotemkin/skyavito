@@ -11,9 +11,10 @@ import styles from './style.module.css'
 type Props = {
   setImageFiles: (imageFiles: Image[]) => void
   images?: Image[]
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void
 }
 
-export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
+export const InputFileBar = ({ setImageFiles, images = [], ...props }: Props) => {
   const [imageLst, setImageLst] = useState(getImageLst(5))
 
   // записываем файл в imageLst
@@ -26,7 +27,6 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
           image.file = file
         }
       })
-      // temp[imgId] = { ...temp[imgId], url: imgUrl, file }
       return temp
     })
   }
@@ -35,12 +35,6 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
     const newImageList = prev.filter(img => img.id !== imgId)
     const maxInd = getMaxIndex(newImageList)
     newImageList.push({ id: maxInd + 1, url: '', file: null})
-    // console.log('newImageList -->', newImageList)
-    // let counter = 0
-    // newImageList.forEach(image => {
-    //   image.id = counter
-    //   counter++
-    // })
     return newImageList
   })
 
@@ -50,10 +44,6 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
       images.forEach((image: Image) => setImageUrl(image.url, imgId++, null))
     }  
   }, [])
-
-  // useEffect(() => {
-  //   console.log('imageLst -->', imageLst)
-  // }, [imageLst])
 
   // передаем наружу файлы картинок при каждом изменении данных
   useEffect(() => {
@@ -67,7 +57,7 @@ export const InputFileBar = ({ setImageFiles, images = [] }: Props) => {
 
   return (
     <InputFileBarContext.Provider value={{ setImageUrl, delImageUrl }}>
-      <div className={styles.inputFileBar}>
+      <div className={styles.inputFileBar} {...props}>
         {imageLst.map((image, index) => {
           let disabled = true
           if (
