@@ -1,0 +1,13 @@
+.deleteIcon {
+  /* stroke: #D9D9D9; */
+  /* stroke: white; */
+  fill: lightgrey;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.deleteIcon:hover, .deleteIcon:active {
+  fill: red;
+  /* stroke: #009EE4; */
+}

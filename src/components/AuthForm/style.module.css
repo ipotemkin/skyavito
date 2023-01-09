@@ -1,0 +1,158 @@
+.form {
+  width: 366px;
+  height: 439px;
+  padding: 43px 47px 47px 47px;
+
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+      flex-direction: column;
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+      align-items: center;
+  
+  -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.error {
+  height: 30px;
+  margin: 0;
+  padding-left: 2px;
+
+  font-size: 14px;
+
+  color: #ff6b6b;
+}
+
+.error span::before {
+  display: inline;
+  content: '⚠ ';
+}
+
+.horDiv {
+  margin-top: 30px;
+}
+    
+.logo {
+  width: 140px;
+  height: 21px;
+  margin-bottom: 30px;
+}
+
+.input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 1px;
+
+  border: none;
+  border-bottom: 1px solid #D0CECE;
+  outline: none;
+  
+  font-size: 18px;
+  line-height: 24px;
+  /* identical to box height, or 133% */
+  letter-spacing: -0.05px;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #009EE4;
+}
+
+.input::-webkit-input-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+  color: #D0CECE;
+}
+
+.input:-ms-input-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+  color: #D0CECE;
+}
+
+.input::-ms-input-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+  color: #D0CECE;
+}
+
+.input::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.05px;
+  color: #D0CECE;
+}
+
+.signup {
+  width: 366px;
+  height: 647px;
+  padding: 43px 42px 47px;
+
+  background-color: #FFFFFF;
+  border-radius: 12px;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+      flex-direction: column;
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+      align-items: center;
+
+  -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 590px) {
+  .form {
+    width: 280px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .input {
+    border: 1px solid #D0CECE;
+    border-radius: 30px;
+    padding-left: 17px;
+    padding-right: 17px;
+    /* margin-bottom: 14px; */
+  }
+
+  .error {
+    height: 24px;
+  }
+
+  .horDiv {
+    margin-top: 26px;
+  }
+
+  .signup {
+    width: 280px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

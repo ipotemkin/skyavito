@@ -1,0 +1,14 @@
+.sub_header {
+  max-width: 1158px;
+  margin: 0 auto;
+  padding: 122px 0px 0px;
+  
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 60px;
+
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+      align-items: center;
+}

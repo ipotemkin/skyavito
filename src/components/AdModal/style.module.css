@@ -1,0 +1,374 @@
+.modal__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+      flex-direction: column;
+  -webkit-box-align: start;
+    -ms-flex-align: start;
+      align-items: flex-start;
+  width: 600px;
+  /* height: min(800px, 98vh, auto); */
+  /* padding: 32px 50px 42px; */
+  padding: 20px 50px 42px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  position: relative;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;  
+}
+
+.title {
+  font-size: 32px;
+  line-height: 46px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.btnClose {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 23px;
+  right: 25px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+/* .btnClose::after, .btnClose::before {
+  content: "";
+  position: absolute;
+  width: 25.46px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #D9D9D9;
+  top: 25px;
+  right: 20px;
+}
+
+.btnClose::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.btnClose::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+} */
+
+.form {
+  margin-top: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+      flex-direction: column;
+  width: 100%;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.formBlock {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+      flex-direction: column;
+  
+  margin-bottom: 20px;
+
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+
+.formBlock label {
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  display: block;
+}
+
+.formBlock:hover label,
+.formBlock:focus-within label {
+  color: #009EE4;
+}
+
+.input, .area, .price {
+  width: 100%;
+  padding: 13px 34px 13px 19px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1;
+  
+  -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.input:focus, .area:focus, .price:focus,
+.input:hover, .area:hover, .price:hover {
+  outline: none;
+  border-color: #009EE4;
+}
+
+.input::-webkit-input-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.input:-ms-input-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.input::-ms-input-placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.input::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.area {
+  font-family: 'Roboto', sans-serif;
+  /* max-height: 200px; */
+  height: min(200px, 18vh);
+  width: 100%;
+  resize: none;
+}
+
+.area::-webkit-input-placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.area:-ms-input-placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.area::-ms-input-placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.area::placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0000004D;
+}
+
+.p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.p span {
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.imgBar {
+  width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+      flex-direction: row;
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+      align-items: center;
+  -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+      justify-content: space-between;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.img {
+  width: 90px;
+  height: 90px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #F0F0F0;
+}
+
+.img:hover, img:focus {
+  border: 1px solid #009EE4;
+}
+
+.img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.priceBlock {
+  position: relative;
+}
+
+.price {
+  width: 200px;
+}
+
+.rouble {
+  position: absolute;
+  left: 170px;
+  bottom: 14px;
+}
+
+.price::-webkit-input-placeholder {
+  text-align: end;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  
+  font-family: 'Roboto', sans-serif;
+}
+
+.price::-ms-input-placeholder {
+  text-align: end;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+.price::-ms-input-placeholder {
+  text-align: end;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+.price::placeholder {
+  text-align: end;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  
+  font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 590px) {
+  .modal__content {
+    width: 280px;
+    padding: 0;
+  }
+
+  .title {
+    margin-top: 30px;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+  }
+  
+  .btnClose {
+    display: none;
+  }
+
+  /* .form {
+    min-width: 280px;
+  } */
+
+  .p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .p span {
+    margin: 0;
+  }
+
+  .imgBar {
+    width: 280px;
+    /* width: 100%; */
+  }
+
+  .img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .formBlock label {
+    margin-left: 20px;
+  }
+
+  .input, .area, .price {
+    border-radius: 30px;
+  }
+
+  .price {
+    width: 100%;
+  }
+
+  .rouble {
+    position: absolute;
+    left: 250px;
+    bottom: 14px;
+  }  
+}

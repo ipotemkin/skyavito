@@ -1,0 +1,18 @@
+/* COMMON STYLES */
+
+.cross {
+  stroke: #D9D9D9;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cross:hover, .cross:active {
+  fill: #009EE4;
+  stroke: #009EE4;
+}
+
+.cross:active {
+  fill: #0080C1;
+  stroke: #0080C1;
+}

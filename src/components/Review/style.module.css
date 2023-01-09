@@ -1,0 +1,49 @@
+.review {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+      flex-direction: row;
+  -webkit-box-align: start;
+    -ms-flex-align: start;
+      align-items: flex-start;
+  -webkit-box-pack: start;
+    -ms-flex-pack: start;
+      justify-content: flex-start;
+}
+
+.left {
+  margin-right: 12px;
+}
+
+.right {
+  display: block;
+}
+
+.name {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.name span {
+  margin-left: 10px;
+  color: #5F5F5F;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.fontT {
+  font-size: 16px;
+  line-height: 32px;
+  color: #000000;
+}
+
+@media screen and (max-width: 590px) {
+  .fontT {
+    line-height: 24px;
+  }
+}

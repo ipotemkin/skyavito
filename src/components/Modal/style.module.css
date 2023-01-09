@@ -1,0 +1,58 @@
+.modal {
+  position: fixed;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: rgba(0, 0, 0, 0.2);
+  /* cursor: pointer; */
+}
+
+.content {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+}
+
+@media screen and (max-width: 590px) {
+  /* .content {
+    min-width: 320px; */
+    /* top: 0;
+    left: 0; */
+    /* height: 100vh; */
+
+    /* right: auto;
+    bottom: auto;   */
+  /* } */
+
+  .modal {
+    position: fixed;
+    /* position: absolute; */
+    /* z-index: 0; */
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* top: 0;
+    left: 0; */
+  
+    width: 100%;
+    /* width: 320px; */
+    min-height: 100vh;
+  
+    background: #fff;
+    /* background: rgba(255, 255, 255, 1); */
+    /* cursor: pointer; */
+  }
+  
+}

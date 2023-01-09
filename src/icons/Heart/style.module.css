@@ -1,0 +1,36 @@
+/* COMMON STYLES */
+
+.heart {
+  fill: none;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.heart:hover, .heart:active {
+  fill: #009EE4;
+}
+
+.heart:active {
+  fill-opacity: 1;
+  stroke: #009EE4;
+}
+
+/* SECONDARY */
+
+.secondary {
+  fill-opacity: 0;
+  stroke: #fff;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.secondary:hover, .secondary:active {
+  fill: #fff;
+  fill-opacity: 0.15;
+}
+
+.secondary:active {
+  fill-opacity: 1;
+}

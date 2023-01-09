@@ -1,0 +1,14 @@
+.mobile {
+  display: none;
+  stroke: black;
+}
+
+.mobile:first-child:hover {
+  stroke: white;
+}
+
+@media screen and (max-width: 590px) {
+  .mobile {
+    display: block;
+  }
+}

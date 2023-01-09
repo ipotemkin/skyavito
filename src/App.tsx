@@ -1,12 +1,7 @@
 import React from 'react'
+
+import { AppRoutes } from './routes'
+
 import './App.css'
 
-export const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Starting Diploma</p>
-      </header>
-    </div>
-  )
-}
+export const App = () => <AppRoutes />
