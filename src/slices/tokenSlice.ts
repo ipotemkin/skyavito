@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import Cookies from 'js-cookie'
 
 import { authApi } from '../api/auth.api'
 import { RootState } from '../store'
@@ -11,7 +12,9 @@ export const tokenSlice = createSlice({
     initialState,
     reducers: {
       setTokens: (state, action: PayloadAction<Tokens>) => {
-        state = { ...action.payload }
+        console.log('setTokens ->', action.payload)
+        // state = { ...action.payload }
+        return { ...action.payload }
       },
       updateTokens: (state, action: PayloadAction<Tokens>) => {
         return state = {
@@ -20,7 +23,8 @@ export const tokenSlice = createSlice({
         }
       },
       deleteTokens: () => {
-        // Cookies.remove(accessTokenName)
+        Cookies.remove('access_token')
+        Cookies.remove('refresh_token')
         return { ...initialState }
       }
     },
@@ -29,8 +33,11 @@ export const tokenSlice = createSlice({
       builder.addMatcher(
         authApi.endpoints.login.matchFulfilled,
         (state, { payload }) => {
-        //   if (payload.idToken)
-        //     Cookies.set(accessTokenName, payload.idToken)
+          if (payload.access_token)
+            Cookies.set('access_token', payload.access_token)
+
+          if (payload.refresh_token)
+            Cookies.set('refresh_token', payload.refresh_token)
           
           return state = { ...payload }
         }
@@ -40,8 +47,11 @@ export const tokenSlice = createSlice({
       builder.addMatcher(
         authApi.endpoints.refreshTokens.matchFulfilled,
         (state, { payload }) => {
-        //   if (payload.idToken)
-        //     Cookies.set(accessTokenName, payload.idToken)
+          if (payload.access_token)
+            Cookies.set('access_token', payload.access_token)
+
+          if (payload.refresh_token)
+            Cookies.set('refresh_token', payload.refresh_token)
 
           console.log('tokens have been updated')
           
