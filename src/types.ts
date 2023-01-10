@@ -140,3 +140,5 @@ export type CreateReviewArgs = {
   id: number
   body: CreateReview
 }
+
+export type DummyArg = 'dummy'

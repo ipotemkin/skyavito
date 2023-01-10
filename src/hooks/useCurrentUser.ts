@@ -4,7 +4,7 @@ import { useAppSelector } from "./appHooks"
 
 export const useCurrentUser = () => {
   const token = useAppSelector(selectAccessToken)  
-  const { data: user, isLoading, isError, error } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
+  const { data: user, isLoading, isError, error } = useGetUserQuery('dummy', { refetchOnMountOrArgChange: true })
   if (!token) return { data: undefined, isLoading, isError, error }
 
   return { data: user, isLoading, isError, error }

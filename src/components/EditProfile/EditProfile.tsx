@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useGetUserQuery, useUpdateUserAvatarMutation, useUpdateUserMutation } from '../../api/products.api'
+import { useUpdateUserAvatarMutation, useUpdateUserMutation } from '../../api/products.api'
 import { useAppDispatch } from '../../hooks/appHooks'
+import { useCurrentUser } from '../../hooks/useCurrentUser'
 import { ROUTES } from '../../routes'
 import { deleteTokens } from '../../slices/tokenSlice'
 import { UpdateUser } from '../../types'
@@ -22,7 +23,7 @@ const initialState: UpdateUser = {
 }
 
 export const EditProfile = () => {
-  const { data: user, isLoading, error } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
+  const { data: user, isLoading, error } = useCurrentUser()
   const [formUser, setFormUser] = useState<UpdateUser>(initialState)
   const [updateUser] = useUpdateUserMutation()
   const [updateAvatar] = useUpdateUserAvatarMutation()
@@ -137,3 +138,7 @@ export const EditProfile = () => {
     </div>
   )
 }
+
+// function useGetCurrentUser(): { data: any; isLoading: any; error: any } {
+//   throw new Error('Function not implemented.')
+// }

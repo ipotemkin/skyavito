@@ -5,7 +5,7 @@ import {
   AddImageToAdArgs, CardType, CreateAd, CreateAdArgs, UpdateAdArgs,
   CreateReviewArgs, Review,
   DeleteAdImageArgs,
-  UpdateUser, User
+  UpdateUser, User, DummyArg
  } from '../types'
 import customFetchBase from './customFetchBase';
 
@@ -79,7 +79,7 @@ export const productsApi = createApi({
     }),
 
     // user ==================================================================
-    getUser: build.query<User, number>({
+    getUser: build.query<User, DummyArg>({
       query: () => `user`,
       providesTags: ['userData'],
     }),

@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { useGetUserQuery } from '../../api/products.api'
 import { EditProfile } from '../../components/EditProfile/EditProfile'
 import { MyGoods } from '../../components/MyGoods/MyGoods'
 import { PageTitle } from '../../components/PageTitle/PageTitle'
+import { useCurrentUser } from '../../hooks/useCurrentUser'
 import { Page } from '../Page/Page'
 
 export const Profile = () => {
-  const { data: user, isLoading, error } = useGetUserQuery(0, { refetchOnMountOrArgChange: true })
+  const { data: user, isLoading, error } = useCurrentUser()
 
   const header = `Здравствуйте, ${user?.name || user?.email}!`
   
