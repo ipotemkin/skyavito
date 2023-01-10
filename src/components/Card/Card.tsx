@@ -14,7 +14,6 @@ type Props = {
 
 export const Card = ({ card }: Props) => {
   const path = ROUTES.adPage + '/' + card.id
-  // const image = card.images && card.images[0] ? API_URL + card.images[0].url : undefined
   const image = card.images && card.images[0] ? API_URL + card.images[0].url : NO_IMAGE_PIC
 
   return (

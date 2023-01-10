@@ -7,31 +7,16 @@ import { Page } from '../../pages/Page/Page'
 import { CreateAd, CreateAdForm, Image } from '../../types'
 import { getImageLst } from '../../utils'
 import { validatePrice } from '../../validators/validators'
-import { BackArrow } from '../BackArrow/BackArrow'
 import { Button } from '../Button/Button'
 import { InputFileBar } from '../InputFileBar/InputFileBar'
 import { Modal } from '../Modal/Modal'
 import { ModalTitle } from '../ModalTitle/ModalTitle'
-import { PageTitle } from '../PageTitle/PageTitle'
 
 import styles from './style.module.css'
 
 type Props = {
   type?: 'new' | 'edit'
 }
-
-// type AdModalForm = {
-//   [index: string]: string
-//   name: string
-//   desc: string
-//   price: string
-// }
-
-// const initialValue: AdModalForm = {
-//   name: '',
-//   desc: '',
-//   price: ''
-// }
 
 const initialValue: CreateAdForm = {
   title: '',
@@ -78,31 +63,6 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
       price: Number(form.price)
     }
 
-    // const formData = new FormData()
-    // formData.append('file', file)
-    // const params = authHeaders(token)
-
-    // let files: string|Blob[] = []
-    
-
-    // const lst: File[] = []
-
-    // imageFiles.forEach((imageFile) => {
-    //   if (imageFile.file) {
-    //     lst.push(imageFile.file)
-    //   }   
-    // })
-
-    // const formData = new FormData()
-    // formData.append('title', form.title)
-    // formData.append('description', form.description)
-    // formData.append('price', form.price)
-    // formData.append('files', lst)
-
-    
-    // Object.keys(newAd).forEach((key) => formData.append(key, newAd[key]));
-
-    
     try {
       const resp = await createAdText(newAd).unwrap()
       imageFiles.forEach(async (imageFile) => {
@@ -130,10 +90,6 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
       <Page mode="modal">
         <div className={styles.modal__content}>
           <ModalTitle>{title}</ModalTitle>
-          {/* <h3 className={styles.title}>
-            <BackArrow />  
-            {title}
-          </h3> */}
           <div className={styles.btnClose} onClick={handleClose}>
             <CrossIcon width={30} height={30}/>
           </div>
