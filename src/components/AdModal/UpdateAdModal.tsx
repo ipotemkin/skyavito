@@ -96,7 +96,6 @@ export const UpdateAdModal = () => {
     if (isImagesChanged()) setIsBlocked(false)
   }
 
-// TODO: переделать на создание объявления сразу с несколькими фотографиями
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsBlocked(true)
@@ -159,7 +158,6 @@ export const UpdateAdModal = () => {
       <Page mode="modal">
         <div className={styles.modal__content}>
           <ModalTitle>{title}</ModalTitle>
-          {/* <h3 className={styles.title}>{title}</h3> */}
           <div className={styles.btnClose} onClick={handleClose}>
             <CrossIcon width={30} height={30}/>
           </div>
