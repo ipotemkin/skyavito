@@ -10,7 +10,7 @@ git clone https://github.com/ipotemkin/skyavito.git
 
 ### Backend
 
-Для запуска бэкенда потребуется dockwer (не ниже 19.03.0) и docker-compose (не ниже 1.27.0).
+Для запуска бэкенда потребуется docker (не ниже 19.03.0) и docker-compose (не ниже 1.27.0).
 Перейдите в директорию проекта и запустите бэкенд командой:
 
 ```sh
@@ -66,3 +66,4 @@ npm run build
 - [x] Redux + Redux Toolkit + RTK Query
 - [x] React Router DOM, реализация routing
 - [x] react-hook-form
+- [x] mutex
