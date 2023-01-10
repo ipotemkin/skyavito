@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useUpdateUserAvatarMutation, useUpdateUserMutation } from '../../api/products.api'
 import { useAppDispatch } from '../../hooks/appHooks'
@@ -29,6 +29,7 @@ export const EditProfile = () => {
   const [updateAvatar] = useUpdateUserAvatarMutation()
   const [changed, setChanged] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -67,6 +68,10 @@ export const EditProfile = () => {
   const handleLogout = () => {
     setTimeout(() => dispatch(deleteTokens()), 100)
     navigate(ROUTES.home)
+  }
+
+  const handleChangePassword = () => {
+    navigate(ROUTES.changePassword, { state: { background: location }})
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -127,10 +132,13 @@ export const EditProfile = () => {
               />
 
             <div className={styles.settings__div} style={{ marginTop: 10 }}>
-              <Button disabled={!changed}>Сохранить</Button>
+              <Button disabled={!changed} size="ml">Сохранить</Button>
             </div>
             <div className={styles.settings__div} style={{ marginTop: 10 }}>
-              <Button onClick={handleLogout}>Logout</Button>
+              <Button onClick={handleChangePassword} size="ml">Сменить&nbsp;пароль</Button>
+            </div>
+            <div className={styles.settings__div} style={{ marginTop: 10 }}>
+              <Button onClick={handleLogout} size="ml">Logout</Button>
             </div>
           </form>
         </div>

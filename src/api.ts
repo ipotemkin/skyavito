@@ -5,10 +5,9 @@ export const api = {
     const formData = new FormData()
     formData.append('file', file)
     try {
-      const resp = productsApi.endpoints.addImageToAd.initiate({ idx, body: formData })
-      console.log('resp -->', resp)
+      productsApi.endpoints.addImageToAd.initiate({ idx, body: formData })
     } catch (error) {
-      console.log('error -->', error)
+      console.error(error)
     }
   },
 

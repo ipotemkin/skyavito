@@ -38,7 +38,7 @@ export const AdModal: FC<Props> = ({ type = 'new' }) => {
     btnName = 'Опубликовать'
   }
   
-  const handleClose = () => navigate(-1)    
+  const handleClose = () => navigate(-1)
 
   const handleFieldChange = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,

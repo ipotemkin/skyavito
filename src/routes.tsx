@@ -4,6 +4,7 @@ import { AdModal } from './components/AdModal/AdModal'
 import { UpdateAdModal } from './components/AdModal/UpdateAdModal'
 import { LoginModal } from './components/AuthForm/LoginModal'
 import { SignupModal } from './components/AuthForm/SignupModal'
+import { ChangePasswordModal } from './components/ChangePassword/ChangePasswordModal'
 import { ReviewModal } from './components/ReviewModal/ReviewModal'
 import { useAppSelector } from './hooks/appHooks'
 import { Ad } from './pages/AdPage/Ad'
@@ -24,6 +25,7 @@ export const ROUTES = {
   login: '/login',
   signup: '/signup',
   reviews: '/ads/{}/reviews',
+  changePassword: '/change-password',
 }
 
 type Props = {
@@ -92,6 +94,7 @@ export const AppRoutes = () => {
             <Route element={<ProtectedRoute isAllowed={isLoggedIn} />}>
               <Route path={ROUTES.newAd} element={<AdModal />} />
               <Route path={ROUTES.editAd + '/:id'} element={<UpdateAdModal />} />
+              <Route path={ROUTES.changePassword} element={<ChangePasswordModal />} />
             </Route>
           </Routes>
         )}

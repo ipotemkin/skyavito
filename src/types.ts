@@ -142,3 +142,15 @@ export type CreateReviewArgs = {
 }
 
 export type DummyArg = 'dummy'
+
+export type ChangePasswordForm = {
+  password_1: string
+  password_2: string
+  password_2_repeat: string
+}
+
+
+export type ChangePasswordArgs = {
+  password_1: string
+  password_2: string
+}

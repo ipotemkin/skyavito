@@ -5,7 +5,7 @@ import {
   AddImageToAdArgs, CardType, CreateAd, CreateAdArgs, UpdateAdArgs,
   CreateReviewArgs, Review,
   DeleteAdImageArgs,
-  UpdateUser, User, DummyArg
+  UpdateUser, User, DummyArg, ChangePasswordArgs
  } from '../types'
 import customFetchBase from './customFetchBase';
 
@@ -99,6 +99,15 @@ export const productsApi = createApi({
       }),
       invalidatesTags: ['userData', 'adsData'],
     }),
+    changeUserPassword: build.mutation<void, ChangePasswordArgs>({
+      query: (arg: ChangePasswordArgs) => ({
+        url: `user/password`,
+        method: 'PUT',
+        body: arg
+      }),
+      invalidatesTags: ['userData'],
+    }),
+
     
     // images ================================================================
     addImageToAd: build.mutation<CardType, AddImageToAdArgs>({
@@ -126,5 +135,6 @@ export const {
   useUpdateAdMutation,
   useCreateReviewMutation, useGetAdReviewsQuery,
   useGetUserQuery, useUpdateUserMutation, useUpdateUserAvatarMutation,
+  useChangeUserPasswordMutation,
   useAddImageToAdMutation, useDeleteAdImageMutation,
 } = productsApi

@@ -12,7 +12,6 @@ export const tokenSlice = createSlice({
     initialState,
     reducers: {
       setTokens: (state, action: PayloadAction<Tokens>) => {
-        console.log('setTokens ->', action.payload)
         // state = { ...action.payload }
         return { ...action.payload }
       },
