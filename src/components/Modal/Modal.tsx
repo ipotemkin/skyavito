@@ -1,9 +1,8 @@
 import React, { FC, ReactNode, useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
-// import { useEscapeKey } from '../../hooks/formHooks'
-// import { container } from '../..'
+import { useNavigate } from 'react-router-dom'
 
-// import { useEscapeKey } from '../../hooks/formHooks'
+import { useEscapeKey } from '../../hooks/formHooks'
 
 import styles from './style.module.css'
 
@@ -25,7 +24,10 @@ export const Modal: FC<ModalProps> = ({
   isModalOpenArg = false,
   // mode = undefined,
   children }) => {
+
+  const navigate = useNavigate()
   // useEscapeKey(() => setIsModalOpen(false))
+  useEscapeKey(() => navigate(-1))
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
