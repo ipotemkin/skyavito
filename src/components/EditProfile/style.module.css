@@ -85,6 +85,11 @@
   border-color: #009EE4;
 }
 
+.btnBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
 .settings__form {
     width: 630px;
     display: -webkit-box;
@@ -190,7 +195,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 590px) {
   .profile__title {
     font-size: 18px;
     line-height: 100%;
@@ -229,5 +234,11 @@
   .label {
     padding-left: 16px;
   }
+
+  .btnBlock {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
 }
   

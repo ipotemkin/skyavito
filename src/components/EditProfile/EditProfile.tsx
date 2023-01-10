@@ -131,14 +131,17 @@ export const EditProfile = () => {
               value={formUser.phone || ''}              
               />
 
-            <div className={styles.settings__div} style={{ marginTop: 10 }}>
-              <Button disabled={!changed} size="ml">Сохранить</Button>
-            </div>
-            <div className={styles.settings__div} style={{ marginTop: 10 }}>
-              <Button onClick={handleChangePassword} size="ml">Сменить&nbsp;пароль</Button>
-            </div>
-            <div className={styles.settings__div} style={{ marginTop: 10 }}>
+            
+            <div className={styles.btnBlock}>
+              <div className={styles.settings__div} style={{ marginTop: 10 }}>
+                <Button disabled={!changed} size="ml">Сохранить</Button>
+              </div>
+              <div className={styles.settings__div} style={{ marginTop: 10 }}>
+                <Button onClick={handleChangePassword} size="ml">Сменить&nbsp;пароль</Button>
+              </div>
+              <div className={styles.settings__div} style={{ marginTop: 10 }}>
               <Button onClick={handleLogout} size="ml">Logout</Button>
+              </div>
             </div>
           </form>
         </div>
@@ -146,7 +149,3 @@ export const EditProfile = () => {
     </div>
   )
 }
-
-// function useGetCurrentUser(): { data: any; isLoading: any; error: any } {
-//   throw new Error('Function not implemented.')
-// }
