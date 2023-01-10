@@ -2,6 +2,7 @@ import cn from 'classnames'
 import React from 'react'
 
 import { API_URL, NO_AVATAR_PIC } from '../../constants'
+
 import styles from './style.module.css'
 
 type Props = {

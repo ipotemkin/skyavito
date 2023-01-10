@@ -47,7 +47,6 @@ export const SignupModal = () => {
   }
 
   return (
-    // <Modal isModalOpenArg={modalShownName === 'signup'}>
     <Modal isModalOpenArg={true}>
       <Page mode="modal">
         <form className={styles.signup} onSubmit={handleSubmit(onSubmit)}>

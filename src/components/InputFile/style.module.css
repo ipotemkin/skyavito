@@ -38,8 +38,6 @@
   align-items: center;
   justify-content: center;
 
-  /* background-color: #e40000; */
-  
   background-color: #F0F0F0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -47,7 +45,6 @@
 }
 
 .img:not(.disabled):not(img):hover, img:not(.disabled):not(img):focus {
-  /* cursor: url('/public/icons8-cross-mark-48.png'), auto; */
   cursor: pointer;
   border: 1px solid #009EE4;
 }
