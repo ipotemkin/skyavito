@@ -9,19 +9,15 @@ import { PageTitle } from '../../components/PageTitle/PageTitle'
 import { SellerGoods } from '../../components/SellerGoods/SellerGoods'
 import { SellerProfileBlock } from '../../components/SellerProfileBlock/SellerProfileBlock'
 import { useAdsFiltered } from '../../hooks/adHooks'
-import { useAppSelector } from '../../hooks/appHooks'
-import { selectSearchValue } from '../../slices/searchSlice'
 import { User } from '../../types'
 import { Page } from '../Page/Page'
 
 export const SellerProfile = () => {
-  // TODO убрать searchValue внутрь хука useAdsFiltered
-  const searchValue = useAppSelector(selectSearchValue)
   const sellerId = Number(useParams().id)
 
   // получаем объявления с учетом фильтра (см. контракт хука useAdsFiltered)
   const { data: ads, isLoading } = useAdsFiltered(
-    searchValue, useGetAdsByUserIdQuery, [sellerId ?? skipToken]
+    useGetAdsByUserIdQuery, [sellerId ?? skipToken]
   )
 
   // формируем объект seller
