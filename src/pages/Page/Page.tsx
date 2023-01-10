@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import { BackArrow } from '../../components/BackArrow/BackArrow'
 
 import { Footer } from '../../components/Footer/Footer'
 import { Header } from '../../components/Header/Header'
@@ -34,7 +33,6 @@ export const Page = ({ children, mode = 'search', mobSearch = false }: Props) =>
         </div>
         <div className={mode === 'modal' ? styles.containerModal: styles.container}>
           <div className={styles.content}>
-            {/* <BackArrow /> */}
             {children}
           </div>
         </div>

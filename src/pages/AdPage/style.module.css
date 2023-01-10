@@ -66,6 +66,7 @@
 .btnBlock {
   width: 100%;
   display: flex;
+  justify-content: start;
   gap: 10px;
 }
 
@@ -85,6 +86,8 @@
 }
 
 .authorCont {
+  /* display: flex;
+  justify-content: start; */
   margin-left: 12px;
 }
 
@@ -236,5 +239,9 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 150%;
+  }
+
+  .editLink {
+    width: 100%;
   }
 }

@@ -1,5 +1,4 @@
-import React, { FC } from 'react'
-import { BackArrow } from '../BackArrow/BackArrow'
+import React from 'react'
 
 import styles from './style.module.css'
 
@@ -7,9 +6,8 @@ type Props = {
   children?: string 
 }
 
-export const PageTitle: FC<Props> = ({ children }) => {
+export const PageTitle = ({ children }: Props) => {
   return <h2 className={styles.title}>
-    {/* <BackArrow /> */}
     {children}
   </h2>
 }

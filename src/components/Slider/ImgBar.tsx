@@ -3,24 +3,7 @@ import React from 'react'
 import { Img } from './Img'
 
 import styles from './style.module.css'
-
-// const templateLst = [0, 1, 2, 3, 4]
-
-// type ImageType = {
-//   id: number
-//   imageUrl: string
-// }
-
-const getImageLst = (images: string[], count = 5) => {
-  const imageLst = []
-  const len = images.length
-  const maxLen = len == 0 ? count : len
-  
-  for (let i = 0; i < maxLen; i++)
-    imageLst.push({ id: i, imageUrl: images[i] || undefined })
-
-  return imageLst
-}
+import { getImageLst } from './utils'
 
 type Props = {
   images: string[]

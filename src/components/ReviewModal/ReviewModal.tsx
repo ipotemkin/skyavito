@@ -10,7 +10,6 @@ import { ReviewList } from '../ReviewList/ReviewList'
 import { CreateReview } from '../ReviewCreate/CreateReview'
 
 import styles from './style.module.css'
-import { BackArrow } from '../BackArrow/BackArrow'
 import { ModalTitle } from '../ModalTitle/ModalTitle'
 
 export const ReviewModal = () => {
@@ -28,9 +27,6 @@ export const ReviewModal = () => {
       <Page mode="modal">
         <div className={styles.modal__content}>
           <ModalTitle>Отзывы о товаре</ModalTitle>
-          {/* <h3 className={styles.title}>
-            <BackArrow />Отзывы о товаре
-          </h3> */}
           <div className={styles.btnClose} onClick={handleClose}>
             <CrossIcon width={30} height={30}/>
           </div>

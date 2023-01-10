@@ -1,6 +1,5 @@
 import { BrowserHistory, createBrowserHistory, Update } from 'history'
-import React, { FC,
-  // useEffect,
+import React, { 
   useLayoutEffect, useRef, useState, useTransition
 } from 'react'
 import { Router } from 'react-router-dom'
@@ -17,7 +16,7 @@ type Props = {
 const loadedPages: string[] = []
 
 // не переключает на новую страницу, пока она не готова
-export const SuspenseRouter: FC<Props> = ({ basename, children }) => {
+export const SuspenseRouter = ({ basename, children }: Props) => {
   const historyRef = useRef<BrowserHistory | null>(null)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isPending, startTransition] = useTransition()
@@ -45,7 +44,7 @@ export const SuspenseRouter: FC<Props> = ({ basename, children }) => {
   useLayoutEffect(() => history.listen(setStateAsync), [history])
 
   // useEffect(() => {
-  //   if (!isPending) dispatch(hideSpinner())
+  //   if (!isPending) - здесь должно быть действие при завершении рендеринга новой страницы
   // }, [dispatch, isPending])
 
   return (

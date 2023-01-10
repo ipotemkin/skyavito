@@ -1,27 +1,18 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
+
 import { NO_IMAGE_PIC } from '../../constants'
 import { BackArrow } from '../BackArrow/BackArrow'
-
 import { ImgBar } from './ImgBar'
 import { SelectBar } from './SelectBar'
 import { SliderContext } from './sliderContext'
 
 import styles from './style.module.css'
 
-// const mockImages: ImgBarType = {
-//   selectedId: 0,
-//   imageUrls: [
-//     'https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg',
-//     'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg',
-//     'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'  
-//   ]
-// }
-
 type Props = {
   images?: string[]
 }
 
-export const Slider: FC<Props> = ({ images = [] }) => {
+export const Slider = ({ images = [] }: Props) => {
   const [selImage, setSelImage] = useState(0)
   const setSelImageId = (imgId = 0) => setSelImage(imgId)
   

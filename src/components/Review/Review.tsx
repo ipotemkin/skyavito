@@ -1,9 +1,9 @@
 import cn from 'classnames'
 import React from 'react'
 
-import { Avatar } from '../Avatar/Avatar'
 import { Review as ReviewType } from '../../types'
 import { prettyDate } from '../../utils'
+import { Avatar } from '../Avatar/Avatar'
 
 import styles from './style.module.css'
 

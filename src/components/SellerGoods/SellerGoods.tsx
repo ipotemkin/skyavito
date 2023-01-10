@@ -4,8 +4,6 @@ import { CardType } from '../../types'
 import { Gallery } from '../Gallery/Gallery'
 import { PageSubTitle } from '../PageSubTitle/PageSubTitle'
 
-// import styles from './style.module.css'
-
 type Props = {
   ads?: CardType[]
 }
