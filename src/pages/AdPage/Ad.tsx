@@ -100,9 +100,12 @@ export const Ad = () => {
                     state={{ background: location }}
                     className={styles.editLink}
                   >
-                    <Button height={50}>Редактировать</Button>
+                    <Button height={50} size="sl">Редактировать</Button>
                   </Link>
-                  <Button height={50} onClick={handleDeleteAd}>Снять&nbsp;с&nbsp;публикации</Button>
+                  <Button height={50} size="sl"
+                    onClick={handleDeleteAd}
+                  >
+                    Снять&nbsp;с&nbsp;публикации</Button>
                 </>
                 : <ButtonWithPhone phone={product.user?.phone}/>}
             </div>
