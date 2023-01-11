@@ -13,6 +13,12 @@ export const ButtonWithPhone = ({ phone = '' }: Props) => {
   
   const handlePhoneClick = () => setIsPhoneMasked(false)
 
+  if (!phone) return (
+    <Button disabled>
+      Телефон&nbsp;не&nbsp;предоставлен
+    </Button>
+  )
+
   return (
     <Button onClick={handlePhoneClick}>
       Показать&nbsp;телефон<br/>
