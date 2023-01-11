@@ -2,6 +2,10 @@
 
 ## Запуск приложения
 
+Для запуска бэкенда потребуется docker (не ниже 19.03.0) и docker-compose (не ниже 1.27.0).
+
+### Запуск в development mode
+
 Склонируйте репозиторий:
 
 ```sh
@@ -13,13 +17,10 @@ git clone https://github.com/ipotemkin/skyavito.git
 npm i
 ```
 
-### Backend
-
-Для запуска бэкенда потребуется docker (не ниже 19.03.0) и docker-compose (не ниже 1.27.0).
 Перейдите в директорию проекта и запустите бэкенд командой:
 
 ```sh
-docker-cmopose up -d
+docker-cmopose -f docker-compose-backend.yaml up -d
 ```
 
 Бэкенд и документация в Swagger GUI будут доступны по адресу: `http://localhost:8090/`
@@ -30,11 +31,7 @@ docker-cmopose up -d
 docker-compose down
 ```
 
-### Моковые данные хранятся [здесь](/data)
-
-### Frontend
-
-Для запуска в development режиме выполните команду
+Запустите фронтенд командой:
 
 ```sh
 npm run start
@@ -42,13 +39,24 @@ npm run start
 
 Приложение доступно по: [http://localhost:3000](http://localhost:3000)
 
-При необходимости production сборки выполните команду
+### Запуск в production mode
+
+Запуск приложения в production mode выполняется командой:
 
 ```sh
-npm run build
+docker-cmopose up -d
 ```
 
-Сборка будет доступна в каталоге build
+Если вы изменяли код приложения, запустите production mode следующей командой, для учета сделанных изменений:
+
+```sh
+docker-cmopose up -d --build
+```
+
+Продпкшен сборка доступна по адресу: [http://localhost](http://localhost)
+
+
+### Моковые данные хранятся [здесь](/data)
 
 
 ## Описание проекта

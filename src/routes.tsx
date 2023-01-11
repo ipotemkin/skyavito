@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
+
 import { AdModal } from './components/AdModal/AdModal'
 import { UpdateAdModal } from './components/AdModal/UpdateAdModal'
 import { LoginModal } from './components/AuthForm/LoginModal'
@@ -8,7 +9,6 @@ import { ChangePasswordModal } from './components/ChangePassword/ChangePasswordM
 import { ReviewModal } from './components/ReviewModal/ReviewModal'
 import { useAppSelector } from './hooks/appHooks'
 import { Ad } from './pages/AdPage/Ad'
-
 import { Main } from './pages/Main/Main'
 import { Profile } from './pages/Profile/Profile'
 import { SellerProfile } from './pages/SellerProfile/SellerProfile'
