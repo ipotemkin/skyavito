@@ -20,7 +20,7 @@ npm i
 Перейдите в директорию проекта и запустите бэкенд командой:
 
 ```sh
-docker-cmopose -f docker-compose-backend.yaml up -d
+docker-compose -f docker-compose-backend.yaml up -d
 ```
 
 Бэкенд и документация в Swagger GUI будут доступны по адресу: `http://localhost:8090/`
@@ -44,16 +44,16 @@ npm run start
 Запуск приложения в production mode выполняется командой:
 
 ```sh
-docker-cmopose up -d
+docker-compose up -d
 ```
 
 Если вы изменяли код приложения, запустите production mode следующей командой, для учета сделанных изменений:
 
 ```sh
-docker-cmopose up -d --build
+docker-compose up -d --build
 ```
 
-Продпкшен сборка доступна по адресу: [http://localhost](http://localhost)
+Продакшен сборка доступна по адресу: [http://localhost](http://localhost)
 
 
 ### Моковые данные хранятся [здесь](/data)
@@ -87,5 +87,5 @@ docker-cmopose up -d --build
 - [x] Redux + Redux Toolkit + RTK Query
 - [x] React Router DOM, реализация routing
 - [x] react-hook-form
-- [x] mutex
+- [x] async-mutex
 - [x] js-cookie
