@@ -3,8 +3,8 @@ import React from 'react'
 
 import { User } from '../../types'
 import { formatSellsFrom } from '../../utils'
-import { Avatar } from '../Avatar/Avatar'
-import { ButtonWithPhone } from '../ButtonWithPhone/ButtonWithPhone'
+import { Avatar } from '../../components/ui/Avatar/Avatar'
+import { ButtonWithPhone } from '../../components/ui/ButtonWithPhone/ButtonWithPhone'
 
 import styles from './style.module.css'
 

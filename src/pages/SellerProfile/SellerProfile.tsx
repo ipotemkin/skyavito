@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom'
 import {
   useGetAdsByUserIdQuery
 } from '../../api/products.api'
-import { PageTitle } from '../../components/PageTitle/PageTitle'
-import { SellerGoods } from '../../components/SellerGoods/SellerGoods'
+import { PageTitle } from '../../components/ui/PageTitle/PageTitle'
+import { SellerGoods } from '../../components/galleries/SellerGoods/SellerGoods'
 import { SellerProfileBlock } from '../../components/SellerProfileBlock/SellerProfileBlock'
 import { useAdsFiltered } from '../../hooks/adHooks'
 import { User } from '../../types'

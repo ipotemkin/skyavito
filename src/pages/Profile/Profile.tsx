@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { EditProfile } from '../../components/EditProfile/EditProfile'
-import { MyGoods } from '../../components/MyGoods/MyGoods'
-import { PageTitle } from '../../components/PageTitle/PageTitle'
+import { MyGoods } from '../../components/galleries/MyGoods/MyGoods'
+import { PageTitle } from '../../components/ui/PageTitle/PageTitle'
 import { useCurrentUser } from '../../hooks/useCurrentUser'
 import { Page } from '../Page/Page'
 

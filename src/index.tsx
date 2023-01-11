@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 // import reportWebVitals from './reportWebVitals'
 
 import { App } from './App'
-import { ScrollToTop } from './components/ScrollToTop/ScrollToTop'
-import { SuspenseRouter } from './components/SuspenseRouter/SuspenseRouter'
+import { ScrollToTop } from './components/utils/ScrollToTop/ScrollToTop'
+import { SuspenseRouter } from './components/utils/SuspenseRouter/SuspenseRouter'
 import { store } from './store'
 
 import './index.css'

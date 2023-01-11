@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react'
 
-import { Footer } from '../../components/Footer/Footer'
-import { Header } from '../../components/Header/Header'
-import { HeaderMob } from '../../components/HeaderMob/HeaderMob'
-import { Search } from '../../components/Search/Search'
-import { SubHeader } from '../../components/SubHeader/SubHeader'
+import { Footer } from '../../components/layout/Footer/Footer'
+import { Header } from '../../components/layout/Header/Header'
+import { HeaderMob } from '../../components/layout/HeaderMob/HeaderMob'
+import { Search } from '../../components/ui/Search/Search'
+import { SubHeader } from '../../components/layout/SubHeader/SubHeader'
 import { useAppSelector } from '../../hooks/appHooks'
 import { selectModal } from '../../slices/modalSlice'
 
