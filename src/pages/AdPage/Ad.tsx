@@ -130,7 +130,7 @@ export const Ad = () => {
       <div className={styles.mainContainer}>
         <h3 className={styles.mainTitle}>Описание товара</h3>
         <div className={styles.mainContent}>
-          <p className={styles.mainText}>{product.description}</p>
+          <p className={styles.mainText}>{product.description || 'Описание отсутствует'}</p>
         </div>
       </div>
     </Page>
