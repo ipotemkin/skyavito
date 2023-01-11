@@ -16,7 +16,7 @@ export const Search = () => {
       <Logo />
       <form className={styles.form} onSubmit={handleSubmit}>
         <input className={styles.text}
-          type="text"
+          type="search"
           width={158}
           placeholder="Поиск по объявлениям"
           name="search"
