@@ -10,6 +10,8 @@ type Props = {
 }
 
 export const Gallery: FC<Props> = ({ items }) => {
+  if (items.length === 0) return <h2>Ничего не найдено...</h2>
+  
   return (
     <div className={styles.gallery}>
       {items && items.map((item: CardType) => <Card
