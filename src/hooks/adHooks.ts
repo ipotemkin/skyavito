@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import { useGetAdsQuery } from "../api/products.api"
-import { selectSearchValue } from "../slices/searchSlice"
+import { useGetAdsQuery } from '../api/products.api'
+import { selectSearchValue } from '../slices/searchSlice'
 import { CardType } from "../types"
 import { useAppSelector } from "./appHooks"
 

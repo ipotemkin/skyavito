@@ -6,12 +6,13 @@ import { useAdsFiltered } from '../../hooks/adHooks'
 import { Page } from '../Page/Page'
 
 export const Main = () => {
-  const { data } = useAdsFiltered()
+  const { data, isLoading } = useAdsFiltered()
 
   return (
     <Page mobSearch>
       <PageTitle>Объявления</PageTitle>
-      {data && <Gallery items={data} />}
+      {data.length > 0 && <Gallery items={data} />}
+      {!data.length && !isLoading && <h2>По данному запросу ничего не найдено</h2>}
     </Page>
   )
 }
